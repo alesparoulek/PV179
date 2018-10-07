@@ -50,17 +50,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="entities\Application.cs" />
-    <Compile Include="enums\Education.cs" />
-    <Compile Include="enums\JobOfferState.cs" />
-    <Compile Include="entities\RegisteredUser.cs" />
-    <Compile Include="entities\Company.cs" />
-    <Compile Include="entities\JobOffer.cs" />
-    <Compile Include="entities\User.cs" />
-    <Compile Include="enums\JobType.cs" />
-    <Compile Include="enums\Location.cs" />
-    <Compile Include="enums\TimeJob.cs" />
-    <Compile Include="enums\UserState.cs" />
+    <Compile Include="Entities\Application.cs" />
+    <Compile Include="Enums\Education.cs" />
+    <Compile Include="Enums\JobOfferState.cs" />
+    <Compile Include="Entities\RegisteredUser.cs" />
+    <Compile Include="Entities\Company.cs" />
+    <Compile Include="Entities\JobOffer.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Enums\JobType.cs" />
+    <Compile Include="Enums\Location.cs" />
+    <Compile Include="Enums\TimeJob.cs" />
+    <Compile Include="Enums\UserState.cs" />
     <Compile Include="MyDbContext.cs" />
     <Compile Include="MyInitializer.cs" />
     <Compile Include="Program.cs" />

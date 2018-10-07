@@ -14,7 +14,7 @@ namespace PV179
             {
                 Console.WriteLine(db.Companies.First().Name);
                 Console.WriteLine(db.Companies.First().Id);
-                Console.WriteLine(db.Companies.Where(a => a.Name == "f").ToList().First().Id);
+                Console.WriteLine(db.Companies.Where(a => a.Login == "bcomp").ToList().First().Id);
                 Console.ReadLine();
             }
         }

@@ -8,5 +8,7 @@ namespace PV179.enums
 {
     public enum Location
     {
+        HlavniMestoPraha, Jihocesky, Jihomoravsky, Karlovarsky, Vysocina, Kralovehradecky,
+        Liberecky, Moravskoslezsky, Olomoucky, Pardubicky, Plzensky, Stredocesky, Ustecky, Zlinsky
     }
 }
