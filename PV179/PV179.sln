@@ -5,6 +5,12 @@ VisualStudioVersion = 15.0.28010.2019
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PV179", "PV179\PV179.csproj", "{1323282C-6871-47E1-AA3A-5652BD83828E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{2FCB7C46-2A56-4045-873B-8C9E85E51F79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobsPortal.Infrastructure", "JobsPortal.Infrastructure\JobsPortal.Infrastructure.csproj", "{28C97EF5-FE87-4AB8-BC5D-437A808FBEE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobsPortal.Infrastructure.EntityFramework", "JobsPortal.Infrastructure.EntityFramework\JobsPortal.Infrastructure.EntityFramework.csproj", "{0B340E58-4B69-4B8D-B794-65064D40CC8A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +21,21 @@ Global
 		{1323282C-6871-47E1-AA3A-5652BD83828E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1323282C-6871-47E1-AA3A-5652BD83828E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1323282C-6871-47E1-AA3A-5652BD83828E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28C97EF5-FE87-4AB8-BC5D-437A808FBEE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28C97EF5-FE87-4AB8-BC5D-437A808FBEE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28C97EF5-FE87-4AB8-BC5D-437A808FBEE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28C97EF5-FE87-4AB8-BC5D-437A808FBEE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B340E58-4B69-4B8D-B794-65064D40CC8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B340E58-4B69-4B8D-B794-65064D40CC8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B340E58-4B69-4B8D-B794-65064D40CC8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B340E58-4B69-4B8D-B794-65064D40CC8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{28C97EF5-FE87-4AB8-BC5D-437A808FBEE2} = {2FCB7C46-2A56-4045-873B-8C9E85E51F79}
+		{0B340E58-4B69-4B8D-B794-65064D40CC8A} = {2FCB7C46-2A56-4045-873B-8C9E85E51F79}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5B4E0111-6DA3-4354-A53E-7BBEBF0DFF34}
