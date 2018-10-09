@@ -11,11 +11,6 @@ namespace JobsPortal.Infrastructure
         /// <summary>
         /// Unique id of the entity.
         /// </summary>
-        Guid Id { get; set; }
-
-        /// <summary>
-        /// Name of the database table for this entity.
-        /// </summary>
-        string TableName { get; }
+        int Id { get; set; }
     }
 }

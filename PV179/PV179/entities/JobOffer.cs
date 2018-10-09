@@ -4,12 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JobsPortal.Infrastructure;
+using System.ComponentModel.DataAnnotations;
 
 namespace PV179.entities
 {
-    public class JobOffer
+    public class JobOffer : IEntity
     {
+        [Key]
         public int Id { get; set; }
+
         public int CompanyId { get; set; }
         public JobType JobType { get; set; }
         public string Name { get; set; }

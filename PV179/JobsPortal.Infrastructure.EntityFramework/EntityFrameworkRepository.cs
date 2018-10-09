@@ -23,11 +23,10 @@ namespace JobsPortal.Infrastructure.EntityFramework
 
         public void Create(TEntity entity)
         {
-            entity.Id = Guid.NewGuid();
             Context.Set<TEntity>().Add(entity);
         }
 
-        public void Delete(Guid id)
+        public void Delete(int id)
         {
             var entity = Context.Set<TEntity>().Find(id);
             if (entity != null)
@@ -36,12 +35,12 @@ namespace JobsPortal.Infrastructure.EntityFramework
             }
         }
 
-        public async Task<TEntity> GetAsync(Guid id)
+        public async Task<TEntity> GetAsync(int id)
         {
             return await Context.Set<TEntity>().FindAsync(id);
         }
 
-        public async Task<TEntity> GetAsync(Guid id, params string[] includes)
+        public async Task<TEntity> GetAsync(int id, params string[] includes)
         {
             DbQuery<TEntity> ctx = Context.Set<TEntity>();
             foreach (var include in includes)

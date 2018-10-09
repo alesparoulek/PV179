@@ -11,12 +11,12 @@ namespace JobsPortal.Infrastructure
         /// <summary>
         /// Gets the entity with given id.
         /// </summary>
-        Task<TEntity> GetAsync(Guid id);
+        Task<TEntity> GetAsync(int id);
 
         /// <summary>
         /// Gets the entity with given id.
         /// </summary>
-        Task<TEntity> GetAsync(Guid id, params string[] includes);
+        Task<TEntity> GetAsync(int id, params string[] includes);
 
         /// <summary>
         /// Persists the given entity.
@@ -31,6 +31,6 @@ namespace JobsPortal.Infrastructure
         /// <summary>
         /// Deletes an entity with the given id.
         /// </summary>
-        void Delete(Guid id);
+        void Delete(int id);
     }
 }

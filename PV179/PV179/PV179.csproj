@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -69,6 +72,16 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JobsPortal.Infrastructure.EntityFramework\JobsPortal.Infrastructure.EntityFramework.csproj">
+      <Project>{0b340e58-4b69-4b8d-b794-65064d40cc8a}</Project>
+      <Name>JobsPortal.Infrastructure.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JobsPortal.Infrastructure\JobsPortal.Infrastructure.csproj">
+      <Project>{28c97ef5-fe87-4ab8-bc5d-437a808fbee2}</Project>
+      <Name>JobsPortal.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
