@@ -32,7 +32,8 @@ namespace PV179
 
             context.Users.Add(new User
             {
-                Name = "Franta Kuldanu",
+                FirstName = "Franta",
+                LastName = "Kuldanu",
                 Email = "frantakuldanu@seznam.cz",
                 Phone = "0609112567",
                 Education = enums.Education.graduated_highschool

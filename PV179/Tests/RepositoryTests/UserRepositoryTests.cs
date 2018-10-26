@@ -18,7 +18,8 @@ namespace Tests
             // Arrange
             User user1 = new User()
             {
-                Name = "Franta aaaaaaaa",
+                FirstName = "Franta",
+                LastName = "Kuldanu",
                 Email = "frantakuldanu@seznam.cz",
                 Phone = "0609112567",
                 Education = PV179.enums.Education.graduated_highschool
@@ -33,7 +34,7 @@ namespace Tests
             }
 
             // Assert
-            Assert.AreEqual(user1.Name, user2.Name);
+            Assert.AreEqual(user1.FirstName, user2.FirstName);
         }
     }
 }

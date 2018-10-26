@@ -13,10 +13,18 @@ namespace PV179.entities
         [Key]
         public int Id { get; set; }
 
+        [Required, MaxLength(64)]
         public string Name { get; set; }
+
+        [Required]
         public string Email { get; set; }
+
+        [Required, MaxLength(64)]
         public string Login { get; set; }
+
+        [Required, StringLength(100)]
         public string Password { get; set; }
+
         public List<JobOffer> Offers {get;set;}
 
     }

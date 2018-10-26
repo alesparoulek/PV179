@@ -23,7 +23,8 @@ namespace PV179
 
                 var user = new User()
                 {
-                    Name = "AAA",
+                    FirstName = "AAA",
+                    LastName = "ABAB",
                     Email = "BBB",
                     Phone = "CCC",
                     Education = enums.Education.graduated_highschool

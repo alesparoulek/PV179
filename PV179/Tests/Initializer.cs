@@ -35,7 +35,8 @@ namespace Tests
 
             var user = new User()
             {
-                Name = "Franta aaaaaaaa",
+                FirstName = "Franta",
+                LastName = "Kuldanu",
                 Email = "frantakuldanu@seznam.cz",
                 Phone = "0609112567",
                 Education = PV179.enums.Education.graduated_highschool
