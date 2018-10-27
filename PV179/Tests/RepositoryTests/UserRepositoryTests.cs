@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
+using JobsPortal.DataAccessLayer.EntityFramework.Entities;
 using JobsPortal.Infrastructure;
 using JobsPortal.Infrastructure.EntityFramework;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PV179.entities;
+
 
 namespace Tests
 {
@@ -24,7 +25,7 @@ namespace Tests
                 LastName = "Kuldanu",
                 Email = "frantakuldanu@seznam.cz",
                 Phone = "0609112567",
-                Education = PV179.enums.Education.graduated_highschool
+                Education = JobsPortal.DataAccessLayer.EntityFramework.Enums.Education.graduated_highschool
             };
 
             User user2 = new User();

@@ -1,11 +1,10 @@
-﻿using System;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Migrations;
+using JobsPortal.DataAccessLayer.EntityFramework;
+using JobsPortal.DataAccessLayer.EntityFramework.Entities;
 using JobsPortal.Infrastructure.EntityFramework.UnitOfWork;
 using JobsPortal.Infrastructure.UnitOfWork;
 using NUnit.Framework;
-using PV179;
-using PV179.entities;
 
 namespace Tests
 {
@@ -39,7 +38,7 @@ namespace Tests
                 LastName = "Kuldanu",
                 Email = "frantakuldanu@seznam.cz",
                 Phone = "0609112567",
-                Education = PV179.enums.Education.graduated_highschool
+                Education = JobsPortal.DataAccessLayer.EntityFramework.Enums.Education.graduated_highschool
             };
 
             context.Users.AddOrUpdate(user);

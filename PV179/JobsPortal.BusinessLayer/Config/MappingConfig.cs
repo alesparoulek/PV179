@@ -5,12 +5,13 @@ using JobsPortal.BusinessLayer.DataTransferObjects.Filters;
 using JobsPortal.DataAccessLayer.EntityFramework.Entities;
 using JobsPortal.Infrastructure.Query;
 
-namespace DemoEshop.BusinessLayer.Config
+namespace JobsPortal.BusinessLayer.Config
 {
     public class MappingConfig
     {
         public static void ConfigureMapping(IMapperConfigurationExpression config)
         {
+            /*
             config.CreateMap<Product, ProductDto>();
             config.CreateMap<ProductDto, Product>().ForMember(dest => dest.Category, opt => opt.Ignore());
             config.CreateMap<Category, CategoryDto>().ForMember(categoryDto => categoryDto.CategoryPath, opts => opts.ResolveUsing(category =>
@@ -31,6 +32,7 @@ namespace DemoEshop.BusinessLayer.Config
             config.CreateMap<QueryResult<Order>, QueryResultDto<OrderDto, OrderFilterDto>>();
             config.CreateMap<QueryResult<OrderItem>, QueryResultDto<OrderItemDto, OrderItemFilterDto>>();
             config.CreateMap<QueryResult<Customer>, QueryResultDto<CustomerDto, CustomerFilterDto>>();
+            */
         }
 
     }
