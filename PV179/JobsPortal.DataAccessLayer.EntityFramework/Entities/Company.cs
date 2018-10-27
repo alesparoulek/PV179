@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using JobsPortal.Infrastructure;
 
-namespace PV179.entities
+namespace JobsPortal.DataAccessLayer.EntityFramework.Entities
 {
     public class Company : IEntity
     {

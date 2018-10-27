@@ -2,9 +2,8 @@
 using System;
 using System.Collections.Generic;
 using AsyncPoco;
-using JobsPortal.DataAccessLayer.PetaPoco;
 
-namespace PV179.entities
+namespace JobsPortal.DataAccessLayer.PetaPoco.Entities
 {
     [TableName(TableNames.CompanyTable)]
     [PrimaryKey("Id", autoIncrement = false)]

@@ -1,12 +1,9 @@
-﻿using PV179.entities;
+﻿using JobsPortal.DataAccessLayer.EntityFramework.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace PV179
+namespace JobsPortal.DataAccessLayer.EntityFramework
 {
     public class JobsPortalInitializer : DropCreateDatabaseAlways<JobsPortalDbContext>
     {
@@ -39,19 +36,19 @@ namespace PV179
                 LastName = "Kuldanu",
                 Email = "frantakuldanu@seznam.cz",
                 Phone = "0609112567",
-                Education = enums.Education.graduated_highschool
+                Education = Enums.Education.graduated_highschool
             });
 
             context.JobOffers.Add(new JobOffer
             {
                 Id = Guid.NewGuid(),
                 CompanyId = Guid.Parse("aa04dc65-5c07-40fe-a916-175165b9b90f"),
-                JobType = enums.JobType.InformationTechnology,
+                JobType = Enums.JobType.InformationTechnology,
                 Name = "C# programmer",
                 Description = "programming a jobs portal in C#",
-                TimeJob = enums.TimeJob.fulltime,
-                Location = enums.Location.Jihomoravsky,
-                Education = enums.Education.graduated_highschool,
+                TimeJob = Enums.TimeJob.fulltime,
+                Location = Enums.Location.Jihomoravsky,
+                Education = Enums.Education.graduated_highschool,
                 Salary = 0,
                 Questionnaire = new List<string>(new string[] { "Are you ready to rock?"}),
                 Applications = null,

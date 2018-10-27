@@ -1,14 +1,11 @@
 ﻿using JobsPortal.Infrastructure;
-using PV179.enums;
+using JobsPortal.DataAccessLayer.EntityFramework.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace PV179.entities
+namespace JobsPortal.DataAccessLayer.EntityFramework.Entities
 {
     public class Application : IEntity
     {

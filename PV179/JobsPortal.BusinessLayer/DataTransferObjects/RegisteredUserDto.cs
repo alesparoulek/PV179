@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JobsPortal.BusinessLayer
+namespace JobsPortal.BusinessLayer.DataTransferObjects
 {
-    public class Class1
+    class RegisteredUserDto
     {
     }
 }

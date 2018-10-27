@@ -74,11 +74,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Config\MappingConfig.cs" />
+    <Compile Include="DataTransferObjects\ApplicationDto.cs" />
     <Compile Include="DataTransferObjects\Common\DtoBase.cs" />
     <Compile Include="DataTransferObjects\Common\FilterDtoBase.cs" />
     <Compile Include="DataTransferObjects\Common\QueryResultDto.cs" />
+    <Compile Include="DataTransferObjects\CompanyDto.cs" />
     <Compile Include="DataTransferObjects\Enums\Education.cs" />
     <Compile Include="DataTransferObjects\Enums\JobOfferState.cs" />
     <Compile Include="DataTransferObjects\Enums\JobType.cs" />
@@ -86,6 +87,10 @@
     <Compile Include="DataTransferObjects\Enums\TimeJob.cs" />
     <Compile Include="DataTransferObjects\Enums\UserState.cs" />
     <Compile Include="DataTransferObjects\Filters\CompanyFilterDto.cs" />
+    <Compile Include="DataTransferObjects\Filters\UserFilterDto.cs" />
+    <Compile Include="DataTransferObjects\JobOfferDto.cs" />
+    <Compile Include="DataTransferObjects\RegisteredUserDto.cs" />
+    <Compile Include="DataTransferObjects\UserDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryObjects\Common\QueryObjectBase.cs" />
   </ItemGroup>
@@ -96,6 +101,10 @@
     <Folder Include="Services\Common\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JobsPortal.DataAccessLayer.EntityFramework\JobsPortal.DataAccessLayer.EntityFramework.csproj">
+      <Project>{1323282C-6871-47E1-AA3A-5652BD83828E}</Project>
+      <Name>JobsPortal.DataAccessLayer.EntityFramework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JobsPortal.Infrastructure\JobsPortal.Infrastructure.csproj">
       <Project>{28c97ef5-fe87-4ab8-bc5d-437a808fbee2}</Project>
       <Name>JobsPortal.Infrastructure</Name>

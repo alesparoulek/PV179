@@ -1,9 +1,9 @@
-﻿using PV179.entities;
+﻿using JobsPortal.DataAccessLayer.EntityFramework.Entities;
 using System.Data.Common;
 using System.Data.Entity;
 
 
-namespace PV179
+namespace JobsPortal.DataAccessLayer.EntityFramework
 {
     public class JobsPortalDbContext : DbContext
     {

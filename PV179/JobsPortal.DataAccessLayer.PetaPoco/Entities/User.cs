@@ -1,11 +1,9 @@
 ﻿using JobsPortal.Infrastructure;
 using System;
-using System.Collections.Generic;
 using AsyncPoco;
-using JobsPortal.DataAccessLayer.PetaPoco;
-using PV179.enums;
+using JobsPortal.DataAccessLayer.PetaPoco.Enums;
 
-namespace PV179.entities
+namespace JobsPortal.DataAccessLayer.PetaPoco.Entities
 {
     [TableName(TableNames.UserTable)]
     [PrimaryKey("Id", autoIncrement = false)]

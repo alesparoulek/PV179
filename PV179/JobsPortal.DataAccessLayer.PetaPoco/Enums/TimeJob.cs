@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PV179.enums
+﻿
+namespace JobsPortal.DataAccessLayer.PetaPoco.Enums
 {
     public enum TimeJob
     {

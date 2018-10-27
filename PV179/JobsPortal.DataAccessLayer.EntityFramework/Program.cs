@@ -1,13 +1,8 @@
-﻿using PV179.entities;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.Entity.Infrastructure;
-using JobsPortal.Infrastructure.EntityFramework.UnitOfWork;
+using JobsPortal.DataAccessLayer.EntityFramework.Entities;
 
-namespace PV179
+namespace JobsPortal.DataAccessLayer.EntityFramework
 {
     class Program
     {
@@ -28,7 +23,7 @@ namespace PV179
                     LastName = "ABAB",
                     Email = "BBB",
                     Phone = "CCC",
-                    Education = enums.Education.graduated_highschool
+                    Education = Enums.Education.graduated_highschool
                 };
 
 

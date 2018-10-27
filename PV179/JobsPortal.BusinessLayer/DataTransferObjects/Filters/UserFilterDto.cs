@@ -2,8 +2,8 @@
 
 namespace JobsPortal.BusinessLayer.DataTransferObjects.Filters
 {
-    class CompanyFilterDto : FilterDtoBase
+    class UserFilterDto : FilterDtoBase
     {
-        public string Name { get; set; }
+        public string Email { get; set; }
     }
 }
