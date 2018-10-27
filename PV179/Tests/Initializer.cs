@@ -23,12 +23,12 @@ namespace Tests
         public void InitializeBusinessLayerTests()
         {
             Effort.Provider.EffortProviderConfiguration.RegisterProvider();
-            Database.SetInitializer(new DropCreateDatabaseAlways<MyDbContext>());
+            Database.SetInitializer(new DropCreateDatabaseAlways<JobsPortalDbContext>());
         }
 
         private static DbContext InitializeDatabase()
         {
-            var context = new MyDbContext(Effort.DbConnectionFactory.CreatePersistent(TestDbConnectionString));
+            var context = new JobsPortalDbContext(Effort.DbConnectionFactory.CreatePersistent(TestDbConnectionString));
             context.Applications.RemoveRange(context.Applications);
             context.Users.RemoveRange(context.Users);
             context.SaveChanges();

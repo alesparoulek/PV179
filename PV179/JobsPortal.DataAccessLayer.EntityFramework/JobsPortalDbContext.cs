@@ -5,7 +5,7 @@ using System.Data.Entity;
 
 namespace PV179
 {
-    public class MyDbContext : DbContext
+    public class JobsPortalDbContext : DbContext
     {
         private const string ConnectionString = "Data source=(localdb)\\mssqllocaldb;Database=Jobs;Trusted_Connection=True;MultipleActiveResultSets=true";
 
@@ -16,12 +16,12 @@ namespace PV179
         public DbSet<RegisteredUser> RegisteredUsers { get; set; }
         public DbSet<User> Users { get; set; }
 
-        public MyDbContext() : base(ConnectionString)
+        public JobsPortalDbContext() : base(ConnectionString)
         {
-            Database.SetInitializer(new MyInitializer());
+            Database.SetInitializer(new JobsPortalInitializer());
         }
 
-        public MyDbContext(DbConnection connection) : base(connection, true)
+        public JobsPortalDbContext(DbConnection connection) : base(connection, true)
         {
             Database.CreateIfNotExists();
         }

@@ -12,11 +12,14 @@ namespace PV179.entities
 {
     public class JobOffer : IEntity
     {
-        [Key]
-        public int Id { get; set; }
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public Guid Id { get; set; }
+
+        [NotMapped]
+        public string TableName { get; } = nameof(JobsPortalDbContext.JobOffers);
 
         [ForeignKey(nameof(Company))]
-        public int CompanyId { get; set; }        
+        public Guid CompanyId { get; set; }        
         public virtual Company Company { get; set; }
 
         public JobType JobType { get; set; }

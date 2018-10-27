@@ -12,15 +12,18 @@ namespace PV179.entities
 {
     public class Application : IEntity
     {
-        [Key]
-        public int Id { get; set; }
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public Guid Id { get; set; }
+
+        [NotMapped]
+        public string TableName { get; } = nameof(JobsPortalDbContext.Applications);
 
         [ForeignKey(nameof(JobOffer))]
-        public int JobOfferId { get; set; }
+        public Guid JobOfferId { get; set; }
         public virtual JobOffer JobOffer { get; set; }
 
         [ForeignKey(nameof(User))]
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
         public virtual User User { get; set; }
 
         public List<string> Answers { get; set; }

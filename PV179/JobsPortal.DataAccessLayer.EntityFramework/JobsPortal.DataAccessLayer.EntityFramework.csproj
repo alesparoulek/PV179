@@ -64,8 +64,8 @@
     <Compile Include="Enums\Location.cs" />
     <Compile Include="Enums\TimeJob.cs" />
     <Compile Include="Enums\UserState.cs" />
-    <Compile Include="MyDbContext.cs" />
-    <Compile Include="MyInitializer.cs" />
+    <Compile Include="JobsPortalDbContext.cs" />
+    <Compile Include="JobsPortalInitializer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 
 namespace PV179
 {
-    public class MyInitializer : DropCreateDatabaseAlways<MyDbContext>
+    public class JobsPortalInitializer : DropCreateDatabaseAlways<JobsPortalDbContext>
     {
-        protected override void Seed(MyDbContext context)
+        protected override void Seed(JobsPortalDbContext context)
         {
             context.Companies.Add(new Company
             {
+                Id = Guid.NewGuid(),
                 Login = "acomp",
                 Name = "Alpha Company",
                 Email = "acomp@acomp.acomp",
@@ -23,6 +24,7 @@ namespace PV179
 
             context.Companies.Add(new Company
             {
+                Id = Guid.Parse("aa04dc65-5c07-40fe-a916-175165b9b90f"),
                 Login = "bcomp",
                 Name = "Beta Company",
                 Email = "bcomp@bcomp.bcomp",
@@ -32,6 +34,7 @@ namespace PV179
 
             context.Users.Add(new User
             {
+                Id = Guid.NewGuid(),
                 FirstName = "Franta",
                 LastName = "Kuldanu",
                 Email = "frantakuldanu@seznam.cz",
@@ -41,7 +44,8 @@ namespace PV179
 
             context.JobOffers.Add(new JobOffer
             {
-                CompanyId = 1,
+                Id = Guid.NewGuid(),
+                CompanyId = Guid.Parse("aa04dc65-5c07-40fe-a916-175165b9b90f"),
                 JobType = enums.JobType.InformationTechnology,
                 Name = "C# programmer",
                 Description = "programming a jobs portal in C#",

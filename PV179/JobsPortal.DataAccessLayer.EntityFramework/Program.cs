@@ -13,7 +13,7 @@ namespace PV179
     {
         static void Main(string[] args)
         {
-            using (var db = new MyDbContext())
+            using (var db = new JobsPortalDbContext())
             {
                 Console.WriteLine(db.Companies.First().Name);
                 Console.WriteLine(db.Companies.First().Id);
@@ -23,6 +23,7 @@ namespace PV179
 
                 var user = new User()
                 {
+                    Id = Guid.NewGuid(),
                     FirstName = "AAA",
                     LastName = "ABAB",
                     Email = "BBB",
