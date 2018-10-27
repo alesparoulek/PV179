@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLayer.DTOs
+namespace PV179.enums
 {
-    class RegisteredUserCreateDto
+    public enum Education
     {
+        graduated_highschool, graduated_university, other
     }
 }

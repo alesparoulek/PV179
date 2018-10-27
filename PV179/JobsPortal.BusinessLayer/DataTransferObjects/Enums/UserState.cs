@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLayer.DTOs
+namespace PV179.enums
 {
-    class CompanyDto
+    public enum UserState
     {
+        accepted, declined
     }
 }

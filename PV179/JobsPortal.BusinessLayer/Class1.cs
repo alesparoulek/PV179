@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLayer.DTOs
+namespace JobsPortal.BusinessLayer
 {
-    class UserCreateDto
+    public class Class1
     {
     }
 }

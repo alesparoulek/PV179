@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLayer.DTOs
+namespace PV179.enums
 {
-    class JobOfferCreateDto
+    public enum TimeJob
     {
+        parttime,fulltime,temporary
     }
 }
