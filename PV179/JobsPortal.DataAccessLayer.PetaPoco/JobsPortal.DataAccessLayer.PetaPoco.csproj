@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1323282C-6871-47E1-AA3A-5652BD83828E}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>PV179</RootNamespace>
-    <AssemblyName>PV179</AssemblyName>
+    <ProjectGuid>{3B7D8C38-20E6-414B-AF62-E468AE066890}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JobsPortal.DataAccessLayer.PetaPoco</RootNamespace>
+    <AssemblyName>JobsPortal.DataAccessLayer.PetaPoco</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,18 +29,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="AsyncPoco, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AsyncPoco.2.0.1\lib\net45\AsyncPoco.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -54,9 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Application.cs" />
-    <Compile Include="Entities\RegisteredUser.cs" />
     <Compile Include="Entities\Company.cs" />
     <Compile Include="Entities\JobOffer.cs" />
+    <Compile Include="Entities\RegisteredUser.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Enums\Education.cs" />
     <Compile Include="Enums\JobOfferState.cs" />
@@ -64,19 +55,17 @@
     <Compile Include="Enums\Location.cs" />
     <Compile Include="Enums\TimeJob.cs" />
     <Compile Include="Enums\UserState.cs" />
-    <Compile Include="JobsPortalDbContext.cs" />
-    <Compile Include="JobsPortalInitializer.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="PetapocoDatabase.cs" />
+    <Compile Include="TableNames.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JobsPortal.Infrastructure.EntityFramework\JobsPortal.Infrastructure.EntityFramework.csproj">
-      <Project>{0b340e58-4b69-4b8d-b794-65064d40cc8a}</Project>
-      <Name>JobsPortal.Infrastructure.EntityFramework</Name>
+    <ProjectReference Include="..\JobsPortal.Infrastructure.Petapoco\JobsPortal.Infrastructure.Petapoco.csproj">
+      <Project>{f16aeb09-bd96-4652-a40f-287cce904bfb}</Project>
+      <Name>JobsPortal.Infrastructure.Petapoco</Name>
     </ProjectReference>
     <ProjectReference Include="..\JobsPortal.Infrastructure\JobsPortal.Infrastructure.csproj">
       <Project>{28c97ef5-fe87-4ab8-bc5d-437a808fbee2}</Project>

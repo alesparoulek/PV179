@@ -15,9 +15,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobsPortal.Infrastructure.P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobsPortal.DataAccessLayer.EntityFramework.Tests", "Tests\JobsPortal.DataAccessLayer.EntityFramework.Tests.csproj", "{26D06C41-A0B7-4F97-920C-284FFC3C0764}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobsPortal.BusinessLayer", "JobsPortal.BusinessLayer\JobsPortal.BusinessLayer.csproj", "{1A989F78-BFBF-4F37-95C9-8813CE87DF58}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4A3D45AC-EB29-4FEF-BEB5-DD1ADC248765}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobsPortal.DataAccessLayer.PetaPoco", "JobsPortal.DataAccessLayer.PetaPoco\JobsPortal.DataAccessLayer.PetaPoco.csproj", "{3B7D8C38-20E6-414B-AF62-E468AE066890}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,10 +45,10 @@ Global
 		{26D06C41-A0B7-4F97-920C-284FFC3C0764}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26D06C41-A0B7-4F97-920C-284FFC3C0764}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26D06C41-A0B7-4F97-920C-284FFC3C0764}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1A989F78-BFBF-4F37-95C9-8813CE87DF58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1A989F78-BFBF-4F37-95C9-8813CE87DF58}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1A989F78-BFBF-4F37-95C9-8813CE87DF58}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1A989F78-BFBF-4F37-95C9-8813CE87DF58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B7D8C38-20E6-414B-AF62-E468AE066890}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B7D8C38-20E6-414B-AF62-E468AE066890}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B7D8C38-20E6-414B-AF62-E468AE066890}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B7D8C38-20E6-414B-AF62-E468AE066890}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
