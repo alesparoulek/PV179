@@ -4,7 +4,7 @@ using System;
 
 namespace JobsPortal.BusinessLayer.DataTransferObjects
 {
-    class UserDto : DtoBase
+    public class UserDto : DtoBase
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

@@ -5,7 +5,7 @@ using JobsPortal.BusinessLayer.DataTransferObjects.Enums;
 
 namespace JobsPortal.BusinessLayer.DataTransferObjects
 {
-    class ApplicationDto : DtoBase
+    public class ApplicationDto : DtoBase
     {
         public Guid JobOfferId { get; set; }
         public Guid UserId { get; set; }

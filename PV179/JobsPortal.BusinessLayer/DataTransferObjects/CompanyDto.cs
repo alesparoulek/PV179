@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JobsPortal.BusinessLayer.DataTransferObjects
 {
-    class CompanyDto : DtoBase
+    public class CompanyDto : DtoBase
     {
         public string Name { get; set; }
         public string Email { get; set; }

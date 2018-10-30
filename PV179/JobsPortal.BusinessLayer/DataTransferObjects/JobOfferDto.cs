@@ -6,7 +6,7 @@ using JobsPortal.DataAccessLayer.EntityFramework.Entities;
 
 namespace JobsPortal.BusinessLayer.DataTransferObjects
 {
-    class JobOfferDto : DtoBase
+    public class JobOfferDto : DtoBase
     {
         public Guid CompanyId { get; set; }
         public JobType JobType { get; set; }
