@@ -19,6 +19,7 @@ namespace Tests
         public async Task TestMethod1()
         {
             // Arrange
+            
             User user1 = new User()
             {
                 FirstName = "Franta",

@@ -14,12 +14,23 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobsPortal.Infrastructure.Petapoco", "JobsPortal.Infrastructure.Petapoco\JobsPortal.Infrastructure.Petapoco.csproj", "{F16AEB09-BD96-4652-A40F-287CCE904BFB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobsPortal.DataAccessLayer.EntityFramework.Tests", "Tests\JobsPortal.DataAccessLayer.EntityFramework.Tests.csproj", "{26D06C41-A0B7-4F97-920C-284FFC3C0764}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D14D56E6-6BA3-4C5D-9980-8FB518A14446} = {D14D56E6-6BA3-4C5D-9980-8FB518A14446}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4A3D45AC-EB29-4FEF-BEB5-DD1ADC248765}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobsPortal.DataAccessLayer.PetaPoco", "JobsPortal.DataAccessLayer.PetaPoco\JobsPortal.DataAccessLayer.PetaPoco.csproj", "{3B7D8C38-20E6-414B-AF62-E468AE066890}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobsPortal.BusinessLayer", "JobsPortal.BusinessLayer\JobsPortal.BusinessLayer.csproj", "{D14D56E6-6BA3-4C5D-9980-8FB518A14446}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobsPortal.BL.Tests", "JobsPortal.BL.Tests\JobsPortal.BL.Tests.csproj", "{BCC51459-462B-43DA-9AF8-57B1D73F9821}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1323282C-6871-47E1-AA3A-5652BD83828E} = {1323282C-6871-47E1-AA3A-5652BD83828E}
+		{0B340E58-4B69-4B8D-B794-65064D40CC8A} = {0B340E58-4B69-4B8D-B794-65064D40CC8A}
+		{D14D56E6-6BA3-4C5D-9980-8FB518A14446} = {D14D56E6-6BA3-4C5D-9980-8FB518A14446}
+		{28C97EF5-FE87-4AB8-BC5D-437A808FBEE2} = {28C97EF5-FE87-4AB8-BC5D-437A808FBEE2}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +66,10 @@ Global
 		{D14D56E6-6BA3-4C5D-9980-8FB518A14446}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D14D56E6-6BA3-4C5D-9980-8FB518A14446}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D14D56E6-6BA3-4C5D-9980-8FB518A14446}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCC51459-462B-43DA-9AF8-57B1D73F9821}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCC51459-462B-43DA-9AF8-57B1D73F9821}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCC51459-462B-43DA-9AF8-57B1D73F9821}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCC51459-462B-43DA-9AF8-57B1D73F9821}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +79,7 @@ Global
 		{0B340E58-4B69-4B8D-B794-65064D40CC8A} = {2FCB7C46-2A56-4045-873B-8C9E85E51F79}
 		{F16AEB09-BD96-4652-A40F-287CCE904BFB} = {2FCB7C46-2A56-4045-873B-8C9E85E51F79}
 		{26D06C41-A0B7-4F97-920C-284FFC3C0764} = {4A3D45AC-EB29-4FEF-BEB5-DD1ADC248765}
+		{BCC51459-462B-43DA-9AF8-57B1D73F9821} = {4A3D45AC-EB29-4FEF-BEB5-DD1ADC248765}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5B4E0111-6DA3-4354-A53E-7BBEBF0DFF34}

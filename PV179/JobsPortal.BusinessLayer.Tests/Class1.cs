@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using JobsPortal.DataAccessLayer.EntityFramework;
 using JobsPortal.DataAccessLayer.EntityFramework.Entities;
@@ -12,9 +13,12 @@ namespace Tests
     public class Initializer
     {
         private const string TestDbConnectionString = "InMemoryTest";
-
+        
         internal static readonly IUnitOfWorkProvider Provider = new EntityFrameworkUnitOfWorkProvider(InitializeDatabase);
 
+        /// <summary>
+        /// Initializes all Business Layer tests
+        /// </summary>
         [OneTimeSetUp]
         public void InitializeBusinessLayerTests()
         {
@@ -29,17 +33,28 @@ namespace Tests
             context.Users.RemoveRange(context.Users);
             context.SaveChanges();
 
-            var user = new User()
+            
+
+            var company = new Company()
             {
-                FirstName = "Franta",
-                LastName = "Kuldanu",
-                Email = "frantakuldanu@seznam.cz",
-                Phone = "0609112567",
-                Education = JobsPortal.DataAccessLayer.EntityFramework.Enums.Education.graduated_highschool
+                Name = "aaa",
+                Email = "a@bbb.com",
+                Login = "b",
+                Password = "c",
+                Offers = new List<JobOffer>()
             };
 
-            context.Users.AddOrUpdate(user);
-            
+            var company2 = new Company()
+            {
+                Name = "bbb",
+                Email = "a@bbb.com",
+                Login = "b",
+                Password = "c",
+                Offers = new List<JobOffer>()
+            };
+            context.Companies.AddOrUpdate(company);
+            context.Companies.AddOrUpdate(company2);
+
 
             context.SaveChanges();
 

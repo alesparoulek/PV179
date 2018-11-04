@@ -9,8 +9,8 @@
     <ProjectGuid>{26D06C41-A0B7-4F97-920C-284FFC3C0764}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Tests</RootNamespace>
-    <AssemblyName>Tests</AssemblyName>
+    <RootNamespace>JobsPortal.DataAccessLayer.EntityFramework.Tests</RootNamespace>
+    <AssemblyName>JobsPortal.DataAccessLayer.EntityFramework.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

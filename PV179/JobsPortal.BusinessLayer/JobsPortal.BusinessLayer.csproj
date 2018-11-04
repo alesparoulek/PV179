@@ -86,19 +86,30 @@
     <Compile Include="DataTransferObjects\Enums\Location.cs" />
     <Compile Include="DataTransferObjects\Enums\TimeJob.cs" />
     <Compile Include="DataTransferObjects\Enums\UserState.cs" />
+    <Compile Include="DataTransferObjects\Filters\ApplicationFilterDto.cs" />
     <Compile Include="DataTransferObjects\Filters\CompanyFilterDto.cs" />
+    <Compile Include="DataTransferObjects\Filters\JobOfferFilterDto.cs" />
     <Compile Include="DataTransferObjects\Filters\UserFilterDto.cs" />
     <Compile Include="DataTransferObjects\JobOfferDto.cs" />
     <Compile Include="DataTransferObjects\RegisteredUserDto.cs" />
     <Compile Include="DataTransferObjects\UserDto.cs" />
+    <Compile Include="Facades\Common\FacadeBase.cs" />
+    <Compile Include="Facades\CompanyFacade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryObjects\ApplicationQueryObject.cs" />
     <Compile Include="QueryObjects\Common\QueryObjectBase.cs" />
+    <Compile Include="QueryObjects\CompanyQueryObject.cs" />
+    <Compile Include="QueryObjects\JobOfferQueryObject.cs" />
+    <Compile Include="QueryObjects\UserQueryObject.cs" />
     <Compile Include="Services\ApplyService.cs" />
     <Compile Include="Services\Common\CrudQueryServiceBase.cs" />
     <Compile Include="Services\Common\ServiceBase.cs" />
+    <Compile Include="Services\CompanyService.cs" />
     <Compile Include="Services\IApplyService.cs" />
+    <Compile Include="Services\ICompanyService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

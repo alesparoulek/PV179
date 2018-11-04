@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using JobsPortal.DataAccessLayer.EntityFramework;
 using JobsPortal.DataAccessLayer.EntityFramework.Entities;
@@ -6,7 +7,7 @@ using JobsPortal.Infrastructure.EntityFramework.UnitOfWork;
 using JobsPortal.Infrastructure.UnitOfWork;
 using NUnit.Framework;
 
-namespace Tests
+namespace JobsPortal.BL.Tests
 {
     [SetUpFixture]
     public class Initializer
@@ -29,17 +30,18 @@ namespace Tests
             context.Users.RemoveRange(context.Users);
             context.SaveChanges();
 
-            var user = new User()
+            var company = new Company()
             {
-                FirstName = "Franta",
-                LastName = "Kuldanu",
-                Email = "frantakuldanu@seznam.cz",
-                Phone = "0609112567",
-                Education = JobsPortal.DataAccessLayer.EntityFramework.Enums.Education.graduated_highschool
+                Name = "aaa",
+                Email = "aaaaac@bbb.com",
+                Login = "b",
+                Password = "c",
+                Offers = new List<JobOffer>()
             };
 
-            context.Users.AddOrUpdate(user);
-            
+
+            context.Companies.AddOrUpdate(company);
+
 
             context.SaveChanges();
 
