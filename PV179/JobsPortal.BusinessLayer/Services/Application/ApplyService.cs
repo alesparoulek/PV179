@@ -4,12 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using JobsPortal.BusinessLayer.DataTransferObjects;
-using JobsPortal.BusinessLayer.DataTransferObjects.Enums;
 using JobsPortal.BusinessLayer.Services.Common;
 using JobsPortal.DataAccessLayer.EntityFramework.Entities;
+using JobsPortal.DataAccessLayer.EntityFramework.Enums;
 using JobsPortal.Infrastructure;
-using JobsPortal.BusinessLayer.Services;
-
 namespace JobsPortal.BusinessLayer.Services
 {
     public class ApplyService : ServiceBase, IApplyService
@@ -39,6 +37,25 @@ namespace JobsPortal.BusinessLayer.Services
             applicationRepository.Create(application);
 
             return application.Id;
+        }
+
+        public async Task<Application> GetApplicationById(Guid entityId)
+        {
+            return await applicationRepository.GetAsync(entityId);
+        }
+
+        public async Task ChangeApplicationJobOfferState(Guid id, JobOfferState jobofferState)
+        {
+            var application = await GetApplicationById(id);
+            application.JobOfferState = jobofferState;
+            applicationRepository.Update(application);
+        }
+
+        public async Task ChangeApplicationUserState(Guid id, UserState userState)
+        {
+            var application = await GetApplicationById(id);
+            application.UserState = userState;
+            applicationRepository.Update(application);
         }
     }
 }

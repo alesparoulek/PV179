@@ -25,8 +25,9 @@ namespace JobsPortal.BL.Tests
                 Email = "aaaaac@bbb.com",
 
             };
-            using (Initializer.Provider.Create())
+            using (var db = Initializer.Provider.GetUnitOfWorkInstance())
             {
+               
                 var mapper = new Mapper(new MapperConfiguration(MappingConfig.ConfigureMapping));
                 var repo = new EntityFrameworkRepository<Company>(Initializer.Provider);
                 var query2 = new EntityFrameworkQuery<Company>(Initializer.Provider);

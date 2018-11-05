@@ -30,6 +30,8 @@ namespace JobsPortal.BL.Tests
             context.Users.RemoveRange(context.Users);
             context.SaveChanges();
 
+
+            
             var company = new Company()
             {
                 Name = "aaa",

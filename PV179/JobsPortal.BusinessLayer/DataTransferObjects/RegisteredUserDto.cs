@@ -11,7 +11,7 @@ namespace JobsPortal.BusinessLayer.DataTransferObjects
     {
         public string Login { get; set; }
         public string Password { get; set; }
-        public List<ApplicationDto> Applications { get; set; }
+        public List<Application> Applications { get; set; }
 
         public override string ToString()
         {

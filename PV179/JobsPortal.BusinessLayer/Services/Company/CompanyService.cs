@@ -16,8 +16,8 @@ namespace JobsPortal.BusinessLayer.Services
 {
     public class CompanyService : CrudQueryServiceBase<Company, CompanyDto, CompanyFilterDto>, ICompanyService
     {
-        public CompanyService(IMapper mapper, IRepository<Company> customerRepository, QueryObjectBase<CompanyDto, Company, CompanyFilterDto, IQuery<Company>> companyQueryObject)
-            : base(mapper, customerRepository, companyQueryObject) { }
+        public CompanyService(IMapper mapper, IRepository<Company> companyRepository, QueryObjectBase<CompanyDto, Company, CompanyFilterDto, IQuery<Company>> companyQueryObject)
+            : base(mapper, companyRepository, companyQueryObject) { }
 
         protected override async Task<Company> GetWithIncludesAsync(Guid entityId)
         {
@@ -28,6 +28,18 @@ namespace JobsPortal.BusinessLayer.Services
         {
             var queryResult = await Query.ExecuteQuery(new CompanyFilterDto { Name = name });
             return queryResult.Items.SingleOrDefault();
+        }
+
+        public async Task<List<JobOffer>> GetCompaniesJobOffers(string name)
+        {
+            var comp = await GetCompanyAccordingToNameAsync(name);
+            return comp.Offers;
+        }
+
+        public async Task<List<JobOffer>> GetCompaniesJobOffers(Guid id)
+        {
+            var comp = await GetWithIncludesAsync(id);
+            return comp.Offers;
         }
     }
 }

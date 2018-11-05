@@ -1,4 +1,5 @@
 ﻿using JobsPortal.BusinessLayer.DataTransferObjects;
+using JobsPortal.DataAccessLayer.EntityFramework.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,9 @@ namespace JobsPortal.BusinessLayer.Services
     public interface ICompanyService
     {
         Task<CompanyDto> GetCompanyAccordingToNameAsync(string name);
+
+        Task<List<JobOffer>> GetCompaniesJobOffers(string name);
+        Task<List<JobOffer>> GetCompaniesJobOffers(Guid id);
     }
 
    

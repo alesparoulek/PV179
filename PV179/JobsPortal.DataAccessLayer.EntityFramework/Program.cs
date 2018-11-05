@@ -26,9 +26,7 @@ namespace JobsPortal.DataAccessLayer.EntityFramework
                     Education = Enums.Education.graduated_highschool
                 };
 
-
-                //var init = new MyInitializer();
-              //  var unitofwork = new EntityFrameworkUnitOfWork(init.InitializeDatabase());
+                
             }
         }
     }
