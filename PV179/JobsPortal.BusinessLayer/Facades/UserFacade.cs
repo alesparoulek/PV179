@@ -16,11 +16,13 @@ namespace JobsPortal.BusinessLayer.Facades
     {
         private readonly IUserService userService;
         private readonly IApplyService applyService;
+        private readonly IRegisteredUserService registeredUserService;
 
-        public UserFacade(IUnitOfWorkProvider unitOfWorkProvider, IUserService userService, IApplyService applyService) : base(unitOfWorkProvider)
+        public UserFacade(IUnitOfWorkProvider unitOfWorkProvider, IUserService userService, IApplyService applyService, IRegisteredUserService registeredUserService) : base(unitOfWorkProvider)
         {
             this.userService = userService;
             this.applyService = applyService;
+            this.registeredUserService = registeredUserService;
         }
 
         public async Task<UserDto> GetUserAccordingToEmailAsync(string email)
@@ -32,12 +34,25 @@ namespace JobsPortal.BusinessLayer.Facades
             }
         }
    
-        public async Task ChangeApplicationUserState(UserStateertae us)
-        {dfag
-            gadfga;
+        public async Task ChangeApplicationUserState(Guid id, UserState userState)
+        {
+            using (UnitOfWorkProvider.Create())
+            {
+                await applyService.ChangeApplicationUserState(id, userState);
+            }
         }
 
-        public async Task Changeblabla(Us)
+
+        public async Task<List<Application>> GetAllApplicationsForUserEmailOrId(Guid id)
+        {
+            using (var uow = UnitOfWorkProvier.Create())
+            {
+                return await registeredUserService.GetAllApplicationsForUserEmailOrId(id);
+            }
+        }
+
+
+
 
 
 

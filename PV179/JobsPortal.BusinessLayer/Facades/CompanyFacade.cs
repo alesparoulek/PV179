@@ -13,10 +13,12 @@ namespace JobsPortal.BusinessLayer.Facades
     public class CompanyFacade : FacadeBase
     {
         private readonly ICompanyService comapnyService;
+        private readonly IApplyService applyService;
 
-        public CompanyFacade(IUnitOfWorkProvider unitOfWorkProvider, ICompanyService companyService) : base(unitOfWorkProvider)
+        public CompanyFacade(IUnitOfWorkProvider unitOfWorkProvider, ICompanyService companyService, IApplyService applyService) : base(unitOfWorkProvider)
         {
             this.comapnyService = companyService;
+            this.applyService = applyService;
         }
 
         public async Task<CompanyDto> GetCompanyAccordingToNameAsync(string name)
@@ -25,6 +27,14 @@ namespace JobsPortal.BusinessLayer.Facades
             using (UnitOfWorkProvider.Create())
             {
                 return await comapnyService.GetCompanyAccordingToNameAsync(name);
+            }
+        }
+
+        public async Task ChangeApplicationJobOfferState(Guid id, JobOfferState jobOfferState)
+        {
+            using (UnitOfWorkProvider.Create())
+            {
+                await applyService.ChangeApplicationJobOfferState(id, jobOfferState);
             }
         }
     }

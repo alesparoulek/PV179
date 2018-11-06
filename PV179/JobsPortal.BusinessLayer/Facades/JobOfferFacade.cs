@@ -6,7 +6,80 @@ using System.Threading.Tasks;
 
 namespace JobsPortal.BusinessLayer.Facades
 {
-    public class JobOfferFacade
-    {
+    public class JobOfferFacade : FacadeBase
+    { 
+        private readonly IJobOfferService jobOfferService;
+        private readonly IApplyService applyService;
+
+        public JobOfferFacade(IUnitOfWorkProvider unitOfWorkProvider, IJobOfferService jobOfferService, IApplyService applyService) : base(unitOfWorkProvider)
+        {
+            this.jobOfferService = jobOfferService;
+            this.applyService = applyService;
+        }
+
+        public async Task<Guid> CreateJobOffer(JobOfferDto jobOfferDto)
+        {
+            using (var uow = UnitOfWorkProvider.Create())
+            {
+                var jobOfferId = jobOfferService.Create(jobOfferDto);
+                await uow.Commit();
+                return jobOfferId;
+            }
+        }
+
+        public async Task<bool> DeleteJobOffer(Guid id)
+        {
+            using (var uow = UnitOfWorkProvide.Create())
+            {
+                if ((await jobOfferService.GetAsync(id, false)) == null)
+                {
+                    return false;
+                }
+                jobOfferService.Delete(id);
+                await uow.Commit();
+                return true;
+            }
+        }
+
+        public async Task<bool> EditJobOfferAsync(JobOfferDto jobOfferDto)
+        {
+            using (var uow = UnitOfWorkProvider.Create())
+            {
+                if ((await jobOfferService.GetAsync(jobOfferDto.Id, false)) == null)
+                {
+                    return false;
+                }
+                await jobOfferService.Update(jobOfferDto);
+                await uow.Commit();
+                return true;
+            }
+        }
+
+        public async Task<QueryResultDto<JobOfferDto, JobOfferFilterDto>> ListFilteredJobsAsync(JobOfferFilterDto filter)
+        {
+            using (UnitOfWorkProvide.Create())
+            {
+                return await jobOfferService.ListFilteredJobsAsync(filter);
+            }
+        }
+
+        protected async override Task<JobOffer> GetWithIncludesAsync(Guid entityId)
+        {
+            using(UnitOfWorkProvide.Create())
+            {
+                return await jobOfferService.GetWithIncludesAsync(entityId);
+            }
+        }
+
+        public async Task<Guid> ConfirmApplicationAsync(ApplicationDto applicationDto)
+        {
+            using (var uow = UnitOfWorkProvider.Create())
+            {
+                var applicationId = applyService.ConfirmApplicationAsync(applicationDto);
+                await uow.Commit();
+                return applicationId;
+            }
+        
+        }
     }
 }
