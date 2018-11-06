@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using JobsPortal.BusinessLayer.DataTransferObjects;
+using JobsPortal.BusinessLayer.DataTransferObjects.Enums;
 using JobsPortal.DataAccessLayer.EntityFramework.Entities;
-using JobsPortal.DataAccessLayer.EntityFramework.Enums;
 
 namespace JobsPortal.BusinessLayer.Services
 {
@@ -20,5 +20,13 @@ namespace JobsPortal.BusinessLayer.Services
         Task ChangeApplicationJobOfferState(Guid id, JobOfferState jobfferState);
 
         Task ChangeApplicationUserState(Guid id, UserState userState);
+
+        Guid Create(JobOfferDto entityDto);
+
+        Task Update(JobOfferDto entityDto);
+
+        Task Delete(Guid entityId);
+
+        Task<JobOfferDto> GetAsync(Guid entityId, bool withIncludes = true);
     }
 }

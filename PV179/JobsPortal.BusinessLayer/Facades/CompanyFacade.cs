@@ -1,4 +1,5 @@
 ﻿using JobsPortal.BusinessLayer.DataTransferObjects;
+using JobsPortal.BusinessLayer.DataTransferObjects.Enums;
 using JobsPortal.BusinessLayer.Facades.Common;
 using JobsPortal.BusinessLayer.Services;
 using JobsPortal.Infrastructure.UnitOfWork;

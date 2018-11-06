@@ -30,5 +30,7 @@ namespace JobsPortal.BusinessLayer.Services
         {
             return await Repository.GetAsync(entityId);
         }
+
+        
     }
 }

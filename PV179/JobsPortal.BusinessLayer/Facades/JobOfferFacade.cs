@@ -1,4 +1,8 @@
-﻿using System;
+﻿using JobsPortal.BusinessLayer.DataTransferObjects;
+using JobsPortal.BusinessLayer.Facades.Common;
+using JobsPortal.BusinessLayer.Services;
+using JobsPortal.Infrastructure.UnitOfWork;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,13 +33,13 @@ namespace JobsPortal.BusinessLayer.Facades
 
         public async Task<bool> DeleteJobOffer(Guid id)
         {
-            using (var uow = UnitOfWorkProvide.Create())
+            using (var uow = UnitOfWorkProvider.Create())
             {
                 if ((await jobOfferService.GetAsync(id, false)) == null)
                 {
                     return false;
                 }
-                jobOfferService.Delete(id);
+                await jobOfferService.Delete(id);
                 await uow.Commit();
                 return true;
             }

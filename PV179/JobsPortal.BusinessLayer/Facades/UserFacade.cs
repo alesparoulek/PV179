@@ -3,12 +3,12 @@ using JobsPortal.BusinessLayer.Facades.Common;
 using JobsPortal.BusinessLayer.Services;
 using JobsPortal.DataAccessLayer.EntityFramework.Entities;
 using JobsPortal.Infrastructure.UnitOfWork;
-using JobsPortal.BusinessLayer.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JobsPortal.BusinessLayer.DataTransferObjects.Enums;
 
 namespace JobsPortal.BusinessLayer.Facades
 {
@@ -45,7 +45,7 @@ namespace JobsPortal.BusinessLayer.Facades
 
         public async Task<List<Application>> GetAllApplicationsForUserEmailOrId(Guid id)
         {
-            using (var uow = UnitOfWorkProvier.Create())
+            using (var uow = UnitOfWorkProvider.Create())
             {
                 return await registeredUserService.GetAllApplicationsForUserEmailOrId(id);
             }

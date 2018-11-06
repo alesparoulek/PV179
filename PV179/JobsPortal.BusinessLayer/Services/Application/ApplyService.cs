@@ -47,6 +47,7 @@ namespace JobsPortal.BusinessLayer.Services
         public async Task ChangeApplicationJobOfferState(Guid id, JobOfferState jobofferState)
         {
             var application = await GetApplicationById(id);
+            
             application.JobOfferState = jobofferState;
             applicationRepository.Update(application);
         }
