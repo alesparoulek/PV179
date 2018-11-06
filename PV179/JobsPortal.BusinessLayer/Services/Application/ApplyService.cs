@@ -6,7 +6,7 @@ using AutoMapper;
 using JobsPortal.BusinessLayer.DataTransferObjects;
 using JobsPortal.BusinessLayer.Services.Common;
 using JobsPortal.DataAccessLayer.EntityFramework.Entities;
-using JobsPortal.DataAccessLayer.EntityFramework.Enums;
+using JobsPortal.BusinessLayer.Enums;
 using JobsPortal.Infrastructure;
 namespace JobsPortal.BusinessLayer.Services
 {
