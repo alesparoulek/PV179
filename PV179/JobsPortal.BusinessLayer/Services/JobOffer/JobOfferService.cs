@@ -31,6 +31,14 @@ namespace JobsPortal.BusinessLayer.Services
             return await Repository.GetAsync(entityId);
         }
 
-        
+        Task IJobOfferService.Delete(Guid entityId)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<JobOfferDto> IJobOfferService.GetWithIncludesAsync(Guid entityId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

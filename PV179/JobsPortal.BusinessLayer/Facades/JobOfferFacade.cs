@@ -1,4 +1,6 @@
 ﻿using JobsPortal.BusinessLayer.DataTransferObjects;
+using JobsPortal.BusinessLayer.DataTransferObjects.Common;
+using JobsPortal.BusinessLayer.DataTransferObjects.Filters;
 using JobsPortal.BusinessLayer.Facades.Common;
 using JobsPortal.BusinessLayer.Services;
 using JobsPortal.Infrastructure.UnitOfWork;
@@ -61,15 +63,15 @@ namespace JobsPortal.BusinessLayer.Facades
 
         public async Task<QueryResultDto<JobOfferDto, JobOfferFilterDto>> ListFilteredJobsAsync(JobOfferFilterDto filter)
         {
-            using (UnitOfWorkProvide.Create())
+            using (UnitOfWorkProvider.Create())
             {
                 return await jobOfferService.ListFilteredJobsAsync(filter);
             }
         }
 
-        protected async override Task<JobOffer> GetWithIncludesAsync(Guid entityId)
+        protected async Task<JobOfferDto> GetWithIncludesAsync(Guid entityId)
         {
-            using(UnitOfWorkProvide.Create())
+            using(UnitOfWorkProvider.Create())
             {
                 return await jobOfferService.GetWithIncludesAsync(entityId);
             }
@@ -81,7 +83,7 @@ namespace JobsPortal.BusinessLayer.Facades
             {
                 var applicationId = applyService.ConfirmApplicationAsync(applicationDto);
                 await uow.Commit();
-                return applicationId;
+                return await applicationId;
             }
         
         }

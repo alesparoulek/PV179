@@ -30,10 +30,14 @@ namespace JobsPortal.BL.Tests
                
                 var mapper = new Mapper(new MapperConfiguration(MappingConfig.ConfigureMapping));
                 var repo = new EntityFrameworkRepository<Company>(Initializer.Provider);
+                var repousr = new EntityFrameworkRepository<User>(Initializer.Provider);
+                var repojob = new EntityFrameworkRepository<JobOffer>(Initializer.Provider);
+                var repoapp = new EntityFrameworkRepository<Application>(Initializer.Provider);
                 var query2 = new EntityFrameworkQuery<Company>(Initializer.Provider);
                 var query = new CompanyQueryObject(mapper, query2);
                 var companyService = new CompanyService(mapper, repo, query);
-                var companyFacade = new CompanyFacade(Initializer.Provider, companyService);
+                var applyService = new ApplyService(mapper, repousr, repojob, repoapp);
+                var companyFacade = new CompanyFacade(Initializer.Provider, companyService, applyService);
                 var cust = await companyFacade.GetCompanyAccordingToNameAsync("aaa");
                 Assert.AreEqual(company, cust);
             }

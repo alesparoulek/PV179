@@ -43,5 +43,24 @@ namespace JobsPortal.BusinessLayer.Services
             return queryResult.Items.SingleOrDefault();
         }
 
+        public Guid Create(JobOfferDto entityDto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Update(JobOfferDto entityDto)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IRegisteredUserService.Delete(Guid entityId)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<JobOfferDto> IRegisteredUserService.GetAsync(Guid entityId, bool withIncludes)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

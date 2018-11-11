@@ -21,12 +21,5 @@ namespace JobsPortal.BusinessLayer.Services
 
         Task ChangeApplicationUserState(Guid id, UserState userState);
 
-        Guid Create(JobOfferDto entityDto);
-
-        Task Update(JobOfferDto entityDto);
-
-        Task Delete(Guid entityId);
-
-        Task<JobOfferDto> GetAsync(Guid entityId, bool withIncludes = true);
     }
 }
