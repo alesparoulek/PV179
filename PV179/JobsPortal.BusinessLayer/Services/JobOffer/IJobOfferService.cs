@@ -6,10 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JobsPortal.DataAccessLayer.EntityFramework.Entities;
 
 namespace JobsPortal.BusinessLayer.Services
 {
-    public interface IJobOfferService
+    public interface IJobOfferService 
     {
         Task<QueryResultDto<JobOfferDto, JobOfferFilterDto>> ListFilteredJobsAsync(JobOfferFilterDto filter);
         
@@ -18,6 +19,10 @@ namespace JobsPortal.BusinessLayer.Services
         Task Update(JobOfferDto entityDto);
 
         Task Delete(Guid entityId);
+
+        Task<JobOfferDto> GetAsync(Guid entityId, bool withIncludes = true);
+
+        //Task<JobOffer> GetWithIncludesAsync(Guid entityId);
 
     }
 }

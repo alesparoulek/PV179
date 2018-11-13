@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JobsPortal.DataAccessLayer.EntityFramework.Entities;
 
 namespace JobsPortal.BusinessLayer.Facades
 {
@@ -22,7 +23,7 @@ namespace JobsPortal.BusinessLayer.Facades
             this.jobOfferService = jobOfferService;
             this.applyService = applyService;
         }
-        /*
+        
         public async Task<Guid> CreateJobOffer(JobOfferDto jobOfferDto)
         {
             using (var uow = UnitOfWorkProvider.Create())
@@ -69,7 +70,7 @@ namespace JobsPortal.BusinessLayer.Facades
             }
         }
 
-        protected async Task<JobOfferDto> GetWithIncludesAsync(Guid entityId)
+        protected async Task<JobOffer> GetWithIncludesAsync(Guid entityId)
         {
             using(UnitOfWorkProvider.Create())
             {
@@ -86,6 +87,6 @@ namespace JobsPortal.BusinessLayer.Facades
                 return await applicationId;
             }
         
-        }*/
+        }
     }
 }
