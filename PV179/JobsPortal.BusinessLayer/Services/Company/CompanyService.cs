@@ -42,19 +42,5 @@ namespace JobsPortal.BusinessLayer.Services
             return comp.Offers;
         }
 
-        public Guid Create(JobOfferDto entityDto)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task Update(JobOfferDto entityDto)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<JobOfferDto> ICompanyService.GetAsync(Guid entityId, bool withIncludes)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

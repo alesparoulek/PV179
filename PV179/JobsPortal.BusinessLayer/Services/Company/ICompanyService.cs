@@ -15,8 +15,6 @@ namespace JobsPortal.BusinessLayer.Services
         Task<List<JobOffer>> GetCompaniesJobOffers(string name);
         Task<List<JobOffer>> GetCompaniesJobOffers(Guid id);
 
-
-        Task<JobOfferDto> GetAsync(Guid entityId, bool withIncludes = true);
     }
 
    

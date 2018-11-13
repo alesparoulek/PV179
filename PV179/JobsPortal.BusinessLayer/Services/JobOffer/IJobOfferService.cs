@@ -18,8 +18,6 @@ namespace JobsPortal.BusinessLayer.Services
         Task Update(JobOfferDto entityDto);
 
         Task Delete(Guid entityId);
-        
-        Task<JobOfferDto> GetAsync(Guid entityId, bool withIncludes = true);
-        Task<JobOfferDto> GetWithIncludesAsync(Guid entityId);
+
     }
 }

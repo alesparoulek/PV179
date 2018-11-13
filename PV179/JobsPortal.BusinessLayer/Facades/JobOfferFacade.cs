@@ -16,13 +16,13 @@ namespace JobsPortal.BusinessLayer.Facades
     { 
         private readonly IJobOfferService jobOfferService;
         private readonly IApplyService applyService;
-
+        
         public JobOfferFacade(IUnitOfWorkProvider unitOfWorkProvider, IJobOfferService jobOfferService, IApplyService applyService) : base(unitOfWorkProvider)
         {
             this.jobOfferService = jobOfferService;
             this.applyService = applyService;
         }
-
+        /*
         public async Task<Guid> CreateJobOffer(JobOfferDto jobOfferDto)
         {
             using (var uow = UnitOfWorkProvider.Create())
@@ -86,6 +86,6 @@ namespace JobsPortal.BusinessLayer.Facades
                 return await applicationId;
             }
         
-        }
+        }*/
     }
 }

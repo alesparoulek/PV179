@@ -36,9 +36,6 @@ namespace JobsPortal.BusinessLayer.Services
             throw new NotImplementedException();
         }
 
-        Task<JobOfferDto> IJobOfferService.GetWithIncludesAsync(Guid entityId)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }
