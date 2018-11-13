@@ -15,6 +15,14 @@ namespace JobsPortal.BusinessLayer.Services
         Task<List<JobOffer>> GetCompaniesJobOffers(string name);
         Task<List<JobOffer>> GetCompaniesJobOffers(Guid id);
 
+        Guid Create(CompanyDto entityDto);
+
+        Task Update(CompanyDto entityDto);
+
+        void Delete(Guid entityId);
+
+        Task<CompanyDto> GetAsync(Guid entityId, bool withIncludes = true);
+
     }
 
    

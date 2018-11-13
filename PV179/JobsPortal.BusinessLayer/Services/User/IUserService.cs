@@ -11,12 +11,12 @@ namespace JobsPortal.BusinessLayer.Services
     {
         Task<UserDto> GetUserAccordingToEmailAsync(string email);
 
-        Guid Create(JobOfferDto entityDto);
+        Guid Create(UserDto entityDto);
 
-        Task Update(JobOfferDto entityDto);
+        Task Update(UserDto entityDto);
 
-        Task Delete(Guid entityId);
+        void Delete(Guid entityId);
 
-        Task<JobOfferDto> GetAsync(Guid entityId, bool withIncludes = true);
+        Task<UserDto> GetAsync(Guid entityId, bool withIncludes = true);
     }
 }

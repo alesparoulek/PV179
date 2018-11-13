@@ -21,5 +21,7 @@ namespace JobsPortal.BusinessLayer.Services
 
         Task ChangeApplicationUserState(Guid id, UserState userState);
 
+
+
     }
 }

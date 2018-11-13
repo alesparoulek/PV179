@@ -42,7 +42,7 @@ namespace JobsPortal.BusinessLayer.Facades
                 {
                     return false;
                 }
-                await jobOfferService.Delete(id);
+                jobOfferService.Delete(id);
                 await uow.Commit();
                 return true;
             }
@@ -67,14 +67,6 @@ namespace JobsPortal.BusinessLayer.Facades
             using (UnitOfWorkProvider.Create())
             {
                 return await jobOfferService.ListFilteredJobsAsync(filter);
-            }
-        }
-
-        protected async Task<JobOffer> GetWithIncludesAsync(Guid entityId)
-        {
-            using(UnitOfWorkProvider.Create())
-            {
-                return await jobOfferService.GetWithIncludesAsync(entityId);
             }
         }
 

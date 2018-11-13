@@ -30,6 +30,7 @@ namespace JobsPortal.BusinessLayer.Facades
                 return await comapnyService.GetCompanyAccordingToNameAsync(name);
             }
         }
+        
 
         public async Task ChangeApplicationJobOfferState(Guid id, JobOfferState jobOfferState)
         {

@@ -14,5 +14,13 @@ namespace JobsPortal.BusinessLayer.Services
 
         Task<List<Application>> GetAllApplicationsForUserEmailOrId(string email);
 
+        Guid Create(RegisteredUserDto entityDto);
+
+        Task Update(RegisteredUserDto entityDto);
+
+        void Delete(Guid entityId);
+
+        Task<RegisteredUserDto> GetAsync(Guid entityId, bool withIncludes = true);
+
     }
 }

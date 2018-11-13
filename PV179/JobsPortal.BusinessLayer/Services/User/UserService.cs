@@ -29,25 +29,5 @@ namespace JobsPortal.BusinessLayer.Services
             var queryResult = await Query.ExecuteQuery(new UserFilterDto { Email = email });
             return queryResult.Items.SingleOrDefault();
         }
-
-        public Guid Create(JobOfferDto entityDto)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task Update(JobOfferDto entityDto)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task IUserService.Delete(Guid entityId)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<JobOfferDto> IUserService.GetAsync(Guid entityId, bool withIncludes)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

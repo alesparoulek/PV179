@@ -20,22 +20,19 @@ namespace JobsPortal.BusinessLayer.Services
         public JobOfferService(IMapper mapper, IRepository<JobOffer> jobOfferRepository, QueryObjectBase<JobOfferDto, JobOffer, JobOfferFilterDto, IQuery<JobOffer>> jobOfferQueryObject)
             : base(mapper, jobOfferRepository, jobOfferQueryObject) { }
 
-        public async Task<QueryResultDto<JobOfferDto, JobOfferFilterDto>> ListFilteredJobsAsync(JobOfferFilterDto filter)
-        {
-            var queryres = await Query.ExecuteQuery(filter);
-            return queryres;
-        }
 
         protected async override Task<JobOffer> GetWithIncludesAsync(Guid entityId)
         {
             return await Repository.GetAsync(entityId);
         }
 
-        
-        Task IJobOfferService.Delete(Guid entityId)
+        public async Task<QueryResultDto<JobOfferDto, JobOfferFilterDto>> ListFilteredJobsAsync(JobOfferFilterDto filter)
         {
-            throw new NotImplementedException();
+            var queryres = await Query.ExecuteQuery(filter);
+            return queryres;
         }
+
+        
 
 
     }
