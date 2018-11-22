@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JobsPortal.BusinessLayer.DataTransferObjects.Enums;
 
 namespace JobsPortal.BusinessLayer.QueryObjects
 {
@@ -90,7 +91,7 @@ namespace JobsPortal.BusinessLayer.QueryObjects
 
         private static SimplePredicate FilterEducation(JobOfferFilterDto filter)
         {
-            if (string.IsNullOrWhiteSpace(filter.Education.ToString()))
+            if (filter.Education == Education.other)
             {
                 return null;
             }

@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace JobsPortal.PresentationLayer.App_Start.Windsor
 {
-    public class PrentationInstaller
+    public class PresentationLayerInstaller : IWindsorInstaller
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {

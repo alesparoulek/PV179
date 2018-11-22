@@ -13,14 +13,14 @@ namespace JobsPortal.PresentationLayer.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Jobs()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Register()
         {
             ViewBag.Message = "Your contact page.";
 
