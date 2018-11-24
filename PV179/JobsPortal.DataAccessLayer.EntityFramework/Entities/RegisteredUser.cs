@@ -13,7 +13,9 @@ namespace JobsPortal.DataAccessLayer.EntityFramework.Entities
         public string Login { get; set; }
 
         [Required]
-        public string Password { get; set; }
+        public string PasswordHash { get; set; }
+        [Required]
+        public string PasswordSalt { get; set; }
 
         public List<Application> Applications { get; set; }
     }

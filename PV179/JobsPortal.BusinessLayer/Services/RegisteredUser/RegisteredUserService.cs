@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -16,6 +17,10 @@ namespace JobsPortal.BusinessLayer.Services
 {
     public class RegisteredUserService : ServiceBase, IRegisteredUserService
     {
+        private const int PBKDF2IterCount = 100000;
+        private const int PBKDF2SubkeyLength = 160 / 8;
+        private const int saltSize = 128 / 8;
+
         private readonly IRepository<RegisteredUser> registeredUserRepository;
         private readonly QueryObjectBase<RegisteredUserDto, RegisteredUser, RegisteredUserFilterDto, IQuery<RegisteredUser>> registeredUserQueryObject;
 
@@ -64,11 +69,25 @@ namespace JobsPortal.BusinessLayer.Services
                 throw new ArgumentException();
             }
 
+            var password = CreateHash(userDto.Password);
+            user.PasswordHash = password.Item1;
+            user.PasswordSalt = password.Item2;
+
             registeredUserRepository.Create(user);
 
             return user.Id;
         }
 
+        private Tuple<string, string> CreateHash(string password)
+        {
+            using (var deriveBytes = new Rfc2898DeriveBytes(password, saltSize, PBKDF2IterCount))
+            {
+                byte[] salt = deriveBytes.Salt;
+                byte[] subkey = deriveBytes.GetBytes(PBKDF2SubkeyLength);
+
+                return Tuple.Create(Convert.ToBase64String(subkey), Convert.ToBase64String(salt));
+            }
+        }
 
 
     }

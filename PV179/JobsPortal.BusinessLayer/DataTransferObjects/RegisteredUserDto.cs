@@ -10,7 +10,8 @@ namespace JobsPortal.BusinessLayer.DataTransferObjects
     public class RegisteredUserDto : UserDto
     {
         public string Login { get; set; }
-        public string Password { get; set; }
+        public string PasswordHash { get; set; }
+        public string PasswordSalt { get; set; }
         public List<Application> Applications { get; set; }
 
         public override string ToString()
