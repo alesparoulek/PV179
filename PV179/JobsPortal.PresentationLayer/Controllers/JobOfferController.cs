@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using JobsPortal.BusinessLayer.DataTransferObjects.Filters;
 using JobsPortal.BusinessLayer.Facades;
+using JobsPortal.PresentationLayer.Models;
 using X.PagedList;
 
 
@@ -35,5 +36,6 @@ namespace JobsPortal.PresentationLayer.Controllers
             return View("JobOffer");
         }
 
+        
     }
 }

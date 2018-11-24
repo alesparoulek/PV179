@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using JobsPortal.BusinessLayer.DataTransferObjects;
+using JobsPortal.BusinessLayer.DataTransferObjects.Common;
 using JobsPortal.BusinessLayer.DataTransferObjects.Filters;
 using JobsPortal.BusinessLayer.QueryObjects.Common;
 using JobsPortal.BusinessLayer.Services.Common;
@@ -16,18 +17,30 @@ namespace JobsPortal.BusinessLayer.Services
 {
     public class UserService : CrudQueryServiceBase<User, UserDto, UserFilterDto>, IUserService
     {
-        public UserService(IMapper mapper, IRepository<User> userRepository, QueryObjectBase<UserDto, User, UserFilterDto, IQuery<User>> userQueryObject)
-            : base(mapper, userRepository, userQueryObject) { }
+        public UserService(IMapper mapper, IRepository<User> customerRepository, QueryObjectBase<UserDto, User, UserFilterDto, IQuery<User>> customerQueryObject)
+            : base(mapper, customerRepository, customerQueryObject) { }
 
         protected override async Task<User> GetWithIncludesAsync(Guid entityId)
         {
             return await Repository.GetAsync(entityId);
         }
 
-        public async Task<UserDto> GetUserAccordingToEmailAsync(string email)
+        /// <summary>
+        /// Gets customer with given email address
+        /// </summary>
+        /// <param name="email">email</param>
+        /// <returns>Customer with given email address</returns>
+        public async Task<UserDto> GetCustomerAccordingToEmailAsync(string email)
         {
             var queryResult = await Query.ExecuteQuery(new UserFilterDto { Email = email });
             return queryResult.Items.SingleOrDefault();
         }
+
+        /*
+        public async Task<QueryResultDto<UserDto, UserFilterDto>> ListOnlyAllUsersAsync()
+        {
+            var x = await Query.ExecuteQuery(new UserFilterDto { Email = null });
+            return x;
+        }*/
     }
 }

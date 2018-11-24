@@ -23,7 +23,11 @@ namespace JobsPortal.BusinessLayer.Facades
             this.jobOfferService = jobOfferService;
             this.applyService = applyService;
         }
+
+
+        //public async Task<QueryResultDto<JobOfferDto, JobOfferFilterDto>> GetJobOffersAsync(JobOfferFilterDto filter, bool includeCurrentlyAvailableUnits = true)
         
+
         public async Task<Guid> CreateJobOffer(JobOfferDto jobOfferDto)
         {
             using (var uow = UnitOfWorkProvider.Create())

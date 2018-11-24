@@ -10,17 +10,11 @@ namespace JobsPortal.BusinessLayer.Services
 {
     public interface IRegisteredUserService
     {
+        Task<RegisteredUserDto> GetUserAccordingToEmailAsync(string email);
+        Task<Guid> RegisterUserAsync(UserCreateDto user);
         Task<List<Application>> GetAllApplicationsForUserEmailOrId(Guid id);
+        //Task<(bool success, string roles)> AuthorizeUserAsync(string username, string password);
 
-        Task<List<Application>> GetAllApplicationsForUserEmailOrId(string email);
-
-        Guid Create(RegisteredUserDto entityDto);
-
-        Task Update(RegisteredUserDto entityDto);
-
-        void Delete(Guid entityId);
-
-        Task<RegisteredUserDto> GetAsync(Guid entityId, bool withIncludes = true);
 
     }
 }

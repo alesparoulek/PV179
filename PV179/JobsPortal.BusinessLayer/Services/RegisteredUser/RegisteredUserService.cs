@@ -14,11 +14,23 @@ using JobsPortal.Infrastructure.Query;
 
 namespace JobsPortal.BusinessLayer.Services
 {
-    public class RegisteredUserService : CrudQueryServiceBase<RegisteredUser, RegisteredUserDto, RegisteredUserFilterDto>, IRegisteredUserService
+    public class RegisteredUserService : ServiceBase, IRegisteredUserService
     {
-        public RegisteredUserService(IMapper mapper, IRepository<RegisteredUser> registeredUserRepository, QueryObjectBase<RegisteredUserDto, RegisteredUser, RegisteredUserFilterDto, IQuery<RegisteredUser>> registeredUserListQuery)
-            : base(mapper, registeredUserRepository, registeredUserListQuery) { }
+        private readonly IRepository<RegisteredUser> registeredUserRepository;
+        private readonly QueryObjectBase<RegisteredUserDto, RegisteredUser, RegisteredUserFilterDto, IQuery<RegisteredUser>> registeredUserQueryObject;
 
+        public RegisteredUserService(IMapper mapper, IRepository<RegisteredUser> registeredUserRepository, QueryObjectBase<RegisteredUserDto, RegisteredUser, RegisteredUserFilterDto, IQuery<RegisteredUser>> registeredUserQueryObject)
+            : base(mapper)
+        {
+            this.registeredUserRepository = registeredUserRepository;
+            this.registeredUserQueryObject = registeredUserQueryObject;
+        }
+
+        public async Task<RegisteredUserDto> GetUserAccordingToEmailAsync(string email)
+        {
+            var queryResult = await registeredUserQueryObject.ExecuteQuery(new RegisteredUserFilterDto { Email = email });
+            return queryResult.Items.SingleOrDefault();
+        }
 
         public async Task<List<Application>> GetAllApplicationsForUserEmailOrId(Guid id)
         {
@@ -31,17 +43,33 @@ namespace JobsPortal.BusinessLayer.Services
             var user = await GetUserAccordingToEmailAsync(email);
             return user.Applications;
         }
-
-        protected async override Task<RegisteredUser> GetWithIncludesAsync(Guid entityId)
+        
+        public async Task<RegisteredUser> GetWithIncludesAsync(Guid entityId)
         {
-            return await Repository.GetAsync(entityId);
+            return await registeredUserRepository.GetAsync(entityId);
         }
 
-        public async Task<RegisteredUserDto> GetUserAccordingToEmailAsync(string email)
+        private async Task<bool> GetIfUserExistsAsync(string email)
         {
-            var queryResult = await Query.ExecuteQuery(new RegisteredUserFilterDto { Email = email });
-            return queryResult.Items.SingleOrDefault();
+            var queryResult = await registeredUserQueryObject.ExecuteQuery(new RegisteredUserFilterDto { Email = email });
+            return (queryResult.Items.Count() == 1);
         }
+
+        public async Task<Guid> RegisterUserAsync(UserCreateDto userDto)
+        {
+            var user = Mapper.Map<RegisteredUser>(userDto);
+
+            if (await GetIfUserExistsAsync(user.Email))
+            {
+                throw new ArgumentException();
+            }
+
+            registeredUserRepository.Create(user);
+
+            return user.Id;
+        }
+
+
 
     }
 }

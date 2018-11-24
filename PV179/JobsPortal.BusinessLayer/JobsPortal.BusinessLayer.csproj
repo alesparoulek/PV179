@@ -103,6 +103,7 @@
     <Compile Include="DataTransferObjects\Filters\UserFilterDto.cs" />
     <Compile Include="DataTransferObjects\JobOfferDto.cs" />
     <Compile Include="DataTransferObjects\RegisteredUserDto.cs" />
+    <Compile Include="DataTransferObjects\UserCreateDto.cs" />
     <Compile Include="DataTransferObjects\UserDto.cs" />
     <Compile Include="Facades\Common\FacadeBase.cs" />
     <Compile Include="Facades\CompanyFacade.cs" />

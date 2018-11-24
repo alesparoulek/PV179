@@ -30,7 +30,7 @@ namespace JobsPortal.BusinessLayer.Facades
 
             using (UnitOfWorkProvider.Create())
             {
-                return await userService.GetUserAccordingToEmailAsync(email);
+                return await registeredUserService.GetUserAccordingToEmailAsync(email);
             }
         }
    
@@ -51,11 +51,22 @@ namespace JobsPortal.BusinessLayer.Facades
             }
         }
 
-
-
-
-
-
+        public async Task<Guid> RegisterUser(UserCreateDto userCreateDto)
+        {
+            using (var uow = UnitOfWorkProvider.Create())
+            {
+                try
+                {
+                    var id = await registeredUserService.RegisterUserAsync(userCreateDto);
+                    await uow.Commit();
+                    return id;
+                }
+                catch (ArgumentException)
+                {
+                    throw;
+                }
+            }
+        }
 
     }
 }
