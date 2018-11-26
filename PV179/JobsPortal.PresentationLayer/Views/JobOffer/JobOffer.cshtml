@@ -1,36 +1,78 @@
-﻿@model dynamic
+﻿@using X.PagedList.Mvc
+
+@model JobsPortal.PresentationLayer.Models.JobOfferListViewModel
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Job Offers";
 
 }
 
-<h2>title</h2>
+<h2>Job Offers</h2>
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+
+<div class="panel panel-primary col-md-3 col-sm-4 col-md-12">
+    <div class="panel-heading panel-head">Categories</div>
+    @using (Html.BeginForm())
+    {
+        <div class="form-group col-md-8">
+            @Html.LabelFor(model => model.Filter.SortCriteria, "Location:", new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EnumDropDownListFor(model => model.Location)
+            </div>
+        </div>
+
+        <div class="form-group col-md-8">
+            @Html.LabelFor(model => model.Filter.SortCriteria, "Education:", new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EnumDropDownListFor(model => model.Education)
+            </div>
+        </div>
+
+        <div class="form-group col-md-8">
+            @Html.LabelFor(model => model.Filter.SortCriteria, "Type:", new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EnumDropDownListFor(model => model.JopType)
+            </div>
+        </div>
+
+        <div class="form-group col-md-12">
+            @Html.LabelFor(model => model.Filter.SortAscending, "Ascending", new { @class = "control-label col-md-4" })
+            <div class="col-md-5 col-md-offset-3">
+                @Html.CheckBoxFor(model => model.Filter.SortAscending, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Filter.SortAscending, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="row">
+
+            <div class="form-group">
+                <button class="btn btn-success col-md-offset-1 col-md-5" id="btnSubmit" type="submit" onclick="saveRange()">Filter </button>
+            </div>
+        </div>
+
+    }
+</div>   
+
+<div class="panel panel-default col-md-9 col-sm-8 col-md-12">
+    <ul class="panel-heading panel-head list-group">Available Jobs:</ul>
+    @{foreach (var jobOffer in Model.JobOffers)
+        {
+            <div class="col-md-4 col-sm-6 col-xs-12 list-group-item-nonclickable thumbnail">
+                <div class="col-md-12  col-sm-12 col-xs-12 clickable-area" @("onclick=GoToDetail('" + jobOffer.Id + "')")>
+                    <div class="caption text-center">
+                        <h4 style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" id="thumbnail-label">@jobOffer.Name</h4>
+                    </div>
+
+                    <p style="height: 80px; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: normal; text-align: justify;">@jobOffer.Description</p>
+
+                </div>
+            </div>
+        }}
 </div>
+<script>
+    function GoToDetail(id) {
+        window.location = "/JobOffer/Details/" + id;
+    }
+</script>

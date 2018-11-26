@@ -32,6 +32,7 @@ namespace JobsPortal.BusinessLayer.Services
         /// </summary>
         /// <param name="entityDto">entity details</param>
         Guid Create(UserDto entityDto);
+        
 
         /// <summary>
         /// Updates entity

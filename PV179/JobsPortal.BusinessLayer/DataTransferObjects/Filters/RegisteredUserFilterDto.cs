@@ -10,5 +10,7 @@ namespace JobsPortal.BusinessLayer.DataTransferObjects.Filters
     public class RegisteredUserFilterDto : FilterDtoBase
     {
         public string Email { get; set; }
+
+        public string Login { get; set; }
     }
 }

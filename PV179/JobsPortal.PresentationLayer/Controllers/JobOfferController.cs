@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using JobsPortal.BusinessLayer.DataTransferObjects;
+using JobsPortal.BusinessLayer.DataTransferObjects.Common;
 using JobsPortal.BusinessLayer.DataTransferObjects.Filters;
 using JobsPortal.BusinessLayer.Facades;
 using JobsPortal.PresentationLayer.Models;
@@ -21,7 +23,6 @@ namespace JobsPortal.PresentationLayer.Controllers
         private readonly string filterSessionKey = "filter";
        
 
-
         public JobOfferFacade JobOfferFacade { get; set; }
 
         public async Task<ActionResult> Index(int page = 1)
@@ -33,9 +34,25 @@ namespace JobsPortal.PresentationLayer.Controllers
             filter.RequestedPageNumber = page;
             
             var result = await JobOfferFacade.ListFilteredJobsAsync(filter);
-            return View("JobOffer");
+            var model = InitializeProductListViewModel(result);
+            return View("JobOffer", model);
         }
 
-        
+        public async Task<ActionResult> Details(Guid id)
+        {
+            var model = await JobOfferFacade.GetJobOfferByIdAsync(id);
+            return View("JobOfferDetail", model);
+        }
+
+        private JobOfferListViewModel InitializeProductListViewModel(QueryResultDto<JobOfferDto, JobOfferFilterDto> result)
+        {
+            return new JobOfferListViewModel()
+            {
+                JobOffers = new StaticPagedList<JobOfferDto>(result.Items, result.RequestedPageNumber ?? 1, PageSize, (int)result.TotalItemsCount),
+                Filter = result.Filter
+            };
+        }
+
+
     }
 }

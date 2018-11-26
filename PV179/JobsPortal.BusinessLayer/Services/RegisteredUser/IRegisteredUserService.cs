@@ -13,7 +13,7 @@ namespace JobsPortal.BusinessLayer.Services
         Task<RegisteredUserDto> GetUserAccordingToEmailAsync(string email);
         Task<Guid> RegisterUserAsync(UserCreateDto user);
         Task<List<Application>> GetAllApplicationsForUserEmailOrId(Guid id);
-        //Task<(bool success, string roles)> AuthorizeUserAsync(string username, string password);
+        Task<(bool success, string roles)> AuthorizeUserAsync(string username, string password);
 
 
     }

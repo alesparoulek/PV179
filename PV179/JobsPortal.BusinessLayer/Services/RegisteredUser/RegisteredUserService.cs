@@ -43,6 +43,16 @@ namespace JobsPortal.BusinessLayer.Services
             return user.Applications;
         }
 
+        public async Task<(bool success, string roles)> AuthorizeUserAsync(string login, string password)
+        {
+            var userResult = await registeredUserQueryObject.ExecuteQuery(new RegisteredUserFilterDto() { Login = login });
+            var user = userResult.Items.SingleOrDefault();
+
+            var succ = user != null && VerifyHashedPassword(user.PasswordHash, user.PasswordSalt, password);
+            var roles = "User";
+            return (succ, roles);
+        }
+
         public async Task<List<Application>> GetAllApplicationsForUserEmailOrId(string email)
         {
             var user = await GetUserAccordingToEmailAsync(email);
@@ -54,9 +64,9 @@ namespace JobsPortal.BusinessLayer.Services
             return await registeredUserRepository.GetAsync(entityId);
         }
 
-        private async Task<bool> GetIfUserExistsAsync(string email)
+        private async Task<bool> GetIfUserExistsAsync(string login)
         {
-            var queryResult = await registeredUserQueryObject.ExecuteQuery(new RegisteredUserFilterDto { Email = email });
+            var queryResult = await registeredUserQueryObject.ExecuteQuery(new RegisteredUserFilterDto { Login = login});
             return (queryResult.Items.Count() == 1);
         }
 
@@ -64,7 +74,7 @@ namespace JobsPortal.BusinessLayer.Services
         {
             var user = Mapper.Map<RegisteredUser>(userDto);
 
-            if (await GetIfUserExistsAsync(user.Email))
+            if (await GetIfUserExistsAsync(user.Login))
             {
                 throw new ArgumentException();
             }
@@ -86,6 +96,18 @@ namespace JobsPortal.BusinessLayer.Services
                 byte[] subkey = deriveBytes.GetBytes(PBKDF2SubkeyLength);
 
                 return Tuple.Create(Convert.ToBase64String(subkey), Convert.ToBase64String(salt));
+            }
+        }
+
+        private bool VerifyHashedPassword(string hashedPassword, string salt, string password)
+        {
+            var hashedPasswordBytes = Convert.FromBase64String(hashedPassword);
+            var saltBytes = Convert.FromBase64String(salt);
+
+            using (var deriveBytes = new Rfc2898DeriveBytes(password, saltBytes, PBKDF2IterCount))
+            {
+                var generatedSubkey = deriveBytes.GetBytes(PBKDF2SubkeyLength);
+                return hashedPasswordBytes.SequenceEqual(generatedSubkey);
             }
         }
 

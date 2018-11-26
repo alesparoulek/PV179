@@ -23,7 +23,7 @@ namespace JobsPortal.DataAccessLayer.EntityFramework
                     LastName = "ABAB",
                     Email = "BBB",
                     Phone = "CCC",
-                    Education = Enums.Education.graduated_highschool
+                    Education = Enums.Education.graduatedHighschool
                 };
 
                 

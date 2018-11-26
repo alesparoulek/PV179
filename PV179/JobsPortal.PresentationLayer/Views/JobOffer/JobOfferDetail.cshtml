@@ -1,0 +1,30 @@
+﻿@model JobsPortal.BusinessLayer.DataTransferObjects.JobOfferDto
+
+@{
+    ViewBag.Title = "JobOfferDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@Model.Name</title>
+</head>
+<body>
+    <div>
+        <p>@Model.Name</p>
+    </div>  
+    <div>  
+        @{
+            foreach (var item in 
+                Model.Questionnaire.Split('/'))
+            {
+                <p>@item</p><br/>
+            }
+       }
+        
+    </div>
+</body>
+</html>

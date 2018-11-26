@@ -36,7 +36,7 @@ namespace JobsPortal.DataAccessLayer.EntityFramework
                 LastName = "Kuldanu",
                 Email = "frantakuldanu@seznam.cz",
                 Phone = "0609112567",
-                Education = Enums.Education.graduated_highschool
+                Education = Enums.Education.graduatedHighschool
             });
 
             context.JobOffers.Add(new JobOffer
@@ -48,9 +48,9 @@ namespace JobsPortal.DataAccessLayer.EntityFramework
                 Description = "programming a jobs portal in C#",
                 TimeJob = Enums.TimeJob.fulltime,
                 Location = Enums.Location.Jihomoravsky,
-                Education = Enums.Education.graduated_highschool,
+                Education = Enums.Education.graduatedHighschool,
                 Salary = 0,
-                Questionnaire = new List<string>(new string[] { "Are you ready to rock?"}),
+                Questionnaire = "AAAAAA/BBBBB/CCCCCC/DDDDDD",
                 Applications = null,
                 Date = DateTime.Parse("2018-10-07")
             });

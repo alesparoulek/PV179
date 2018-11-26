@@ -1,4 +1,5 @@
 ﻿using JobsPortal.BusinessLayer.DataTransferObjects;
+using JobsPortal.BusinessLayer.DataTransferObjects.Enums;
 using JobsPortal.BusinessLayer.DataTransferObjects.Filters;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,13 @@ namespace JobsPortal.PresentationLayer.Models
     {
         public string[] JobOfferSortCriteria => new[] { nameof(JobOfferDto.JobType), nameof(JobOfferDto.Location), nameof(JobOfferDto.Education) };
 
-        public IPagedList<JobOfferDto> Products { get; set; }
+        public JobType JopType { get; set; }
+
+        public Location Location { get; set; }
+
+        public Education Education { get; set; }
+
+        public IPagedList<JobOfferDto> JobOffers { get; set; }
 
         public JobOfferFilterDto Filter { get; set; }
 

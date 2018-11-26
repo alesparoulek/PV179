@@ -84,5 +84,14 @@ namespace JobsPortal.BusinessLayer.Facades
             }
         
         }
+
+        public async Task<JobOfferDto> GetJobOfferByIdAsync(Guid id)
+        {
+            using (UnitOfWorkProvider.Create())
+            {
+                var jobOffer = await jobOfferService.GetAsync(id);
+                return jobOffer;
+            }
+        }
     }
 }

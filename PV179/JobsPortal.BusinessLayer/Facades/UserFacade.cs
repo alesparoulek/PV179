@@ -25,6 +25,14 @@ namespace JobsPortal.BusinessLayer.Facades
             this.registeredUserService = registeredUserService;
         }
 
+        public async Task<(bool success, string roles)> Login(string username, string password)
+        {
+            using (UnitOfWorkProvider.Create())
+            {
+                return await registeredUserService.AuthorizeUserAsync(username, password);
+            }
+        }
+
         public async Task<UserDto> GetUserAccordingToEmailAsync(string email)
         {
 

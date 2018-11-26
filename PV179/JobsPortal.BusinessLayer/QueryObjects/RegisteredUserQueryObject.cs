@@ -20,10 +20,16 @@ namespace JobsPortal.BusinessLayer.QueryObjects
 
         protected override IQuery<RegisteredUser> ApplyWhereClause(IQuery<RegisteredUser> query, RegisteredUserFilterDto filter)
         {
-            if (string.IsNullOrWhiteSpace(filter.Email))
+            if (string.IsNullOrWhiteSpace(filter.Email) && string.IsNullOrWhiteSpace(filter.Login))
             {
                 return query;
             }
+
+            if (filter.Login != null)
+            {
+                return query.Where(new SimplePredicate(nameof(RegisteredUser.Login), ValueComparingOperator.Equal, filter.Login));
+            }
+
             return query.Where(new SimplePredicate(nameof(RegisteredUser.Email), ValueComparingOperator.Equal, filter.Email));
         }
     }

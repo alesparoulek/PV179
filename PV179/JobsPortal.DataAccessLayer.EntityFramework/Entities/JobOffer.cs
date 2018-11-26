@@ -26,7 +26,7 @@ namespace JobsPortal.DataAccessLayer.EntityFramework.Entities
         public Location Location { get; set; }
         public Education Education { get; set; }
         public int Salary { get; set; }
-        public List<string> Questionnaire { get; set; }
+        public string Questionnaire { get; set; }
         public virtual List<Application> Applications { get; set; }
         public DateTime Date { get; set; }
     }
