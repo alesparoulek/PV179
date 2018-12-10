@@ -78,9 +78,9 @@ namespace JobsPortal.BusinessLayer.Facades
         {
             using (var uow = UnitOfWorkProvider.Create())
             {
-                var applicationId = applyService.ConfirmApplicationAsync(applicationDto);
+                var applicationId = await applyService.ConfirmApplicationAsync(applicationDto);
                 await uow.Commit();
-                return await applicationId;
+                return applicationId;
             }
         
         }

@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using JobsPortal.BusinessLayer.DataTransferObjects;
 using JobsPortal.BusinessLayer.DataTransferObjects.Common;
+using JobsPortal.BusinessLayer.DataTransferObjects.Enums;
 using JobsPortal.BusinessLayer.DataTransferObjects.Filters;
 using JobsPortal.BusinessLayer.Facades;
 using JobsPortal.PresentationLayer.Models;
@@ -25,6 +27,9 @@ namespace JobsPortal.PresentationLayer.Controllers
 
         public JobOfferFacade JobOfferFacade { get; set; }
 
+        public UserFacade UserFacade { get; set; }
+       
+
         public async Task<ActionResult> Index(int page = 1)
         {
             Session[pageNumberSessionKey] = page;
@@ -40,9 +45,34 @@ namespace JobsPortal.PresentationLayer.Controllers
 
         public async Task<ActionResult> Details(Guid id)
         {
-            var model = await JobOfferFacade.GetJobOfferByIdAsync(id);
+            var model = new ApplyForJobModel();
+            model.JobOfferDto = await JobOfferFacade.GetJobOfferByIdAsync(id);
+            model.Answers = new List<string>();
+            for (var i = 0; i < model.JobOfferDto.Questionnaire.Split('/').Length; i++)
+            {
+                model.Answers.Add("");
+            }
             return View("JobOfferDetail", model);
         }
+
+        [HttpPost]
+        public async Task<ActionResult> Details(ApplyForJobModel applyForJobModel)
+        {
+            var user = await UserFacade.GetUserAccordingToLoginAsync(User.Identity.Name);
+            var ApplicationDto = new ApplicationDto();
+            ApplicationDto.UserId = user.Id;
+            var url = Request.UrlReferrer.AbsoluteUri;
+
+            ApplicationDto.JobOfferId = Guid.Parse(url.Split('/').Last());
+            foreach (var answer in applyForJobModel.Answers)
+            {
+                ApplicationDto.Answers += answer + '/';
+            }
+            ApplicationDto.JobOfferState = JobOfferState.undecided;
+            ApplicationDto.UserState = UserState.undecided;
+            await JobOfferFacade.ConfirmApplicationAsync(ApplicationDto);
+            return RedirectToAction("AppliedForJob");
+        } 
 
         private JobOfferListViewModel InitializeProductListViewModel(QueryResultDto<JobOfferDto, JobOfferFilterDto> result)
         {
@@ -54,5 +84,9 @@ namespace JobsPortal.PresentationLayer.Controllers
         }
 
 
+        public ActionResult AppliedForJob()
+        {
+            return View();
+        }
     }
 }

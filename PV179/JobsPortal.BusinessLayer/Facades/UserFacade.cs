@@ -41,7 +41,16 @@ namespace JobsPortal.BusinessLayer.Facades
                 return await registeredUserService.GetUserAccordingToEmailAsync(email);
             }
         }
-   
+
+        public async Task<UserDto> GetUserAccordingToLoginAsync(string login)
+        {
+
+            using (UnitOfWorkProvider.Create())
+            {
+                return await registeredUserService.GetUserAccordingToLoginAsync(login);
+            }
+        }
+
         public async Task ChangeApplicationUserState(Guid id, UserState userState)
         {
             using (UnitOfWorkProvider.Create())

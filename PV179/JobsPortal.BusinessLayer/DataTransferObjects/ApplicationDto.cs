@@ -9,7 +9,7 @@ namespace JobsPortal.BusinessLayer.DataTransferObjects
     {
         public Guid JobOfferId { get; set; }
         public Guid UserId { get; set; }
-        public List<string> Answers { get; set; }
+        public string Answers { get; set; }
         public JobOfferState JobOfferState { get; set; }
         public UserState UserState { get; set; }
 

@@ -23,7 +23,7 @@ namespace JobsPortal.DataAccessLayer.EntityFramework.Entities
         public Guid UserId { get; set; }
         public virtual User User { get; set; }
 
-        public List<string> Answers { get; set; }
+        public string Answers { get; set; }
         public JobOfferState JobOfferState { get; set; }
         public UserState UserState { get; set; }
     }

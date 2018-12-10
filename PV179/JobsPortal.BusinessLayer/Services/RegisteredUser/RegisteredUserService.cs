@@ -37,6 +37,13 @@ namespace JobsPortal.BusinessLayer.Services
             return queryResult.Items.SingleOrDefault();
         }
 
+
+        public async Task<RegisteredUserDto> GetUserAccordingToLoginAsync(string login)
+        {
+            var queryResult = await registeredUserQueryObject.ExecuteQuery(new RegisteredUserFilterDto { Login = login });
+            return queryResult.Items.SingleOrDefault();
+        }
+
         public async Task<List<Application>> GetAllApplicationsForUserEmailOrId(Guid id)
         {
             var user = await GetWithIncludesAsync(id);

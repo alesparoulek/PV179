@@ -5,7 +5,7 @@ using System.Data.Entity;
 
 namespace JobsPortal.DataAccessLayer.EntityFramework
 {
-    public class JobsPortalInitializer : DropCreateDatabaseAlways<JobsPortalDbContext>
+    public class JobsPortalInitializer : CreateDatabaseIfNotExists<JobsPortalDbContext>
     {
         protected override void Seed(JobsPortalDbContext context)
         {
