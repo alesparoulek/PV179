@@ -170,6 +170,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Windsor\PresentationLayerInstaller.cs" />
     <Compile Include="App_Start\Windsor\WindsorControllerFactory.cs" />
+    <Compile Include="Controllers\ApplicationsController.cs" />
+    <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobOfferController.cs" />
     <Compile Include="Global.asax.cs">
@@ -269,6 +271,9 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\JobOffer\JobOfferDetail.cshtml" />
     <Content Include="Views\JobOffer\AppliedForJob.cshtml" />
+    <Content Include="Views\Applications\Applications.cshtml" />
+    <Content Include="Views\Companies\Register.cshtml" />
+    <Content Include="Views\Companies\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

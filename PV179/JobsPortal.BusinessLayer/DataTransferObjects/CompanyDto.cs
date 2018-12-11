@@ -12,6 +12,7 @@ namespace JobsPortal.BusinessLayer.DataTransferObjects
     {
         public string Name { get; set; }
         public string Email { get; set; }
+        public string Roles { get; set; }
         public virtual List<JobOffer> Offers { get; set; }
 
         public override string ToString()

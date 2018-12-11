@@ -26,6 +26,8 @@ namespace JobsPortal.DataAccessLayer.EntityFramework.Entities
         [Required, StringLength(100)]
         public string Password { get; set; }
 
+        public string Roles { get; } = "Company";
+
         public virtual List<JobOffer> Offers { get; set; }
 
     }

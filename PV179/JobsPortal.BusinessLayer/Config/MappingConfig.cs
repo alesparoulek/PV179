@@ -28,6 +28,7 @@ namespace JobsPortal.BusinessLayer.Config
                 Email = converter.Email,
                 Phone = converter.Phone
             });
+            config.CreateMap<CompanyCreateDto, Company>().ReverseMap();
 
         }
 

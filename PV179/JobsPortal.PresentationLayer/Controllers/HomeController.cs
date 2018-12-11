@@ -44,7 +44,7 @@ namespace JobsPortal.PresentationLayer.Controllers
             if (success)
             {
                 //FormsAuthentication.SetAuthCookie(model.Username, false);
-
+                
                 var authTicket = new FormsAuthenticationTicket(1, model.Username, DateTime.Now,
                     DateTime.Now.AddMinutes(30), false, roles);
                 string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
@@ -84,6 +84,11 @@ namespace JobsPortal.PresentationLayer.Controllers
             }
         }
 
+        public ActionResult Logout()
+        { 
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
 
         /*
         public ActionResult Register()

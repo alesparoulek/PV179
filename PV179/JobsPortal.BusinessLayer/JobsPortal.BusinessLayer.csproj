@@ -66,6 +66,7 @@
     <Reference Include="System.Collections.Immutable, Version=1.2.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Collections.Immutable.1.4.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
@@ -89,6 +90,7 @@
     <Compile Include="DataTransferObjects\Common\DtoBase.cs" />
     <Compile Include="DataTransferObjects\Common\FilterDtoBase.cs" />
     <Compile Include="DataTransferObjects\Common\QueryResultDto.cs" />
+    <Compile Include="DataTransferObjects\CompanyCreateDto.cs" />
     <Compile Include="DataTransferObjects\CompanyDto.cs" />
     <Compile Include="DataTransferObjects\Enums\Education.cs" />
     <Compile Include="DataTransferObjects\Enums\JobOfferState.cs" />

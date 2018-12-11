@@ -2,8 +2,9 @@
 
 using System;
 using JobsPortal.BusinessLayer.DataTransferObjects.Enums;
-using System.ComponentModel.DataAnnotations;
+
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace JobsPortal.BusinessLayer.DataTransferObjects
 {
@@ -15,32 +16,32 @@ namespace JobsPortal.BusinessLayer.DataTransferObjects
         [StringLength(64, ErrorMessage = "Maximum 64 characters")]
         public string Login { get; set; }
 
-       /* [Required(ErrorMessage = "Required field")]
+        [Required(ErrorMessage = "Required field")]
         [DisplayName("Password")]
         [RegularExpression(@"^.{8,}$", ErrorMessage = "Minimum 8 characters required")]
-        [StringLength(64, ErrorMessage = "Maximum 64 characters")]*/
+        [StringLength(64, ErrorMessage = "Maximum 64 characters")]
         public string Password { get; set; }
 
-        /*[Required(ErrorMessage = "Required field")]
+        [Required(ErrorMessage = "Required field")]
         [DisplayName("First name")]
         [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Invalid name")]
-        [StringLength(64, ErrorMessage = "Maximum 64 characters exceeded")]*/
+        [StringLength(64, ErrorMessage = "Maximum 64 characters exceeded")]
         public string FirstName { get; set; }
 
-       /* [Required(ErrorMessage = "Required field")]
+        [Required(ErrorMessage = "Required field")]
         [DisplayName("Last name")]
         [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Invalid name")]
-        [StringLength(64, ErrorMessage = "Maximum 64 charecters")]*/
+        [StringLength(64, ErrorMessage = "Maximum 64 charecters")]
         public string LastName { get; set; }
 
-       /* [Required(ErrorMessage = "Required field")]
+        [Required(ErrorMessage = "Required field")]
         [DisplayName("E-mail")]
-        [EmailAddress(ErrorMessage = "Invalid Email Address")]*/
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string Email { get; set; }
 
-       /* [Required(ErrorMessage = "Required field")]
+        [Required(ErrorMessage = "Required field")]
         [DisplayName("Phone number")]
-        [DataType(DataType.PhoneNumber)]*/
+        [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }
 
        // [DisplayName("Education")]
