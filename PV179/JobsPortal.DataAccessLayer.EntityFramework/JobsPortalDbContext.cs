@@ -7,7 +7,7 @@ namespace JobsPortal.DataAccessLayer.EntityFramework
 {
     public class JobsPortalDbContext : DbContext
     {
-        private const string ConnectionString = "Data source=(localdb)\\mssqllocaldb;Database=Jobs;Trusted_Connection=True;MultipleActiveResultSets=true";
+        private const string ConnectionString = "Data source=(localdb)\\mssqllocaldb;Database=Jobs2;Trusted_Connection=True;MultipleActiveResultSets=true";
 
 
         public DbSet<Application> Applications { get; set; }

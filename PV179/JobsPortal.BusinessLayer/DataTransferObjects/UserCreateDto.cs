@@ -1,28 +1,30 @@
 ﻿using JobsPortal.BusinessLayer.DataTransferObjects.Common;
-using System.ComponentModel.DataAnnotations;
+
 using System;
 using JobsPortal.BusinessLayer.DataTransferObjects.Enums;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
 namespace JobsPortal.BusinessLayer.DataTransferObjects
 {
     public class UserCreateDto : DtoBase
     {
-        /*[Required(ErrorMessage = "Required field")]
+        [Required(ErrorMessage = "Required field")]
         [DisplayName("Login")]
         [RegularExpression(@"^[a-zA-Z0-9_]+$", ErrorMessage = "Invalid login (only alphanumeric and _)")]
-        [StringLength(64, ErrorMessage = "Maximum 64 charecters")]*/
+        [StringLength(64, ErrorMessage = "Maximum 64 characters")]
         public string Login { get; set; }
 
        /* [Required(ErrorMessage = "Required field")]
         [DisplayName("Password")]
         [RegularExpression(@"^.{8,}$", ErrorMessage = "Minimum 8 characters required")]
-        [StringLength(64, ErrorMessage = "Maximum 64 charecters")]*/
+        [StringLength(64, ErrorMessage = "Maximum 64 characters")]*/
         public string Password { get; set; }
 
         /*[Required(ErrorMessage = "Required field")]
         [DisplayName("First name")]
         [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Invalid name")]
-        [StringLength(64, ErrorMessage = "Maximum 64 charecters exceeded")]*/
+        [StringLength(64, ErrorMessage = "Maximum 64 characters exceeded")]*/
         public string FirstName { get; set; }
 
        /* [Required(ErrorMessage = "Required field")]
