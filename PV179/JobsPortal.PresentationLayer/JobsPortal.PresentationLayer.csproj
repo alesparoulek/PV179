@@ -177,6 +177,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ApplicationsViewModel.cs" />
     <Compile Include="Models\ApplyForJobModel.cs" />
     <Compile Include="Models\JobOfferListViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
@@ -294,6 +295,10 @@
     <ProjectReference Include="..\JobsPortal.BusinessLayer\JobsPortal.BusinessLayer.csproj">
       <Project>{D14D56E6-6BA3-4C5D-9980-8FB518A14446}</Project>
       <Name>JobsPortal.BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JobsPortal.DataAccessLayer.EntityFramework\JobsPortal.DataAccessLayer.EntityFramework.csproj">
+      <Project>{1323282C-6871-47E1-AA3A-5652BD83828E}</Project>
+      <Name>JobsPortal.DataAccessLayer.EntityFramework</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

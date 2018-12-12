@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using JobsPortal.BusinessLayer.DataTransferObjects;
+using JobsPortal.BusinessLayer.DataTransferObjects.Common;
 using JobsPortal.BusinessLayer.Services.Common;
 using JobsPortal.DataAccessLayer.EntityFramework.Entities;
 using JobsPortal.BusinessLayer.DataTransferObjects.Enums;
@@ -14,18 +15,18 @@ using JobsPortal.Infrastructure.Query;
 
 namespace JobsPortal.BusinessLayer.Services
 {
-    public class ApplyService : ServiceBase, IApplyService
+    public class ApplyService :CrudQueryServiceBase<Application, ApplicationDto, ApplicationFilterDto>, IApplyService
     {
         private readonly IRepository<User> userRepository;
         private readonly IRepository<JobOffer> jobOfferRepository;
         private readonly IRepository<Application> applicationRepository;
 
-        public ApplyService(IMapper mapper, IRepository<User> userRepository, IRepository<JobOffer> jobOfferRepository, IRepository<Application> applicationRepository)
-            : base(mapper)
+        public ApplyService(IMapper mapper, IRepository<Application> applicationRepository, QueryObjectBase<ApplicationDto, Application, ApplicationFilterDto, IQuery<Application>> applicationQueryObject, IRepository<JobOffer> jobOfferRepository, IRepository<User> userRepository)
+            : base(mapper, applicationRepository, applicationQueryObject)
         {
+            this.applicationRepository = applicationRepository;
             this.userRepository = userRepository;
             this.jobOfferRepository = jobOfferRepository;
-            this.applicationRepository = applicationRepository;
         }
 
         public async Task<Guid> ConfirmApplicationAsync(ApplicationDto applicationDto)
@@ -48,6 +49,12 @@ namespace JobsPortal.BusinessLayer.Services
             return await applicationRepository.GetAsync(entityId);
         }
 
+        public async Task<QueryResultDto<ApplicationDto, ApplicationFilterDto>> GetAllApplicationsForUser(
+            ApplicationFilterDto filter)
+        {
+            return await Query.ExecuteQuery(filter);
+        }
+
         public async Task ChangeApplicationJobOfferState(Guid id, JobOfferState jobofferState)
         {
             var application = await GetApplicationById(id);
@@ -63,5 +70,9 @@ namespace JobsPortal.BusinessLayer.Services
             applicationRepository.Update(application);
         }
 
+        protected override async Task<Application> GetWithIncludesAsync(Guid entityId)
+        {
+            return await applicationRepository.GetAsync(entityId);
+        }
     }
 }

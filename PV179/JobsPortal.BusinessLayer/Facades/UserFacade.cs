@@ -8,7 +8,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JobsPortal.BusinessLayer.DataTransferObjects.Common;
 using JobsPortal.BusinessLayer.DataTransferObjects.Enums;
+using JobsPortal.BusinessLayer.DataTransferObjects.Filters;
 
 namespace JobsPortal.BusinessLayer.Facades
 {
@@ -60,11 +62,11 @@ namespace JobsPortal.BusinessLayer.Facades
         }
 
 
-        public async Task<List<Application>> GetAllApplicationsForUserEmailOrId(Guid id)
+        public async Task<QueryResultDto<ApplicationDto, ApplicationFilterDto>> GetAllApplicationsForUser(ApplicationFilterDto filter)
         {
             using (var uow = UnitOfWorkProvider.Create())
             {
-                return await registeredUserService.GetAllApplicationsForUserEmailOrId(id);
+                return await applyService.GetAllApplicationsForUser(filter);
             }
         }
 

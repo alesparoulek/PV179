@@ -28,8 +28,7 @@ namespace JobsPortal.BusinessLayer.Services
 
         public async Task<QueryResultDto<JobOfferDto, JobOfferFilterDto>> ListFilteredJobsAsync(JobOfferFilterDto filter)
         {
-            var queryres = await Query.ExecuteQuery(filter);
-            return queryres;
+            return await Query.ExecuteQuery(filter);;
         }
 
         

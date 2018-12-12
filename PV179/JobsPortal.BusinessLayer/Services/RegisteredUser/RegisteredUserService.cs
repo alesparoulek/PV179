@@ -6,7 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using JobsPortal.BusinessLayer.DataTransferObjects;
+using JobsPortal.BusinessLayer.DataTransferObjects.Common;
 using JobsPortal.BusinessLayer.DataTransferObjects.Filters;
+using JobsPortal.BusinessLayer.QueryObjects;
 using JobsPortal.BusinessLayer.QueryObjects.Common;
 using JobsPortal.BusinessLayer.Services.Common;
 using JobsPortal.DataAccessLayer.EntityFramework.Entities;
@@ -15,7 +17,7 @@ using JobsPortal.Infrastructure.Query;
 
 namespace JobsPortal.BusinessLayer.Services
 {
-    public class RegisteredUserService : ServiceBase, IRegisteredUserService
+    public class RegisteredUserService : CrudQueryServiceBase<RegisteredUser, RegisteredUserDto, RegisteredUserFilterDto>, IRegisteredUserService
     {
         private const int PBKDF2IterCount = 100000;
         private const int PBKDF2SubkeyLength = 160 / 8;
@@ -24,11 +26,13 @@ namespace JobsPortal.BusinessLayer.Services
         private readonly IRepository<RegisteredUser> registeredUserRepository;
         private readonly QueryObjectBase<RegisteredUserDto, RegisteredUser, RegisteredUserFilterDto, IQuery<RegisteredUser>> registeredUserQueryObject;
 
-        public RegisteredUserService(IMapper mapper, IRepository<RegisteredUser> registeredUserRepository, QueryObjectBase<RegisteredUserDto, RegisteredUser, RegisteredUserFilterDto, IQuery<RegisteredUser>> registeredUserQueryObject)
-            : base(mapper)
+        public RegisteredUserService(IMapper mapper, IRepository<RegisteredUser> registeredUserRepository,
+            QueryObjectBase<RegisteredUserDto, RegisteredUser, RegisteredUserFilterDto, IQuery<RegisteredUser>>
+                registeredUserQueryObject)
+            : base(mapper, registeredUserRepository, registeredUserQueryObject)
         {
-            this.registeredUserRepository = registeredUserRepository;
             this.registeredUserQueryObject = registeredUserQueryObject;
+            this.registeredUserRepository = registeredUserRepository;
         }
 
         public async Task<RegisteredUserDto> GetUserAccordingToEmailAsync(string email)
@@ -44,11 +48,8 @@ namespace JobsPortal.BusinessLayer.Services
             return queryResult.Items.SingleOrDefault();
         }
 
-        public async Task<List<Application>> GetAllApplicationsForUserEmailOrId(Guid id)
-        {
-            var user = await GetWithIncludesAsync(id);
-            return user.Applications;
-        }
+       
+        
 
         public async Task<(bool success, string roles)> AuthorizeUserAsync(string login, string password)
         {
@@ -60,16 +61,9 @@ namespace JobsPortal.BusinessLayer.Services
             return (succ, roles);
         }
 
-        public async Task<List<Application>> GetAllApplicationsForUserEmailOrId(string email)
-        {
-            var user = await GetUserAccordingToEmailAsync(email);
-            return user.Applications;
-        }
         
-        public async Task<RegisteredUser> GetWithIncludesAsync(Guid entityId)
-        {
-            return await registeredUserRepository.GetAsync(entityId);
-        }
+        
+       
 
         private async Task<bool> GetIfUserExistsAsync(string login)
         {
@@ -118,6 +112,9 @@ namespace JobsPortal.BusinessLayer.Services
             }
         }
 
-
+        protected async override Task<RegisteredUser> GetWithIncludesAsync(Guid entityId)
+        {
+            return await registeredUserRepository.GetAsync(entityId);
+        }
     }
 }

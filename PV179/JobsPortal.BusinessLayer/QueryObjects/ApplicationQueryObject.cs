@@ -9,6 +9,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JobsPortal.BusinessLayer.DataTransferObjects.Enums;
+using JobsPortal.Infrastructure.Query.Predicates;
+using JobsPortal.Infrastructure.Query.Predicates.Operators;
 
 namespace JobsPortal.BusinessLayer.QueryObjects
 {
@@ -18,7 +21,46 @@ namespace JobsPortal.BusinessLayer.QueryObjects
 
         protected override IQuery<Application> ApplyWhereClause(IQuery<Application> query, ApplicationFilterDto filter)
         {
-            throw new NotImplementedException();
+            var definedPredicates = new List<IPredicate>();
+            AddIfDefined(FilterJobOfferState(filter), definedPredicates);
+            AddIfDefined(FilterUser(filter), definedPredicates);
+            if (definedPredicates.Count == 0)
+            {
+                return query;
+            }
+            if (definedPredicates.Count == 1)
+            {
+                return query.Where(definedPredicates.First());
+            }
+            var wherePredicate = new CompositePredicate(definedPredicates);
+            return query.Where(wherePredicate);
+        }
+
+        private SimplePredicate FilterUser(ApplicationFilterDto filter)
+        {
+            if (filter.UserId == null)
+            {
+                return null;
+            }
+            return new SimplePredicate(nameof(Application.UserId), ValueComparingOperator.Equal, filter.UserId);
+        }
+
+        private SimplePredicate FilterJobOfferState(ApplicationFilterDto filter)
+        {
+            if (filter.JobOfferState == JobOfferState.none)
+            {
+                return null;
+            }
+            return new SimplePredicate(nameof(Application.JobOfferState), ValueComparingOperator.Equal,
+                filter.JobOfferState);
+        }
+
+        private static void AddIfDefined(IPredicate categoryPredicate, ICollection<IPredicate> definedPredicates)
+        {
+            if (categoryPredicate != null)
+            {
+                definedPredicates.Add(categoryPredicate);
+            }
         }
     }
 }

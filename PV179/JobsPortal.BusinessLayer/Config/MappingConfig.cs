@@ -20,6 +20,7 @@ namespace JobsPortal.BusinessLayer.Config
             config.CreateMap<QueryResult<JobOffer>, QueryResultDto<JobOfferDto, JobOfferFilterDto>>();
             config.CreateMap<QueryResult<Company>, QueryResultDto<CompanyDto, CompanyFilterDto>>();
             config.CreateMap<QueryResult<RegisteredUser>, QueryResultDto<RegisteredUserDto, RegisteredUserFilterDto>>();
+            config.CreateMap<QueryResult<Application>, QueryResultDto<ApplicationDto, ApplicationFilterDto>>();
             config.CreateMap<UserCreateDto, RegisteredUser>().ConvertUsing(converter => new RegisteredUser()
             {
                 Login = converter.Login,

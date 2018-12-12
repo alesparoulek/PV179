@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using JobsPortal.BusinessLayer.DataTransferObjects;
+using JobsPortal.BusinessLayer.DataTransferObjects.Common;
 using JobsPortal.BusinessLayer.DataTransferObjects.Enums;
+using JobsPortal.BusinessLayer.DataTransferObjects.Filters;
 using JobsPortal.DataAccessLayer.EntityFramework.Entities;
 
 namespace JobsPortal.BusinessLayer.Services
@@ -17,6 +19,8 @@ namespace JobsPortal.BusinessLayer.Services
 
         Task<Application> GetApplicationById(Guid entityId);
 
+        Task<QueryResultDto<ApplicationDto, ApplicationFilterDto>> GetAllApplicationsForUser(
+            ApplicationFilterDto filter);
         Task ChangeApplicationJobOfferState(Guid id, JobOfferState jobfferState);
 
         Task ChangeApplicationUserState(Guid id, UserState userState);
