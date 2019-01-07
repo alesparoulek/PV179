@@ -20,10 +20,16 @@ namespace JobsPortal.BusinessLayer.QueryObjects
 
         protected override IQuery<Company> ApplyWhereClause(IQuery<Company> query, CompanyFilterDto filter)
         {
-            if (string.IsNullOrWhiteSpace(filter.Name))
+            if (string.IsNullOrWhiteSpace(filter.Name) && string.IsNullOrWhiteSpace(filter.Login))
             {
                 return query;
             }
+
+            if (filter.Login != null)
+            {
+                return query.Where(new SimplePredicate(nameof(Company.Login), ValueComparingOperator.Equal, filter.Login));
+            }
+
             return query.Where(new SimplePredicate(nameof(Company.Name), ValueComparingOperator.Equal, filter.Name));
         }
     }

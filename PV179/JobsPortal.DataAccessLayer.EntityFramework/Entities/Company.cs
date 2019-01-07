@@ -23,8 +23,10 @@ namespace JobsPortal.DataAccessLayer.EntityFramework.Entities
         [Required, MaxLength(64)]
         public string Login { get; set; }
 
-        [Required, StringLength(100)]
-        public string Password { get; set; }
+        [Required]
+        public string PasswordHash { get; set; }
+        [Required]
+        public string PasswordSalt { get; set; }
 
         public string Roles { get; } = "Company";
 

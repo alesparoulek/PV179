@@ -14,7 +14,8 @@ namespace JobsPortal.BusinessLayer.Services
 
         Task<List<JobOffer>> GetCompaniesJobOffers(string name);
         Task<List<JobOffer>> GetCompaniesJobOffers(Guid id);
-
+        Task<Guid> RegisterCompanyAsync(CompanyCreateDto companyDto);
+        Task<(bool success, string roles)> AuthorizeCompanyAsync(string login, string password);
         Guid Create(CompanyDto entityDto);
 
         Task Update(CompanyDto entityDto);

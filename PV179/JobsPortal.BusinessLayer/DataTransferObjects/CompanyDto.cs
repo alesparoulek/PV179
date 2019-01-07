@@ -11,8 +11,11 @@ namespace JobsPortal.BusinessLayer.DataTransferObjects
     public class CompanyDto : DtoBase
     {
         public string Name { get; set; }
+        public string Login { get; set; }
         public string Email { get; set; }
         public string Roles { get; set; }
+        public string PasswordHash { get; set; }
+        public string PasswordSalt { get; set; }
         public virtual List<JobOffer> Offers { get; set; }
 
         public override string ToString()

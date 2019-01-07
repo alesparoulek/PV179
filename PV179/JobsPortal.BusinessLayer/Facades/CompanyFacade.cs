@@ -39,5 +39,29 @@ namespace JobsPortal.BusinessLayer.Facades
                 await applyService.ChangeApplicationJobOfferState(id, jobOfferState);
             }
         }
+
+        public async Task<Guid> RegisterCompany(CompanyCreateDto company)
+        {
+            using (var uow = UnitOfWorkProvider.Create())
+            {
+                try
+                {
+                    var id = await comapnyService.RegisterCompanyAsync(company);
+                    await uow.Commit();
+                    return id;
+                }
+                catch (ArgumentException)
+                {
+                    throw;
+                }
+            }
+        }
+        public async Task<(bool success, string roles)> Login(string login, string password)
+        {
+            using (UnitOfWorkProvider.Create())
+            {
+                return await comapnyService.AuthorizeCompanyAsync(login, password);
+            }
+        }
     }
 }

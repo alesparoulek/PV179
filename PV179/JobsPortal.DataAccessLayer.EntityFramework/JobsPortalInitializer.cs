@@ -15,7 +15,8 @@ namespace JobsPortal.DataAccessLayer.EntityFramework
                 Login = "acomp",
                 Name = "Alpha Company",
                 Email = "acomp@acomp.acomp",
-                Password = "acomp",
+                PasswordSalt = "bMVo7iOysuxmTZtzHOKx2Q==",
+                PasswordHash = "Avhypra2fElqEN3TBUpTh8W2l+o=",
                 Offers = null               
             });
 
@@ -25,7 +26,8 @@ namespace JobsPortal.DataAccessLayer.EntityFramework
                 Login = "bcomp",
                 Name = "Beta Company",
                 Email = "bcomp@bcomp.bcomp",
-                Password = "bcomp",
+                PasswordSalt = "bMVo7iOysuxmTZtzHOKx2Q==",
+                PasswordHash = "Avhypra2fElqEN3TBUpTh8W2l+o=",
                 Offers = null
             });
 
