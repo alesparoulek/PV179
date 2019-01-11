@@ -18,7 +18,7 @@ namespace JobsPortal.PresentationLayer.Controllers
 {
     public class JobOfferController : Controller
     {
-        public const int PageSize = 10;
+        public const int PageSize = 1;
 
         private readonly string pageNumberSessionKey = "pageNumber";
 
@@ -59,18 +59,18 @@ namespace JobsPortal.PresentationLayer.Controllers
         public async Task<ActionResult> Details(ApplyForJobModel applyForJobModel)
         {
             var user = await UserFacade.GetUserAccordingToLoginAsync(User.Identity.Name);
-            var ApplicationDto = new ApplicationDto();
-            ApplicationDto.UserId = user.Id;
+            var applicationDto = new ApplicationDto();
+            applicationDto.UserId = user.Id;
             var url = Request.UrlReferrer.AbsoluteUri;
 
-            ApplicationDto.JobOfferId = Guid.Parse(url.Split('/').Last());
+            applicationDto.JobOfferId = Guid.Parse(url.Split('/').Last());
             foreach (var answer in applyForJobModel.Answers)
             {
-                ApplicationDto.Answers += answer + '/';
+                applicationDto.Answers += answer + '/';
             }
-            ApplicationDto.JobOfferState = JobOfferState.undecided;
-            ApplicationDto.UserState = UserState.undecided;
-            await JobOfferFacade.ConfirmApplicationAsync(ApplicationDto);
+            applicationDto.JobOfferState = JobOfferState.undecided;
+            applicationDto.UserState = UserState.undecided;
+            await JobOfferFacade.ConfirmApplicationAsync(applicationDto);
             return RedirectToAction("AppliedForJob");
         } 
 

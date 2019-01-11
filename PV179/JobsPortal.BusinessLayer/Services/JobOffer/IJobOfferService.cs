@@ -22,7 +22,9 @@ namespace JobsPortal.BusinessLayer.Services
 
         Task<JobOfferDto> GetAsync(Guid entityId, bool withIncludes = true);
 
-     
+        Task<Guid> CreateJobOffer(JobOfferCreateDto jobOfferCreateDto);
+
+
 
     }
 }

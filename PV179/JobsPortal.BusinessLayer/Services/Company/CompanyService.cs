@@ -43,6 +43,12 @@ namespace JobsPortal.BusinessLayer.Services
             return queryResult.Items.SingleOrDefault();
         }
 
+        public async Task<CompanyDto> GetCompanyAccordingToLoginAsync(string login)
+        {
+            var queryResult = await Query.ExecuteQuery(new CompanyFilterDto { Login = login});
+            return queryResult.Items.SingleOrDefault();
+        }
+
         public async Task<List<JobOffer>> GetCompaniesJobOffers(string name)
         {
             var comp = await GetCompanyAccordingToNameAsync(name);
@@ -64,6 +70,8 @@ namespace JobsPortal.BusinessLayer.Services
             var roles = "Company";
             return (succ, roles);
         }
+
+       
 
         public async Task<Guid> RegisterCompanyAsync(CompanyCreateDto companyDto)
         {

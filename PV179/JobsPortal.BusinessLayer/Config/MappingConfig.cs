@@ -30,7 +30,7 @@ namespace JobsPortal.BusinessLayer.Config
                 Phone = converter.Phone
             });
             config.CreateMap<CompanyCreateDto, Company>().ReverseMap();
-
+            config.CreateMap<JobOfferCreateDto, JobOffer>().ReverseMap();
         }
 
     }

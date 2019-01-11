@@ -10,6 +10,7 @@ namespace JobsPortal.BusinessLayer.DataTransferObjects
 {
     public class JobOfferCreateDto : DtoBase
     {
+        public Guid CompanyId { get; set; }
         public JobType JobType { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

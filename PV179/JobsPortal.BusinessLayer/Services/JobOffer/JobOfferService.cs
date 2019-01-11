@@ -17,8 +17,15 @@ namespace JobsPortal.BusinessLayer.Services
 {
     public class JobOfferService : CrudQueryServiceBase<JobOffer, JobOfferDto, JobOfferFilterDto>, IJobOfferService
     {
-        public JobOfferService(IMapper mapper, IRepository<JobOffer> jobOfferRepository, QueryObjectBase<JobOfferDto, JobOffer, JobOfferFilterDto, IQuery<JobOffer>> jobOfferQueryObject)
-            : base(mapper, jobOfferRepository, jobOfferQueryObject) { }
+
+        private readonly IRepository<JobOffer> jobOfferRepository;
+
+        public JobOfferService(IMapper mapper, IRepository<JobOffer> jobOfferRepository,
+            QueryObjectBase<JobOfferDto, JobOffer, JobOfferFilterDto, IQuery<JobOffer>> jobOfferQueryObject)
+            : base(mapper, jobOfferRepository, jobOfferQueryObject)
+        {
+            this.jobOfferRepository = jobOfferRepository;
+        }
 
 
         protected async override Task<JobOffer> GetWithIncludesAsync(Guid entityId)
@@ -31,7 +38,13 @@ namespace JobsPortal.BusinessLayer.Services
             return await Query.ExecuteQuery(filter);;
         }
 
-        
+        public async Task<Guid> CreateJobOffer(JobOfferCreateDto jobOfferCreateDto)
+        {
+            var jobOffer = Mapper.Map<JobOffer>(jobOfferCreateDto);
+            jobOffer.Date = DateTime.Now;
+            jobOfferRepository.Create(jobOffer);
+            return jobOffer.Id;
+        }
 
 
     }

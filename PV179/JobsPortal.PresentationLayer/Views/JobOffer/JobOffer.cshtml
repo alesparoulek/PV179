@@ -52,24 +52,30 @@
             </div>
         </div>
 
+        
     }
-</div>   
+</div>
 
 <div class="panel panel-default col-md-9 col-sm-8 col-md-12">
     <ul class="panel-heading panel-head list-group">Available Jobs:</ul>
     @{foreach (var jobOffer in Model.JobOffers)
-        {
-            <div class="col-md-4 col-sm-6 col-xs-12 list-group-item-nonclickable thumbnail">
-                <div class="col-md-12  col-sm-12 col-xs-12 clickable-area" @("onclick=GoToDetail('" + jobOffer.Id + "')")>
-                    <div class="caption text-center">
-                        <h4 style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" id="thumbnail-label">@jobOffer.Name</h4>
-                    </div>
-
-                    <p style="height: 80px; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: normal; text-align: justify;">@jobOffer.Description</p>
-
+    {
+        <div class="col-md-4 col-sm-6 col-xs-12 list-group-item-nonclickable thumbnail">
+            <div class="col-md-12  col-sm-12 col-xs-12 clickable-area" @("onclick=GoToDetail('" + jobOffer.Id + "')")>
+                <div class="caption text-center">
+                    <h4 style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" id="thumbnail-label">@jobOffer.Name</h4>
                 </div>
+
+                <p style="height: 80px; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: normal; text-align: justify;">@jobOffer.Description</p>
+
             </div>
-        }}
+        </div>
+    }}
+    
+</div>
+
+<div class="col-md-12">
+    @Html.PagedListPager(Model.JobOffers, page => Url.Action("Index", new { page }))
 </div>
 <script>
     function GoToDetail(id) {

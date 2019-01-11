@@ -15,10 +15,11 @@ namespace JobsPortal.BusinessLayer.Facades
     {
         private readonly ICompanyService comapnyService;
         private readonly IApplyService applyService;
-
-        public CompanyFacade(IUnitOfWorkProvider unitOfWorkProvider, ICompanyService companyService, IApplyService applyService) : base(unitOfWorkProvider)
+        private readonly IJobOfferService jobOfferService;
+        public CompanyFacade(IUnitOfWorkProvider unitOfWorkProvider, ICompanyService companyService, IApplyService applyService, IJobOfferService jobOfferService) : base(unitOfWorkProvider)
         {
             this.comapnyService = companyService;
+            this.jobOfferService = jobOfferService;
             this.applyService = applyService;
         }
 
@@ -30,7 +31,16 @@ namespace JobsPortal.BusinessLayer.Facades
                 return await comapnyService.GetCompanyAccordingToNameAsync(name);
             }
         }
-        
+
+        public async Task<CompanyDto> GetCompanyAccordingToLoginAsync(string login)
+        {
+
+            using (UnitOfWorkProvider.Create())
+            {
+                return await comapnyService.GetCompanyAccordingToLoginAsync(login);
+            }
+        }
+
 
         public async Task ChangeApplicationJobOfferState(Guid id, JobOfferState jobOfferState)
         {
@@ -61,6 +71,16 @@ namespace JobsPortal.BusinessLayer.Facades
             using (UnitOfWorkProvider.Create())
             {
                 return await comapnyService.AuthorizeCompanyAsync(login, password);
+            }
+        }
+
+        public async Task<Guid> CreateJobOffer(JobOfferCreateDto jobOfferCreateDto)
+        {
+            using (var uow = UnitOfWorkProvider.Create())
+            {
+                var id = await jobOfferService.CreateJobOffer(jobOfferCreateDto);
+                await uow.Commit();
+                return id;
             }
         }
     }

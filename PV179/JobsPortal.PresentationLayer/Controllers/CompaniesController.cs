@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO.MemoryMappedFiles;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -77,6 +78,16 @@ namespace JobsPortal.PresentationLayer.Controllers
         [Authorize(Roles = "Company")]
         public async Task<ActionResult> CreateJobOffer()
         {
+            return View();
+        }
+
+        [Authorize(Roles = "Company")]
+        [HttpPost]
+        public async Task<ActionResult> CreateJobOffer(JobOfferCreateDto jobOfferCreateDto)
+        {
+            var company = await CompanyFacade.GetCompanyAccordingToLoginAsync(User.Identity.Name);
+            jobOfferCreateDto.CompanyId = company.Id;
+            await CompanyFacade.CreateJobOffer(jobOfferCreateDto);
             return View();
         }
     }

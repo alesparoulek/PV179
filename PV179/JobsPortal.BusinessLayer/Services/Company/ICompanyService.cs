@@ -11,7 +11,7 @@ namespace JobsPortal.BusinessLayer.Services
     public interface ICompanyService
     {
         Task<CompanyDto> GetCompanyAccordingToNameAsync(string name);
-
+        Task<CompanyDto> GetCompanyAccordingToLoginAsync(string name);
         Task<List<JobOffer>> GetCompaniesJobOffers(string name);
         Task<List<JobOffer>> GetCompaniesJobOffers(Guid id);
         Task<Guid> RegisterCompanyAsync(CompanyCreateDto companyDto);
