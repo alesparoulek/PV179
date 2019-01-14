@@ -49,6 +49,13 @@ namespace JobsPortal.BusinessLayer.Services
             return await applicationRepository.GetAsync(entityId);
         }
 
+        public async Task<ApplicationDto> GetApplicationByIdDto(Guid entityId)
+        {
+            var application = await applicationRepository.GetAsync(entityId);
+            var res = Mapper.Map<ApplicationDto>(application);
+            return res;
+        }
+
         public async Task<QueryResultDto<ApplicationDto, ApplicationFilterDto>> GetAllApplicationsForUser(
             ApplicationFilterDto filter)
         {

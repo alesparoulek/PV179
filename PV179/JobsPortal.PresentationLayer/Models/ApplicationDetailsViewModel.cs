@@ -6,10 +6,8 @@ using JobsPortal.BusinessLayer.DataTransferObjects;
 
 namespace JobsPortal.PresentationLayer.Models
 {
-    public class ApplyForJobModel
+    public class ApplicationDetailsViewModel
     {
-        public UserCreateDto User { get; set; }
-        public JobOfferDto JobOfferDto { get; set; }
-        public List<string> Answers { get; set; }
+        public ApplicationDto Application { get; set; }
     }
 }

@@ -69,7 +69,17 @@ namespace JobsPortal.PresentationLayer.Controllers
         [HttpPost]
         public async Task<ActionResult> Details(ApplyForJobModel applyForJobModel)
         {
-            var user = await UserFacade.GetUserAccordingToLoginAsync(User.Identity.Name);
+            var user = new UserDto();
+            if (!Request.IsAuthenticated)
+            {
+                var userId = await UserFacade.RegisterUser(applyForJobModel.User);
+                user = await UserFacade.GetUserAccordingToId(userId);
+            }
+            else
+            {
+                user = await UserFacade.GetUserAccordingToLoginAsync(User.Identity.Name);
+            }
+            
             var applicationDto = new ApplicationDto();
             applicationDto.UserId = user.Id;
             var url = Request.UrlReferrer.AbsoluteUri;

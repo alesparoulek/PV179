@@ -35,6 +35,13 @@ namespace JobsPortal.BusinessLayer.Facades
             }
         }
 
+        public async Task<UserDto> GetUserAccordingToId(Guid id)
+        {
+            using (UnitOfWorkProvider.Create())
+            {
+                return await registeredUserService.GetAccordingToId(id);
+            }
+        }
         public async Task<UserDto> GetUserAccordingToEmailAsync(string email)
         {
 

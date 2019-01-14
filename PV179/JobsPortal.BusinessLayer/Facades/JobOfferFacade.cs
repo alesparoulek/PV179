@@ -85,12 +85,18 @@ namespace JobsPortal.BusinessLayer.Facades
         
         }
 
+        public async Task<ApplicationDto> GetApplicationById(Guid id)
+        {
+            using (UnitOfWorkProvider.Create())
+            {
+                return await applyService.GetApplicationByIdDto(id);
+            }
+        }
         public async Task<JobOfferDto> GetJobOfferByIdAsync(Guid id)
         {
             using (UnitOfWorkProvider.Create())
             {
-                var jobOffer = await jobOfferService.GetAsync(id);
-                return jobOffer;
+                return await jobOfferService.GetAsync(id);
             }
         }
     }

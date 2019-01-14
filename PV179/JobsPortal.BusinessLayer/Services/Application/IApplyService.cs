@@ -19,6 +19,9 @@ namespace JobsPortal.BusinessLayer.Services
 
         Task<Application> GetApplicationById(Guid entityId);
 
+
+        Task<ApplicationDto> GetApplicationByIdDto(Guid entityId);
+
         Task<QueryResultDto<ApplicationDto, ApplicationFilterDto>> GetAllApplicationsForUser(
             ApplicationFilterDto filter);
         Task ChangeApplicationJobOfferState(Guid id, JobOfferState jobfferState);

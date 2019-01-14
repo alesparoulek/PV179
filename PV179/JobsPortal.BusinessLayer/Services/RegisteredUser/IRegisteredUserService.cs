@@ -16,6 +16,6 @@ namespace JobsPortal.BusinessLayer.Services
         Task<Guid> RegisterUserAsync(UserCreateDto user);
         Task<(bool success, string roles)> AuthorizeUserAsync(string username, string password);
         Task<RegisteredUserDto> GetUserAccordingToLoginAsync(string login);
-
+        Task<RegisteredUserDto> GetAccordingToId(Guid id);
     }
 }

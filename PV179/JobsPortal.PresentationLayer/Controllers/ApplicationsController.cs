@@ -24,6 +24,8 @@ namespace JobsPortal.PresentationLayer.Controllers
 
         public UserFacade UserFacade { get; set; }
 
+        public JobOfferFacade JobOfferFacade { get; set; }
+
         public async Task<ActionResult> Index(int page = 1)
         {
             Session[pageNumberSessionKey] = page;
@@ -37,6 +39,13 @@ namespace JobsPortal.PresentationLayer.Controllers
             var model = InitializeApplicationListViewModel(result);
 
             return View("Applications", model);
+        }
+
+        public async Task<ActionResult> Details(Guid id)
+        {
+            var model = new ApplicationDetailsViewModel();
+            model.Application = await JobOfferFacade.GetApplicationById(id);
+            return View("Details", model);
         }
 
         private ApplicationsViewModel InitializeApplicationListViewModel(QueryResultDto<ApplicationDto, ApplicationFilterDto> result)

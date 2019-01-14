@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -61,7 +62,12 @@ namespace JobsPortal.BusinessLayer.Services
             return (succ, roles);
         }
 
-        
+        public async Task<RegisteredUserDto> GetAccordingToId(Guid id)
+        {
+            var user = await GetWithIncludesAsync(id);
+            var res = Mapper.Map<RegisteredUserDto>(user);
+            return res;
+        }
         
        
 
@@ -112,7 +118,7 @@ namespace JobsPortal.BusinessLayer.Services
             }
         }
 
-        protected async override Task<RegisteredUser> GetWithIncludesAsync(Guid entityId)
+        protected override async Task<RegisteredUser> GetWithIncludesAsync(Guid entityId)
         {
             return await registeredUserRepository.GetAsync(entityId);
         }
