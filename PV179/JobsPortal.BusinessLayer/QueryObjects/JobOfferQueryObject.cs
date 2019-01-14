@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using JobsPortal.BusinessLayer.DataTransferObjects.Enums;
+using Utilities.Enums;
 
 namespace JobsPortal.BusinessLayer.QueryObjects
 {
@@ -47,51 +47,40 @@ namespace JobsPortal.BusinessLayer.QueryObjects
             }
         }
 
-        private static CompositePredicate FilterJobTypes(JobOfferFilterDto filter)
+        private static SimplePredicate FilterJobTypes(JobOfferFilterDto filter)
         {
-            if (filter.JobType == null || !filter.JobType.Any())
+            if (filter.JobType == JobType.Any )
             {
                 return null;
             }
-            var jobTypePredicates = new List<IPredicate>(filter.JobType
-                .Select(jobType => new SimplePredicate(
-                    nameof(filter.JobType),
-                    ValueComparingOperator.Equal,
-                    jobType)));
-            return new CompositePredicate(jobTypePredicates, LogicalOperator.OR);
+            return new SimplePredicate(nameof(JobOffer.JobType), ValueComparingOperator.Equal,
+                filter.JobType);
         }
 
-        private static CompositePredicate FilterTimeJobs(JobOfferFilterDto filter)
+        private static SimplePredicate FilterTimeJobs(JobOfferFilterDto filter)
         {
-            if (filter.TimeJob == null || !filter.TimeJob.Any())
+            if (filter.TimeJob == TimeJob.Any )
             {
                 return null;
             }
-            var timeJobPredicates = new List<IPredicate>(filter.TimeJob
-                .Select(timeJob => new SimplePredicate(
-                    nameof(filter.TimeJob),
-                    ValueComparingOperator.Equal,
-                    timeJob)));
-            return new CompositePredicate(timeJobPredicates, LogicalOperator.OR);
+
+            return new SimplePredicate(nameof(JobOffer.TimeJob), ValueComparingOperator.Equal,
+                filter.TimeJob);
         }
 
-        private static CompositePredicate FilterLocations(JobOfferFilterDto filter)
+        private static SimplePredicate FilterLocations(JobOfferFilterDto filter)
         {
-            if (filter.Location == null || !filter.Location.Any())
+            if (filter.Location == Location.Any)
             {
                 return null;
             }
-            var locationPredicates = new List<IPredicate>(filter.Location
-                .Select(location => new SimplePredicate(
-                    nameof(filter.Location),
-                    ValueComparingOperator.Equal,
-                    location)));
-            return new CompositePredicate(locationPredicates, LogicalOperator.OR);
+            return new SimplePredicate(nameof(JobOffer.Location), ValueComparingOperator.Equal,
+                filter.Location);
         }
 
         private static SimplePredicate FilterEducation(JobOfferFilterDto filter)
         {
-            if (filter.Education == Education.other)
+            if (filter.Education == Education.Any)
             {
                 return null;
             }

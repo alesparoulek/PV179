@@ -1,5 +1,5 @@
 ﻿using JobsPortal.BusinessLayer.DataTransferObjects;
-using JobsPortal.BusinessLayer.DataTransferObjects.Enums;
+using Utilities.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

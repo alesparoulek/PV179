@@ -1,10 +1,10 @@
 ﻿using JobsPortal.BusinessLayer.DataTransferObjects.Common;
 
 using System;
-using JobsPortal.BusinessLayer.DataTransferObjects.Enums;
 
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Utilities.Enums;
 
 namespace JobsPortal.BusinessLayer.DataTransferObjects
 {

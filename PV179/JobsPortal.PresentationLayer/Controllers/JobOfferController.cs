@@ -7,7 +7,7 @@ using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using JobsPortal.BusinessLayer.DataTransferObjects;
 using JobsPortal.BusinessLayer.DataTransferObjects.Common;
-using JobsPortal.BusinessLayer.DataTransferObjects.Enums;
+using Utilities.Enums;
 using JobsPortal.BusinessLayer.DataTransferObjects.Filters;
 using JobsPortal.BusinessLayer.Facades;
 using JobsPortal.PresentationLayer.Models;
@@ -43,6 +43,17 @@ namespace JobsPortal.PresentationLayer.Controllers
             return View("JobOffer", model);
         }
 
+        [HttpPost]
+        public async Task<ActionResult> Index(JobOfferListViewModel model)
+        {
+            model.Filter.PageSize = PageSize;
+            Session[filterSessionKey] = model.Filter;
+            var result = await JobOfferFacade.ListFilteredJobsAsync(model.Filter);
+            var newModel = InitializeProductListViewModel(result);
+            return View("JobOffer", newModel);
+        }
+
+
         public async Task<ActionResult> Details(Guid id)
         {
             var model = new ApplyForJobModel();
@@ -68,8 +79,8 @@ namespace JobsPortal.PresentationLayer.Controllers
             {
                 applicationDto.Answers += answer + '/';
             }
-            applicationDto.JobOfferState = JobOfferState.undecided;
-            applicationDto.UserState = UserState.undecided;
+            applicationDto.JobOfferState = JobOfferState.Undecided;
+            applicationDto.UserState = UserState.Undecided;
             await JobOfferFacade.ConfirmApplicationAsync(applicationDto);
             return RedirectToAction("AppliedForJob");
         } 

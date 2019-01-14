@@ -92,12 +92,6 @@
     <Compile Include="DataTransferObjects\Common\QueryResultDto.cs" />
     <Compile Include="DataTransferObjects\CompanyCreateDto.cs" />
     <Compile Include="DataTransferObjects\CompanyDto.cs" />
-    <Compile Include="DataTransferObjects\Enums\Education.cs" />
-    <Compile Include="DataTransferObjects\Enums\JobOfferState.cs" />
-    <Compile Include="DataTransferObjects\Enums\JobType.cs" />
-    <Compile Include="DataTransferObjects\Enums\Location.cs" />
-    <Compile Include="DataTransferObjects\Enums\TimeJob.cs" />
-    <Compile Include="DataTransferObjects\Enums\UserState.cs" />
     <Compile Include="DataTransferObjects\Filters\ApplicationFilterDto.cs" />
     <Compile Include="DataTransferObjects\Filters\CompanyFilterDto.cs" />
     <Compile Include="DataTransferObjects\Filters\JobOfferFilterDto.cs" />
@@ -145,6 +139,10 @@
     <ProjectReference Include="..\JobsPortal.Infrastructure\JobsPortal.Infrastructure.csproj">
       <Project>{28c97ef5-fe87-4ab8-bc5d-437a808fbee2}</Project>
       <Name>JobsPortal.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{CCCDBE33-5C2F-424E-8ECF-F41AB59E01E1}</Project>
+      <Name>Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

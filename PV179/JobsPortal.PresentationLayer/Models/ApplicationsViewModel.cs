@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using JobsPortal.BusinessLayer.DataTransferObjects;
-using JobsPortal.BusinessLayer.DataTransferObjects.Enums;
+using Utilities.Enums;
 using JobsPortal.BusinessLayer.DataTransferObjects.Filters;
 using X.PagedList;
 

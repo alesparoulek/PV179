@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.28010.2019
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobsPortal.DataAccessLayer.EntityFramework", "JobsPortal.DataAccessLayer.EntityFramework\JobsPortal.DataAccessLayer.EntityFramework.csproj", "{1323282C-6871-47E1-AA3A-5652BD83828E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CCCDBE33-5C2F-424E-8ECF-F41AB59E01E1} = {CCCDBE33-5C2F-424E-8ECF-F41AB59E01E1}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{2FCB7C46-2A56-4045-873B-8C9E85E51F79}"
 EndProject
@@ -15,14 +18,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobsPortal.Infrastructure.P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobsPortal.DataAccessLayer.EntityFramework.Tests", "Tests\JobsPortal.DataAccessLayer.EntityFramework.Tests.csproj", "{26D06C41-A0B7-4F97-920C-284FFC3C0764}"
 	ProjectSection(ProjectDependencies) = postProject
+		{CCCDBE33-5C2F-424E-8ECF-F41AB59E01E1} = {CCCDBE33-5C2F-424E-8ECF-F41AB59E01E1}
 		{D14D56E6-6BA3-4C5D-9980-8FB518A14446} = {D14D56E6-6BA3-4C5D-9980-8FB518A14446}
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4A3D45AC-EB29-4FEF-BEB5-DD1ADC248765}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobsPortal.DataAccessLayer.PetaPoco", "JobsPortal.DataAccessLayer.PetaPoco\JobsPortal.DataAccessLayer.PetaPoco.csproj", "{3B7D8C38-20E6-414B-AF62-E468AE066890}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CCCDBE33-5C2F-424E-8ECF-F41AB59E01E1} = {CCCDBE33-5C2F-424E-8ECF-F41AB59E01E1}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobsPortal.BusinessLayer", "JobsPortal.BusinessLayer\JobsPortal.BusinessLayer.csproj", "{D14D56E6-6BA3-4C5D-9980-8FB518A14446}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CCCDBE33-5C2F-424E-8ECF-F41AB59E01E1} = {CCCDBE33-5C2F-424E-8ECF-F41AB59E01E1}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobsPortal.BL.Tests", "JobsPortal.BL.Tests\JobsPortal.BL.Tests.csproj", "{BCC51459-462B-43DA-9AF8-57B1D73F9821}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -34,8 +44,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobsPortal.BL.Tests", "Jobs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobsPortal.PresentationLayer", "JobsPortal.PresentationLayer\JobsPortal.PresentationLayer.csproj", "{8B33AF5B-23E7-4484-8647-615F613D1332}"
 	ProjectSection(ProjectDependencies) = postProject
+		{CCCDBE33-5C2F-424E-8ECF-F41AB59E01E1} = {CCCDBE33-5C2F-424E-8ECF-F41AB59E01E1}
 		{D14D56E6-6BA3-4C5D-9980-8FB518A14446} = {D14D56E6-6BA3-4C5D-9980-8FB518A14446}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Utilities\Utilities.csproj", "{CCCDBE33-5C2F-424E-8ECF-F41AB59E01E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +92,10 @@ Global
 		{8B33AF5B-23E7-4484-8647-615F613D1332}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B33AF5B-23E7-4484-8647-615F613D1332}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B33AF5B-23E7-4484-8647-615F613D1332}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCCDBE33-5C2F-424E-8ECF-F41AB59E01E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCCDBE33-5C2F-424E-8ECF-F41AB59E01E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCCDBE33-5C2F-424E-8ECF-F41AB59E01E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCCDBE33-5C2F-424E-8ECF-F41AB59E01E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

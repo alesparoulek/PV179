@@ -38,19 +38,19 @@ namespace JobsPortal.DataAccessLayer.EntityFramework
                 LastName = "Kuldanu",
                 Email = "frantakuldanu@seznam.cz",
                 Phone = "0609112567",
-                Education = Enums.Education.graduatedHighschool
+                Education = Utilities.Enums.Education.GraduatedHighschool
             });
 
             context.JobOffers.Add(new JobOffer
             {
                 Id = Guid.NewGuid(),
                 CompanyId = Guid.Parse("aa04dc65-5c07-40fe-a916-175165b9b90f"),
-                JobType = Enums.JobType.InformationTechnology,
+                JobType = Utilities.Enums.JobType.InformationTechnology,
                 Name = "C# programmer",
                 Description = "programming a jobs portal in C#",
-                TimeJob = Enums.TimeJob.fulltime,
-                Location = Enums.Location.Jihomoravsky,
-                Education = Enums.Education.graduatedHighschool,
+                TimeJob = Utilities.Enums.TimeJob.Fulltime,
+                Location = Utilities.Enums.Location.Jihomoravsky,
+                Education = Utilities.Enums.Education.GraduatedHighschool,
                 Salary = 0,
                 Questionnaire = "AAAAAA/BBBBB/CCCCCC/DDDDDD",
                 Applications = null,

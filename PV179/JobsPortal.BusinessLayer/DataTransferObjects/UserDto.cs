@@ -1,6 +1,6 @@
 ﻿using JobsPortal.BusinessLayer.DataTransferObjects.Common;
-using JobsPortal.BusinessLayer.DataTransferObjects.Enums;
 using System;
+using Utilities.Enums;
 
 namespace JobsPortal.BusinessLayer.DataTransferObjects
 {

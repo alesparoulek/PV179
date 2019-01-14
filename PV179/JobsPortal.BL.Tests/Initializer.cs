@@ -37,7 +37,7 @@ namespace JobsPortal.BL.Tests
                 Name = "aaa",
                 Email = "aaaaac@bbb.com",
                 Login = "b",
-                Password = "c",
+                
                 Offers = new List<JobOffer>()
             };
 

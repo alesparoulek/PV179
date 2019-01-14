@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using JobsPortal.BusinessLayer.DataTransferObjects;
 using JobsPortal.BusinessLayer.DataTransferObjects.Common;
-using JobsPortal.BusinessLayer.DataTransferObjects.Enums;
+using Utilities.Enums;
 using JobsPortal.BusinessLayer.DataTransferObjects.Filters;
 using JobsPortal.DataAccessLayer.EntityFramework.Entities;
 

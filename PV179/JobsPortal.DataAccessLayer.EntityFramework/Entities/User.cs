@@ -1,8 +1,9 @@
-﻿using JobsPortal.DataAccessLayer.EntityFramework.Enums;
+﻿
 using JobsPortal.Infrastructure;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Utilities.Enums;
 
 
 namespace JobsPortal.DataAccessLayer.EntityFramework.Entities

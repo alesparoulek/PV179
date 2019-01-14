@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using JobsPortal.BusinessLayer.DataTransferObjects.Common;
-using JobsPortal.BusinessLayer.DataTransferObjects.Enums;
+using Utilities.Enums;
 
 namespace JobsPortal.BusinessLayer.DataTransferObjects
 {

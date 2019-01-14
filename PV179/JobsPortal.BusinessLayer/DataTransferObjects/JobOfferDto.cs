@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using JobsPortal.BusinessLayer.DataTransferObjects.Common;
-using JobsPortal.BusinessLayer.DataTransferObjects.Enums;
 using JobsPortal.DataAccessLayer.EntityFramework.Entities;
+using Utilities.Enums;
 
 namespace JobsPortal.BusinessLayer.DataTransferObjects
 {

@@ -1,9 +1,9 @@
 ﻿
-namespace JobsPortal.DataAccessLayer.PetaPoco.Enums
+namespace Utilities.Enums
 {
     public enum Location
     {
-        HlavniMestoPraha, Jihocesky, Jihomoravsky, Karlovarsky, Vysocina, Kralovehradecky,
+        Any,HlavniMestoPraha, Jihocesky, Jihomoravsky, Karlovarsky, Vysocina, Kralovehradecky,
         Liberecky, Moravskoslezsky, Olomoucky, Pardubicky, Plzensky, Stredocesky, Ustecky, Zlinsky
     }
 }

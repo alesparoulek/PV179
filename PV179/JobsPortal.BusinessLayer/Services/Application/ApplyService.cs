@@ -7,7 +7,7 @@ using JobsPortal.BusinessLayer.DataTransferObjects;
 using JobsPortal.BusinessLayer.DataTransferObjects.Common;
 using JobsPortal.BusinessLayer.Services.Common;
 using JobsPortal.DataAccessLayer.EntityFramework.Entities;
-using JobsPortal.BusinessLayer.DataTransferObjects.Enums;
+using Utilities.Enums;
 using JobsPortal.Infrastructure;
 using JobsPortal.BusinessLayer.DataTransferObjects.Filters;
 using JobsPortal.BusinessLayer.QueryObjects.Common;
@@ -59,14 +59,14 @@ namespace JobsPortal.BusinessLayer.Services
         {
             var application = await GetApplicationById(id);
             
-            application.JobOfferState = (DataAccessLayer.EntityFramework.Enums.JobOfferState) jobofferState;
+            application.JobOfferState =  jobofferState;
             applicationRepository.Update(application);
         }
 
         public async Task ChangeApplicationUserState(Guid id, UserState userState)
         {
             var application = await GetApplicationById(id);
-            application.UserState = (DataAccessLayer.EntityFramework.Enums.UserState) userState;
+            application.UserState =  userState;
             applicationRepository.Update(application);
         }
 

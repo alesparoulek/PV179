@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using JobsPortal.Infrastructure;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using JobsPortal.DataAccessLayer.EntityFramework.Enums;
+using Utilities.Enums;
 
 namespace JobsPortal.DataAccessLayer.EntityFramework.Entities
 {

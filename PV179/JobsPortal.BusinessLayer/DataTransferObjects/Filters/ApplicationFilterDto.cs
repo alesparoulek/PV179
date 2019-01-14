@@ -1,10 +1,10 @@
 ﻿using JobsPortal.BusinessLayer.DataTransferObjects.Common;
-using JobsPortal.BusinessLayer.DataTransferObjects.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utilities.Enums;
 
 namespace JobsPortal.BusinessLayer.DataTransferObjects.Filters
 {

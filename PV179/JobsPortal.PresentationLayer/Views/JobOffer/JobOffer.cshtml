@@ -18,21 +18,21 @@
         <div class="form-group col-md-8">
             @Html.LabelFor(model => model.Filter.SortCriteria, "Location:", new { @class = "control-label col-md-2" })
             <div class="col-md-6">
-                @Html.EnumDropDownListFor(model => model.Location)
+                @Html.EnumDropDownListFor(model => model.Filter.Location)
             </div>
         </div>
 
         <div class="form-group col-md-8">
             @Html.LabelFor(model => model.Filter.SortCriteria, "Education:", new { @class = "control-label col-md-2" })
             <div class="col-md-6">
-                @Html.EnumDropDownListFor(model => model.Education)
+                @Html.EnumDropDownListFor(model => model.Filter.Education)
             </div>
         </div>
 
         <div class="form-group col-md-8">
             @Html.LabelFor(model => model.Filter.SortCriteria, "Type:", new { @class = "control-label col-md-2" })
             <div class="col-md-6">
-                @Html.EnumDropDownListFor(model => model.JopType)
+                @Html.EnumDropDownListFor(model => model.Filter.JobType)
             </div>
         </div>
 
@@ -48,7 +48,7 @@
         <div class="row">
 
             <div class="form-group">
-                <button class="btn btn-success col-md-offset-1 col-md-5" id="btnSubmit" type="submit" onclick="saveRange()">Filter </button>
+                <button class="btn btn-success col-md-offset-1 col-md-5" id="btnSubmit" type="submit">Filter </button>
             </div>
         </div>
 
@@ -57,7 +57,7 @@
 </div>
 
 <div class="panel panel-default col-md-9 col-sm-8 col-md-12">
-    <ul class="panel-heading panel-head list-group">Available Jobs:</ul>
+    <ul class="panel-heading panel-head list-group">Available jobs:   @Html.PagedListPager(Model.JobOffers, page => Url.Action("Index", new { page }))</ul>
     @{foreach (var jobOffer in Model.JobOffers)
     {
         <div class="col-md-4 col-sm-6 col-xs-12 list-group-item-nonclickable thumbnail">
@@ -74,9 +74,6 @@
     
 </div>
 
-<div class="col-md-12">
-    @Html.PagedListPager(Model.JobOffers, page => Url.Action("Index", new { page }))
-</div>
 <script>
     function GoToDetail(id) {
         window.location = "/JobOffer/Details/" + id;

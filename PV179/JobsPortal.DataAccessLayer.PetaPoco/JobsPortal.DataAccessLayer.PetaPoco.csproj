@@ -49,12 +49,6 @@
     <Compile Include="Entities\JobOffer.cs" />
     <Compile Include="Entities\RegisteredUser.cs" />
     <Compile Include="Entities\User.cs" />
-    <Compile Include="Enums\Education.cs" />
-    <Compile Include="Enums\JobOfferState.cs" />
-    <Compile Include="Enums\JobType.cs" />
-    <Compile Include="Enums\Location.cs" />
-    <Compile Include="Enums\TimeJob.cs" />
-    <Compile Include="Enums\UserState.cs" />
     <Compile Include="PetapocoDatabase.cs" />
     <Compile Include="TableNames.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,6 +64,10 @@
     <ProjectReference Include="..\JobsPortal.Infrastructure\JobsPortal.Infrastructure.csproj">
       <Project>{28c97ef5-fe87-4ab8-bc5d-437a808fbee2}</Project>
       <Name>JobsPortal.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{CCCDBE33-5C2F-424E-8ECF-F41AB59E01E1}</Project>
+      <Name>Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

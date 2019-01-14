@@ -1,7 +1,7 @@
 ﻿using JobsPortal.Infrastructure;
 using System;
 using AsyncPoco;
-using JobsPortal.DataAccessLayer.PetaPoco.Enums;
+using Utilities.Enums;
 
 namespace JobsPortal.DataAccessLayer.PetaPoco.Entities
 {

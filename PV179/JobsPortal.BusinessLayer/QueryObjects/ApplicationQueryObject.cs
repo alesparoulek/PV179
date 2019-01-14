@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using JobsPortal.BusinessLayer.DataTransferObjects.Enums;
+using Utilities.Enums;
 using JobsPortal.Infrastructure.Query.Predicates;
 using JobsPortal.Infrastructure.Query.Predicates.Operators;
 
@@ -47,7 +47,7 @@ namespace JobsPortal.BusinessLayer.QueryObjects
 
         private SimplePredicate FilterJobOfferState(ApplicationFilterDto filter)
         {
-            if (filter.JobOfferState == JobOfferState.none)
+            if (filter.JobOfferState == JobOfferState.None)
             {
                 return null;
             }

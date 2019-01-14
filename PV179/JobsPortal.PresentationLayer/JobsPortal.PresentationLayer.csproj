@@ -301,6 +301,10 @@
       <Project>{1323282C-6871-47E1-AA3A-5652BD83828E}</Project>
       <Name>JobsPortal.DataAccessLayer.EntityFramework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{CCCDBE33-5C2F-424E-8ECF-F41AB59E01E1}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

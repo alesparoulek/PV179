@@ -88,6 +88,10 @@
       <Project>{1323282c-6871-47e1-aa3a-5652bd83828e}</Project>
       <Name>JobsPortal.DataAccessLayer.EntityFramework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{CCCDBE33-5C2F-424E-8ECF-F41AB59E01E1}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

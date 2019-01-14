@@ -26,7 +26,7 @@ namespace Tests
                 LastName = "Kuldanu",
                 Email = "frantakuldanu@seznam.cz",
                 Phone = "0609112567",
-                Education = JobsPortal.DataAccessLayer.EntityFramework.Enums.Education.graduatedHighschool
+                Education = Utilities.Enums.Education.GraduatedHighschool
             };
 
             User user2 = new User();
