@@ -278,7 +278,7 @@
     <Content Include="Views\Companies\Login.cshtml" />
     <Content Include="Views\Companies\CreateJobOffer.cshtml" />
     <Content Include="Views\Applications\Details.cshtml" />
-    <Content Include="Views\Companies\Register – kopie.cshtml" />
+    <Content Include="Views\Companies\Register – old.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
