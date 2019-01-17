@@ -71,13 +71,18 @@ namespace JobsPortal.BusinessLayer.Services
             return (succ, roles);
         }
 
-       
+        private async Task<bool> GetIfCompanyExistsAsync(string login)
+        {
+            var queryResult = await companyQueryObject.ExecuteQuery(new CompanyFilterDto { Login = login });
+            return (queryResult.Items.Count() == 1);
+        }
+
 
         public async Task<Guid> RegisterCompanyAsync(CompanyCreateDto companyDto)
         {
             var company = Mapper.Map<Company>(companyDto);
 
-            if (await GetCompanyAccordingToNameAsync(company.Name) == null)
+            if (await GetIfCompanyExistsAsync(companyDto.Login))
             {
                 throw new ArgumentException();
             }
