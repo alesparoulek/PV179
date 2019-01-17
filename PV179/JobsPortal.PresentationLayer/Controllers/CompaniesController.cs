@@ -24,11 +24,7 @@ namespace JobsPortal.PresentationLayer.Controllers
         [HttpPost]
         public async Task<ActionResult> Register(CompanyCreateDto companyCreateDto)
         {
-            await CompanyFacade.RegisterCompany(companyCreateDto);
-
-
-            return RedirectToAction("RegistrationDone", "Home");
-            /*try
+            try
             {
                 await CompanyFacade.RegisterCompany(companyCreateDto);
 
@@ -39,7 +35,7 @@ namespace JobsPortal.PresentationLayer.Controllers
             {
                 ModelState.AddModelError("", "Company with that username already exists!");
                 return View();
-            }*/
+            }
         }
 
         public ActionResult Login()
