@@ -40,6 +40,8 @@ namespace JobsPortal.PresentationLayer.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Company")]
+        // not working
         public async Task<ActionResult> JobOffers(int page = 1)
         {
             Session[pageNumberSessionKey] = page;
@@ -47,7 +49,7 @@ namespace JobsPortal.PresentationLayer.Controllers
                          new JobOfferFilterDto() { PageSize = PageSize };
 
             filter.RequestedPageNumber = page;
-            var comp = await CompanyFacade.GetCompanyAccordingToLoginAsync(User.Identity.Name);
+            var comp = await CompanyFacade.GetCompanyAccordingToNameAsync(User.Identity.Name);
             filter.CompanyId = comp.Id;
             var result = await CompanyFacade.GetAllJobOffersForCompany(filter);
             var model = InitializeJobOfferListViewModel(result);

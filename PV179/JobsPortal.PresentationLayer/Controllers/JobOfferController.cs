@@ -28,7 +28,9 @@ namespace JobsPortal.PresentationLayer.Controllers
         public JobOfferFacade JobOfferFacade { get; set; }
 
         public UserFacade UserFacade { get; set; }
-       
+
+        public CompanyFacade CompanyFacade { get; set; }
+
 
         public async Task<ActionResult> Index(int page = 1)
         {
@@ -51,6 +53,33 @@ namespace JobsPortal.PresentationLayer.Controllers
             var result = await JobOfferFacade.ListFilteredJobsAsync(model.Filter);
             var newModel = InitializeProductListViewModel(result);
             return View("JobOffer", newModel);
+        }
+
+        //not working
+        public async Task<ActionResult> IndexCompany(int page = 1)
+        {
+            Session[pageNumberSessionKey] = page;
+            var filter = Session[filterSessionKey] as JobOfferFilterDto ??
+                       new JobOfferFilterDto() { PageSize = PageSize };
+
+            filter.RequestedPageNumber = page;
+
+            var result = await JobOfferFacade.ListFilteredJobsAsync(filter);
+            var model = InitializeProductListViewModel(result);
+
+            List<JobOfferDto> list = new List<JobOfferDto>();
+            var company = CompanyFacade.GetCompanyAccordingToLoginAsync(User.Identity.Name);
+            foreach (var jobOffer in model.JobOffers)
+            {
+                if (jobOffer.CompanyId.Equals(company.Id))
+                {
+                    list.Add(jobOffer);
+                }
+            }
+
+            var newlist = list.ToPagedList<JobOfferDto>(result.RequestedPageNumber ?? 1, PageSize);
+            model.JobOffers = newlist;
+            return View("JobOffer", model);
         }
 
 
