@@ -14,5 +14,6 @@ namespace JobsPortal.BusinessLayer.DataTransferObjects.Filters
         public TimeJob TimeJob { get; set; }
         public Location Location { get; set; }
         public Education Education { get; set; }
+        public Guid CompanyId { get; set; }
     }
 }

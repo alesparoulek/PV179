@@ -8,6 +8,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JobsPortal.DataAccessLayer.EntityFramework.Entities;
+using JobsPortal.BusinessLayer.DataTransferObjects.Filters;
+using JobsPortal.BusinessLayer.DataTransferObjects.Common;
 
 namespace JobsPortal.BusinessLayer.Facades
 {
@@ -21,6 +24,22 @@ namespace JobsPortal.BusinessLayer.Facades
             this.comapnyService = companyService;
             this.jobOfferService = jobOfferService;
             this.applyService = applyService;
+        }
+
+        public async Task<List<JobOffer>> GetCompaniesJobOffers(string name)
+        {
+            using (UnitOfWorkProvider.Create())
+            {
+                return await comapnyService.GetCompaniesJobOffers(name);
+            }
+        }
+
+        public async Task<List<JobOffer>> GetCompaniesJobOffers(Guid id)
+        {
+            using (UnitOfWorkProvider.Create())
+            {
+                return await comapnyService.GetCompaniesJobOffers(id);
+            }
         }
 
         public async Task<CompanyDto> GetCompanyAccordingToNameAsync(string name)
@@ -81,6 +100,14 @@ namespace JobsPortal.BusinessLayer.Facades
                 var id = await jobOfferService.CreateJobOffer(jobOfferCreateDto);
                 await uow.Commit();
                 return id;
+            }
+        }
+
+        public async Task<QueryResultDto<JobOfferDto, JobOfferFilterDto>> GetAllJobOffersForCompany(JobOfferFilterDto filter)
+        {
+            using (var uow = UnitOfWorkProvider.Create())
+            {
+                return await jobOfferService.GetAllJobOffersForCompany(filter);
             }
         }
     }

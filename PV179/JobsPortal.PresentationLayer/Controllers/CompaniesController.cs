@@ -7,8 +7,11 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using JobsPortal.BusinessLayer.DataTransferObjects;
+using JobsPortal.BusinessLayer.DataTransferObjects.Common;
+using JobsPortal.BusinessLayer.DataTransferObjects.Filters;
 using JobsPortal.BusinessLayer.Facades;
 using JobsPortal.PresentationLayer.Models;
+using X.PagedList;
 
 namespace JobsPortal.PresentationLayer.Controllers
 {
@@ -16,9 +19,50 @@ namespace JobsPortal.PresentationLayer.Controllers
     public class CompaniesController : Controller
     {
         public CompanyFacade CompanyFacade { get; set; }
+
+        public const int PageSize = 10;
+
+        private readonly string pageNumberSessionKey = "pageNumber";
+
+        private readonly string filterSessionKey = "filter";
+
+        public JobOfferFacade JobOfferFacade { get; set; }
+
+
+
         public ActionResult Register()
         {
             return View();
+        }
+
+        public ActionResult JobOfferCreated()
+        {
+            return View();
+        }
+
+        public async Task<ActionResult> JobOffers(int page = 1)
+        {
+            Session[pageNumberSessionKey] = page;
+            var filter = Session[filterSessionKey] as JobOfferFilterDto ??
+                         new JobOfferFilterDto() { PageSize = PageSize };
+
+            filter.RequestedPageNumber = page;
+            var comp = await CompanyFacade.GetCompanyAccordingToLoginAsync(User.Identity.Name);
+            filter.CompanyId = comp.Id;
+            var result = await CompanyFacade.GetAllJobOffersForCompany(filter);
+            var model = InitializeJobOfferListViewModel(result);
+
+            return View(model);
+
+        }
+
+        private JobOfferListViewModel InitializeJobOfferListViewModel(QueryResultDto<JobOfferDto, JobOfferFilterDto> result)
+        {
+            return new JobOfferListViewModel()
+            {
+                JobOffers = new StaticPagedList<JobOfferDto>(result.Items, result.RequestedPageNumber ?? 1, PageSize, (int)result.TotalItemsCount),
+                Filter = result.Filter
+            };
         }
 
         [HttpPost]
@@ -88,7 +132,9 @@ namespace JobsPortal.PresentationLayer.Controllers
             var company = await CompanyFacade.GetCompanyAccordingToLoginAsync(User.Identity.Name);
             jobOfferCreateDto.CompanyId = company.Id;
             await CompanyFacade.CreateJobOffer(jobOfferCreateDto);
-            return View();
+            return RedirectToAction("JobOfferCreated");
+
         }
+
     }
 }

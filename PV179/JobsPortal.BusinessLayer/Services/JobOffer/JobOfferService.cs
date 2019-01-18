@@ -38,6 +38,12 @@ namespace JobsPortal.BusinessLayer.Services
             return await Query.ExecuteQuery(filter);;
         }
 
+        public async Task<QueryResultDto<JobOfferDto, JobOfferFilterDto>> GetAllJobOffersForCompany(
+            JobOfferFilterDto filter)
+        {
+            return await Query.ExecuteQuery(filter);
+        }
+
         public async Task<Guid> CreateJobOffer(JobOfferCreateDto jobOfferCreateDto)
         {
             var jobOffer = Mapper.Map<JobOffer>(jobOfferCreateDto);

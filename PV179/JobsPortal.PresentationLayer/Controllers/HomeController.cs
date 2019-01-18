@@ -90,41 +90,6 @@ namespace JobsPortal.PresentationLayer.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        /*
-        public ActionResult Register()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Register(RegisteredUserDto model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-
-
-            
-            RegisteredUserDto newUser = new RegisteredUserDto { Login = model.Login,
-                                                                Password = model.Password,
-                                                                FirstName = model.FirstName,
-                                                                LastName = model.LastName,
-                                                                Email = model.Email,
-                                                                Phone = model.Phone,
-                                                                Education = model.Education };
-
-            Guid result = UserFacade.RegisterUser(newUser, out bool success);
-            if (success)
-            {
-                //return RedirectToAction("RegistrationDone");
-                return Content($"Created {newUser.FirstName} {newUser.LastName}");
-            }
-            //return RedirectToAction("RegistrationFail");
-            return Content("ALREADY EXISTS WTF");
-        }*/
-
-
         public ActionResult RegistrationDone()
         {
             return View();

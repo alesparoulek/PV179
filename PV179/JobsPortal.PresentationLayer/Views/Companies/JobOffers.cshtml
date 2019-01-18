@@ -1,0 +1,81 @@
+﻿@using X.PagedList.Mvc
+
+@model JobsPortal.PresentationLayer.Models.JobOfferListViewModel
+
+@{
+    ViewBag.Title = "Job Offers";
+
+}
+
+<h2>Job Offers</h2>
+
+
+
+<div class="panel panel-primary col-md-3 col-sm-4 col-md-12">
+    <div class="panel-heading panel-head">Categories</div>
+    @using (Html.BeginForm())
+    {
+        <div class="form-group col-md-8">
+            @Html.LabelFor(model => model.Filter.SortCriteria, "Location:", new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EnumDropDownListFor(model => model.Filter.Location)
+            </div>
+        </div>
+
+        <div class="form-group col-md-8">
+            @Html.LabelFor(model => model.Filter.SortCriteria, "Education:", new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EnumDropDownListFor(model => model.Filter.Education)
+            </div>
+        </div>
+
+        <div class="form-group col-md-8">
+            @Html.LabelFor(model => model.Filter.SortCriteria, "Type:", new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EnumDropDownListFor(model => model.Filter.JobType)
+            </div>
+        </div>
+
+        <div class="form-group col-md-12">
+            @Html.LabelFor(model => model.Filter.SortAscending, "Ascending", new { @class = "control-label col-md-4" })
+            <div class="col-md-5 col-md-offset-3">
+                @Html.CheckBoxFor(model => model.Filter.SortAscending, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Filter.SortAscending, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="row">
+
+            <div class="form-group">
+                <button class="btn btn-success col-md-offset-1 col-md-5" id="btnSubmit" type="submit">Filter </button>
+            </div>
+        </div>
+
+
+    }
+</div>
+
+<div class="panel panel-default col-md-9 col-sm-8 col-md-12">
+    <ul class="panel-heading panel-head list-group">Your job offers:   @Html.PagedListPager(Model.JobOffers, page => Url.Action("Index", new { page }))</ul>
+    @{foreach (var jobOffer in Model.JobOffers)
+        {
+            <div class="col-md-4 col-sm-6 col-xs-12 list-group-item-nonclickable thumbnail">
+                <div class="col-md-12  col-sm-12 col-xs-12 clickable-area" @("onclick=GoToDetail('" + jobOffer.Id + "')")>
+                    <div class="caption text-center">
+                        <h4 style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" id="thumbnail-label">@jobOffer.Name</h4>
+                    </div>
+
+                    <p style="height: 80px; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: normal; text-align: justify;">@jobOffer.Description</p>
+
+                </div>
+            </div>
+        }}
+
+</div>
+
+<script>
+    function GoToDetail(id) {
+        window.location = "/JobOffer/Details/" + id;
+    }
+</script>

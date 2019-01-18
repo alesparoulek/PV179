@@ -264,7 +264,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Jobs.cshtml" />
-    <Content Include="Views\Home\RegisterOLD.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\JobOffer\JobOffer.cshtml" />
     <Content Include="Views\Home\RegistrationDone.cshtml" />
@@ -276,9 +275,11 @@
     <Content Include="Views\Applications\Applications.cshtml" />
     <Content Include="Views\Companies\Register.cshtml" />
     <Content Include="Views\Companies\Login.cshtml" />
-    <Content Include="Views\Companies\CreateJobOffer.cshtml" />
     <Content Include="Views\Applications\Details.cshtml" />
     <Content Include="Views\Companies\Register – old.cshtml" />
+    <Content Include="Views\Companies\JobOfferCreated.cshtml" />
+    <Content Include="Views\Companies\CreateJobOffer.cshtml" />
+    <Content Include="Views\Companies\JobOffers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
