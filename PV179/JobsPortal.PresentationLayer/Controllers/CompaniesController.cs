@@ -28,6 +28,8 @@ namespace JobsPortal.PresentationLayer.Controllers
 
         public JobOfferFacade JobOfferFacade { get; set; }
 
+        public UserFacade UserFacade { get; set; }
+
 
 
         public ActionResult Register()
@@ -40,22 +42,83 @@ namespace JobsPortal.PresentationLayer.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Company")]
-        // not working
         public async Task<ActionResult> JobOffers(int page = 1)
         {
             Session[pageNumberSessionKey] = page;
             var filter = Session[filterSessionKey] as JobOfferFilterDto ??
-                         new JobOfferFilterDto() { PageSize = PageSize };
+                       new JobOfferFilterDto() { PageSize = PageSize };
 
             filter.RequestedPageNumber = page;
             var comp = await CompanyFacade.GetCompanyAccordingToNameAsync(User.Identity.Name);
             filter.CompanyId = comp.Id;
-            var result = await CompanyFacade.GetAllJobOffersForCompany(filter);
+
+            var result = await JobOfferFacade.ListFilteredJobsAsync(filter);
             var model = InitializeJobOfferListViewModel(result);
-
             return View(model);
+        }
 
+        [HttpPost]
+        public async Task<ActionResult> JobOffers(JobOfferListViewModel model)
+        {
+            model.Filter.PageSize = PageSize;
+            Session[filterSessionKey] = model.Filter;
+            var result = await JobOfferFacade.ListFilteredJobsAsync(model.Filter);
+            var newModel = InitializeJobOfferListViewModel(result);
+            return View(newModel);
+        }
+
+        //----------------------------------------------------------------------------------
+        [HttpPost]
+        public async Task<ActionResult> ApplicationsForJobOffer(ApplicationsViewModel model)
+        {
+            model.Filter.PageSize = PageSize;
+            Session[filterSessionKey] = model.Filter;
+            var result = await JobOfferFacade.GetAllApplicationsOfJobOffer(model.Filter);
+            var newModel = InitializeApplicationListViewModel(result);
+            return View("Applications", newModel);
+        }
+
+        public async Task<ActionResult> ApplicationsForJobOffer(Guid id, int page = 1)
+        {
+            Session[pageNumberSessionKey] = page;
+            var filter = Session[filterSessionKey] as ApplicationFilterDto ??
+                       new ApplicationFilterDto() { PageSize = PageSize };
+
+            filter.RequestedPageNumber = page;
+            filter.JobOfferId = id;
+
+            var result = await JobOfferFacade.GetAllApplicationsOfJobOffer(filter);
+            var model = InitializeApplicationListViewModel(result);
+
+            return View("Applications", model);
+        }
+        //----------------------------------------------------------------------------
+
+        public async Task<ActionResult> ApplicationResolve(Guid id)
+        {
+            var model = new ApplicationResolveModel();
+            model.Application = await JobOfferFacade.GetApplicationById(id);
+            model.JobOfferDto = await JobOfferFacade.GetJobOfferByIdAsync(model.Application.JobOfferId);
+            model.User = await UserFacade.GetUserAccordingToId(model.Application.UserId);
+            
+            return View("ApplicationResolve", model);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> ApplicationResolve(ApplicationResolveModel model)
+        {
+            var application = JobOfferFacade.GetApplicationById(model.Application.Id);
+            await CompanyFacade.ChangeApplicationJobOfferState(model.Application.Id, model.Application.JobOfferState);
+            return RedirectToAction("ChangesSaved");
+        }
+
+        private ApplicationsViewModel InitializeApplicationListViewModel(QueryResultDto<ApplicationDto, ApplicationFilterDto> result)
+        {
+            return new ApplicationsViewModel()
+            {
+                Applications = new StaticPagedList<ApplicationDto>(result.Items, result.RequestedPageNumber ?? 1, PageSize, (int)result.TotalItemsCount),
+                Filter = result.Filter
+            };
         }
 
         private JobOfferListViewModel InitializeJobOfferListViewModel(QueryResultDto<JobOfferDto, JobOfferFilterDto> result)
@@ -136,6 +199,11 @@ namespace JobsPortal.PresentationLayer.Controllers
             await CompanyFacade.CreateJobOffer(jobOfferCreateDto);
             return RedirectToAction("JobOfferCreated");
 
+        }
+
+        public ActionResult ChangedSaved()
+        {
+            return View();
         }
 
     }

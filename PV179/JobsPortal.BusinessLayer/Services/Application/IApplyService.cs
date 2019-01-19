@@ -24,6 +24,8 @@ namespace JobsPortal.BusinessLayer.Services
 
         Task<QueryResultDto<ApplicationDto, ApplicationFilterDto>> GetAllApplicationsForUser(
             ApplicationFilterDto filter);
+        Task<QueryResultDto<ApplicationDto, ApplicationFilterDto>> GetAllApplicationsOfJobOffer(
+            ApplicationFilterDto filter);
         Task ChangeApplicationJobOfferState(Guid id, JobOfferState jobfferState);
 
         Task ChangeApplicationUserState(Guid id, UserState userState);

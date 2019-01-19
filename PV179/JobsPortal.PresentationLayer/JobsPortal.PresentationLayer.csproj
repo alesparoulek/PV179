@@ -177,6 +177,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ApplicationResolveModel.cs" />
     <Compile Include="Models\ApplicationDetailsViewModel.cs" />
     <Compile Include="Models\ApplicationsViewModel.cs" />
     <Compile Include="Models\ApplyForJobModel.cs" />
@@ -281,7 +282,9 @@
     <Content Include="Views\Companies\CreateJobOffer.cshtml" />
     <Content Include="Views\Companies\JobOffers.cshtml" />
     <Content Include="Views\Companies\JobOffers – old.cshtml" />
-    <Content Include="Views\JobOffer\JobOfferWithIdCompany.cshtml" />
+    <Content Include="Views\Companies\Applications.cshtml" />
+    <Content Include="Views\Companies\ChangesSaved.cshtml" />
+    <Content Include="Views\Companies\ApplicationResolve.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

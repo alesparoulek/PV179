@@ -17,7 +17,7 @@ namespace JobsPortal.PresentationLayer.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "JobOffer");
         }
 
         public ActionResult Jobs()

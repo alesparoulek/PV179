@@ -99,5 +99,13 @@ namespace JobsPortal.BusinessLayer.Facades
                 return await jobOfferService.GetAsync(id);
             }
         }
+
+        public async Task<QueryResultDto<ApplicationDto, ApplicationFilterDto>> GetAllApplicationsOfJobOffer(ApplicationFilterDto filter)
+        {
+            using (var uow = UnitOfWorkProvider.Create())
+            {
+                return await applyService.GetAllApplicationsOfJobOffer(filter);
+            }
+        }
     }
 }

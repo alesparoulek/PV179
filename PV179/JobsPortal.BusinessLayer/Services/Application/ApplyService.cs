@@ -62,6 +62,12 @@ namespace JobsPortal.BusinessLayer.Services
             return await Query.ExecuteQuery(filter);
         }
 
+        public async Task<QueryResultDto<ApplicationDto, ApplicationFilterDto>> GetAllApplicationsOfJobOffer(
+            ApplicationFilterDto filter)
+        {
+            return await Query.ExecuteQuery(filter);
+        }
+
         public async Task ChangeApplicationJobOfferState(Guid id, JobOfferState jobofferState)
         {
             var application = await GetApplicationById(id);
