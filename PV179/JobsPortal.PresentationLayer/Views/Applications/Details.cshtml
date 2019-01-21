@@ -8,7 +8,7 @@
 <h2>@Model.JobOffer.Name</h2>
 <h2>@Model.Application.UserState</h2>
 
-@if (Model.Application.JobOfferState != Utilities.Enums.JobOfferState.Undecided)
+@if (Model.Application.JobOfferState == Utilities.Enums.JobOfferState.Accepted)
 {
     using (Html.BeginForm())
     {
