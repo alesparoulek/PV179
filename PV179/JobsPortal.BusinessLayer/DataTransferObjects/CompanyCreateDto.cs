@@ -14,7 +14,7 @@ namespace JobsPortal.BusinessLayer.DataTransferObjects
 
         [Required(ErrorMessage = "Required field")]
         [DisplayName("Name")]
-        [RegularExpression(@"^[a-zA-Z0-9_]+$", ErrorMessage = "Invalid login (only alphanumeric and _)")]
+        [RegularExpression(@"^.{1,}$", ErrorMessage = "Name cannot be empty")]
         [StringLength(64, ErrorMessage = "Maximum 64 characters exceeded")]
         public string Name { get; set; }
 
