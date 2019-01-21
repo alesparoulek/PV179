@@ -68,11 +68,11 @@ namespace JobsPortal.BusinessLayer.Services
             return await Query.ExecuteQuery(filter);
         }
 
-        public async Task ChangeApplicationJobOfferState(Guid id, JobOfferState jobofferState)
+        public async Task ChangeApplicationJobOfferState(Guid id, JobOfferState jobOfferState)
         {
             var application = await GetApplicationById(id);
             
-            application.JobOfferState =  jobofferState;
+            application.JobOfferState =  jobOfferState;
             applicationRepository.Update(application);
         }
 

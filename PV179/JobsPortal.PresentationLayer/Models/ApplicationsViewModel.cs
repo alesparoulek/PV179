@@ -13,7 +13,8 @@ namespace JobsPortal.PresentationLayer.Models
     public class ApplicationsViewModel
     {
         public IPagedList<ApplicationDto> Applications { get; set; }
-
+        public List<JobOfferDto> JobOffers { get; set; }
+        public List<UserDto> Users { get; set; }
         public string[] ApplicationSortCriteria => new[] { nameof(ApplicationDto.JobOfferState) };
         public JobOfferState JobOfferState { get; set; }
         public ApplicationFilterDto Filter { get; set; }

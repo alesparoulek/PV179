@@ -36,16 +36,16 @@
 
 <div class="panel panel-default col-md-9 col-sm-8 col-md-12">
     <ul class="panel-heading panel-head list-group">Applications:</ul>
-    @{foreach (var application in Model.Applications)
-    {
-        <div class="col-md-4 col-sm-6 col-xs-12 list-group-item-nonclickable thumbnail">
-            <div class="col-md-12  col-sm-12 col-xs-12 clickable-area" @("onclick=GoToDetail('" + application.Id + "')")>
-                <div class="caption text-center">
-                    <h4 style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" id="thumbnail-label">@application.Id</h4>
+    @{for (int i = 0; i < Model.Applications.Count; i++)
+        {
+            <div class="col-md-4 col-sm-6 col-xs-12 list-group-item-nonclickable thumbnail">
+                <div class="col-md-12  col-sm-12 col-xs-12 clickable-area" @("onclick=GoToDetail('" + Model.Applications[i].Id + "')")>
+                    <div class="caption text-center">
+                        <h4 style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" id="thumbnail-label">@Model.Users[i].FirstName @Model.Users[i].LastName </h4>
+                    </div>
                 </div>
             </div>
-        </div>
-    }}
+        }}
 </div>
 
 <script>

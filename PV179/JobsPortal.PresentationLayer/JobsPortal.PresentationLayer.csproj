@@ -285,6 +285,7 @@
     <Content Include="Views\Companies\Applications.cshtml" />
     <Content Include="Views\Companies\ChangesSaved.cshtml" />
     <Content Include="Views\Companies\ApplicationResolve.cshtml" />
+    <Content Include="Views\Applications\ChangesSaved.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

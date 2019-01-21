@@ -62,9 +62,10 @@ namespace JobsPortal.BusinessLayer.Facades
 
         public async Task ChangeApplicationUserState(Guid id, UserState userState)
         {
-            using (UnitOfWorkProvider.Create())
+            using (var uow = UnitOfWorkProvider.Create())
             {
                 await applyService.ChangeApplicationUserState(id, userState);
+                await uow.Commit();
             }
         }
 

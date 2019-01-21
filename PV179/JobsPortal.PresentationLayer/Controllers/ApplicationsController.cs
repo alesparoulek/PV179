@@ -36,7 +36,7 @@ namespace JobsPortal.PresentationLayer.Controllers
             var user = await UserFacade.GetUserAccordingToLoginAsync(User.Identity.Name);
             filter.UserId = user.Id;
             var result = await UserFacade.GetAllApplicationsForUser(filter);
-            var model = InitializeApplicationListViewModel(result);
+            var model = await InitializeApplicationListViewModel(result);
 
             return View("Applications", model);
         }
@@ -49,13 +49,31 @@ namespace JobsPortal.PresentationLayer.Controllers
             return View("Details", model);
         }
 
-        private ApplicationsViewModel InitializeApplicationListViewModel(QueryResultDto<ApplicationDto, ApplicationFilterDto> result)
+        [HttpPost]
+        public async Task<ActionResult> Details(ApplicationDetailsViewModel model)
         {
-            return new ApplicationsViewModel()
+            var url = Request.UrlReferrer.AbsoluteUri;
+
+            var applicationId = Guid.Parse(url.Split('/').Last());
+            await UserFacade.ChangeApplicationUserState(applicationId, model.Application.UserState);
+            return View("ChangesSaved");
+        }
+
+        private async Task<ApplicationsViewModel> InitializeApplicationListViewModel(QueryResultDto<ApplicationDto, ApplicationFilterDto> result)
+        {
+            var model =  new ApplicationsViewModel()
             {
                 Applications = new StaticPagedList<ApplicationDto>(result.Items, result.RequestedPageNumber ?? 1, PageSize, (int)result.TotalItemsCount),
                 Filter = result.Filter
             };
+            model.JobOffers = new List<JobOfferDto>();
+            for(int i = 0; i < model.Applications.Count; i++)
+            {
+                var jobOffer = await JobOfferFacade.GetJobOfferByIdAsync(model.Applications[i].JobOfferId);
+                model.JobOffers.Add(jobOffer);
+            }
+
+            return model;
         }
     }
 }

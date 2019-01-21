@@ -63,9 +63,10 @@ namespace JobsPortal.BusinessLayer.Facades
 
         public async Task ChangeApplicationJobOfferState(Guid id, JobOfferState jobOfferState)
         {
-            using (UnitOfWorkProvider.Create())
+            using (var uow =UnitOfWorkProvider.Create())
             {
                 await applyService.ChangeApplicationJobOfferState(id, jobOfferState);
+                await uow.Commit();
             }
         }
 

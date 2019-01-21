@@ -24,6 +24,7 @@ namespace JobsPortal.BusinessLayer.QueryObjects
             var definedPredicates = new List<IPredicate>();
             AddIfDefined(FilterJobOfferState(filter), definedPredicates);
             AddIfDefined(FilterUser(filter), definedPredicates);
+            AddIfDefined(FilterJobOffer(filter), definedPredicates);
             if (definedPredicates.Count == 0)
             {
                 return query;
@@ -36,9 +37,18 @@ namespace JobsPortal.BusinessLayer.QueryObjects
             return query.Where(wherePredicate);
         }
 
+        private SimplePredicate FilterJobOffer(ApplicationFilterDto filter)
+        {
+            if (filter.JobOfferId == Guid.Empty)
+            {
+                return null;
+            }
+            return new SimplePredicate(nameof(Application.JobOfferId), ValueComparingOperator.Equal, filter.JobOfferId);
+        }
+
         private SimplePredicate FilterUser(ApplicationFilterDto filter)
         {
-            if (filter.UserId == null)
+            if (filter.UserId == Guid.Empty)
             {
                 return null;
             }

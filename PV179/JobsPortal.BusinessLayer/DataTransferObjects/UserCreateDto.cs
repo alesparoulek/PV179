@@ -20,6 +20,7 @@ namespace JobsPortal.BusinessLayer.DataTransferObjects
         [DisplayName("Password")]
         [RegularExpression(@"^.{8,}$", ErrorMessage = "Minimum 8 characters required")]
         [StringLength(64, ErrorMessage = "Maximum 64 characters")]
+        [PasswordPropertyText]
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Required field")]

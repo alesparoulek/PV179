@@ -18,7 +18,7 @@ namespace JobsPortal.PresentationLayer.Controllers
 {
     public class JobOfferController : Controller
     {
-        public const int PageSize = 1;
+        public const int PageSize = 10;
 
         private readonly string pageNumberSessionKey = "pageNumber";
 
@@ -66,7 +66,7 @@ namespace JobsPortal.PresentationLayer.Controllers
             }
             return View("JobOfferDetail", model);
         }
-
+        
         [HttpPost]
         public async Task<ActionResult> Details(ApplyForJobModel applyForJobModel)
         {
