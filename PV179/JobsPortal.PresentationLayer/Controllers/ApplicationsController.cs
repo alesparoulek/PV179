@@ -45,6 +45,7 @@ namespace JobsPortal.PresentationLayer.Controllers
         {
             var model = new ApplicationDetailsViewModel();
             model.Application = await JobOfferFacade.GetApplicationById(id);
+            model.JobOffer = await JobOfferFacade.GetJobOfferByIdAsync(model.Application.JobOfferId);
             return View("Details", model);
         }
 

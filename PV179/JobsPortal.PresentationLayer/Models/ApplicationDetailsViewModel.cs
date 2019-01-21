@@ -9,5 +9,6 @@ namespace JobsPortal.PresentationLayer.Models
     public class ApplicationDetailsViewModel
     {
         public ApplicationDto Application { get; set; }
+        public JobOfferDto JobOffer { get; set; }
     }
 }

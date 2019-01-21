@@ -1,7 +1,37 @@
 ﻿@model JobsPortal.PresentationLayer.Models.ApplicationDetailsViewModel
 @{
+    /**/
+
     ViewBag.Title = "title";
-    
+
+}
+<h2>@Model.JobOffer.Name</h2>
+<h2>@Model.Application.UserState</h2>
+
+@if (Model.Application.JobOfferState != Utilities.Enums.JobOfferState.Undecided)
+{
+    using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Choose your state:</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group col-md-8">
+                @Html.LabelFor(model => model.Application.UserState, "State:", new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.EnumDropDownListFor(model => model.Application.UserState)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
 }
 
-<h2>@Model.Application.UserState</h2>

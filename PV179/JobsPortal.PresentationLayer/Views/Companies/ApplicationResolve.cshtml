@@ -75,6 +75,21 @@
     </dl>
 </div>
 
+<div>
+    <h4>User state:</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Application.UserState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Application.UserState)
+        </dd>
+
+    </dl>
+</div>
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
