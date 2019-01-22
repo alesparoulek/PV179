@@ -22,6 +22,7 @@ namespace JobsPortal.BusinessLayer.QueryObjects
         protected override IQuery<JobOffer> ApplyWhereClause(IQuery<JobOffer> query, JobOfferFilterDto filter)
         {
             var definedPredicates = new List<IPredicate>();
+            AddIfDefined(FilterCompanyId(filter), definedPredicates);
             AddIfDefined(FilterJobTypes(filter), definedPredicates);
             AddIfDefined(FilterLocations(filter), definedPredicates);
             AddIfDefined(FilterTimeJobs(filter), definedPredicates);
@@ -37,6 +38,15 @@ namespace JobsPortal.BusinessLayer.QueryObjects
             var wherePredicate = new CompositePredicate(definedPredicates);
             return query.Where(wherePredicate);
 
+        }
+
+        private SimplePredicate FilterCompanyId(JobOfferFilterDto filter)
+        {
+            if (filter.CompanyId == Guid.Empty)
+            {
+                return null;
+            }
+            return new SimplePredicate(nameof(JobOffer.CompanyId), ValueComparingOperator.Equal, filter.CompanyId);
         }
 
         private static void AddIfDefined(IPredicate categoryPredicate, ICollection<IPredicate> definedPredicates)

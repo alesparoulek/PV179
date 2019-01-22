@@ -202,7 +202,7 @@ namespace JobsPortal.PresentationLayer.Controllers
 
 
         [Authorize(Roles = "Company")]
-        public async Task<ActionResult> CreateJobOffer()
+        public ActionResult CreateJobOffer()
         {
             return View();
         }
