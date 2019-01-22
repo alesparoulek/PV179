@@ -18,6 +18,7 @@ namespace JobsPortal.DataAccessLayer.EntityFramework
 
         public JobsPortalDbContext() : base(ConnectionString)
         {
+            var ensureDllIsCopied = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
             Database.SetInitializer(new JobsPortalInitializer());
         }
 
