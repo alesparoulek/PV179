@@ -17,5 +17,9 @@ namespace JobsPortal.BusinessLayer.Services
         Task<(bool success, string roles)> AuthorizeUserAsync(string username, string password);
         Task<RegisteredUserDto> GetUserAccordingToLoginAsync(string login);
         Task<RegisteredUserDto> GetAccordingToId(Guid id);
+        Task<QueryResultDto<RegisteredUserDto, RegisteredUserFilterDto>> GetAllUsers(RegisteredUserFilterDto filter);
+        Guid Create(RegisteredUserDto entityDto);
+        Task Update(RegisteredUserDto entityDto);
+        void Delete(Guid entityId);
     }
 }

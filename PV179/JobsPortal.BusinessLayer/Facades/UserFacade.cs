@@ -51,6 +51,15 @@ namespace JobsPortal.BusinessLayer.Facades
             }
         }
 
+        public async Task DeleteUser(Guid id)
+        {
+            using (var uow = UnitOfWorkProvider.Create())
+            {
+                registeredUserService.Delete(id);
+                await uow.Commit();
+            }
+        }
+
         public async Task<UserDto> GetUserAccordingToLoginAsync(string login)
         {
 
@@ -69,12 +78,28 @@ namespace JobsPortal.BusinessLayer.Facades
             }
         }
 
+        public async Task UpdateUser(UserDto user)
+        {
+            using (var uow = UnitOfWorkProvider.Create())
+            {
+                await userService.Update(user);
+                await uow.Commit();
+            }
+        }
 
         public async Task<QueryResultDto<ApplicationDto, ApplicationFilterDto>> GetAllApplicationsForUser(ApplicationFilterDto filter)
         {
             using (var uow = UnitOfWorkProvider.Create())
             {
                 return await applyService.GetAllApplicationsForUser(filter);
+            }
+        }
+
+        public async Task<QueryResultDto<RegisteredUserDto, RegisteredUserFilterDto>> GetAllUsers(RegisteredUserFilterDto filter)
+        {
+            using (UnitOfWorkProvider.Create())
+            {
+                return await registeredUserService.GetAllUsers(filter);
             }
         }
 

@@ -41,6 +41,19 @@ namespace JobsPortal.DataAccessLayer.EntityFramework
                 Education = Utilities.Enums.Education.GraduatedHighschool
             });
 
+            context.RegisteredUsers.Add(new RegisteredUser
+            {
+                Id = Guid.NewGuid(),
+                FirstName = "admin",
+                LastName = "admin",
+                Login = "admin",
+                PasswordHash = "9P/rV93VYQ1dq80nCk20XcZPHck=",
+                PasswordSalt = "hsbs67bR+KH6YxDYpQEY3w==",
+                Email = "admin@admin.admin",
+                Phone = "0000000000",
+                Education = Utilities.Enums.Education.Any
+            });
+
             context.JobOffers.Add(new JobOffer
             {
                 Id = Guid.NewGuid(),

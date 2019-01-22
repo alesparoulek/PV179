@@ -51,6 +51,14 @@ namespace JobsPortal.BusinessLayer.Facades
             }
         }
 
+        public async Task<CompanyDto> GetCompanyAccordingToIdAsync(Guid id)
+        {
+            using (UnitOfWorkProvider.Create())
+            {
+                return await comapnyService.GetAccordingToId(id);
+            }
+        }
+
         public async Task<CompanyDto> GetCompanyAccordingToLoginAsync(string login)
         {
 
@@ -60,6 +68,14 @@ namespace JobsPortal.BusinessLayer.Facades
             }
         }
 
+        public async Task DeleteCompany(Guid id)
+        {
+            using (var uow = UnitOfWorkProvider.Create())
+            {
+                comapnyService.Delete(id);
+                await uow.Commit();
+            }
+        }
 
         public async Task ChangeApplicationJobOfferState(Guid id, JobOfferState jobOfferState)
         {
@@ -67,6 +83,14 @@ namespace JobsPortal.BusinessLayer.Facades
             {
                 await applyService.ChangeApplicationJobOfferState(id, jobOfferState);
                 await uow.Commit();
+            }
+        }
+
+        public async Task<QueryResultDto<CompanyDto, CompanyFilterDto>> GetAllCompanies(CompanyFilterDto filter)
+        {
+            using (UnitOfWorkProvider.Create())
+            {
+                return await comapnyService.GetAllCompanies(filter);
             }
         }
 

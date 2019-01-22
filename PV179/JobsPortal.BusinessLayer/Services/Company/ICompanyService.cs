@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JobsPortal.BusinessLayer.DataTransferObjects.Common;
+using JobsPortal.BusinessLayer.DataTransferObjects.Filters;
 
 namespace JobsPortal.BusinessLayer.Services
 {
@@ -17,13 +19,10 @@ namespace JobsPortal.BusinessLayer.Services
         Task<Guid> RegisterCompanyAsync(CompanyCreateDto companyDto);
         Task<(bool success, string roles)> AuthorizeCompanyAsync(string login, string password);
         Guid Create(CompanyDto entityDto);
-
+        Task<QueryResultDto<CompanyDto, CompanyFilterDto>> GetAllCompanies(CompanyFilterDto filter);
+        Task<CompanyDto> GetAccordingToId(Guid id);
         Task Update(CompanyDto entityDto);
-
         void Delete(Guid entityId);
-
-        Task<CompanyDto> GetAsync(Guid entityId, bool withIncludes = true);
-
     }
 
    

@@ -1,0 +1,33 @@
+﻿@model JobsPortal.PresentationLayer.Models.UserViewModel
+
+@{
+    ViewBag.Title = "title";
+    
+}
+
+<h2>Users</h2>
+
+
+@{foreach (var user in Model.Users)
+    {
+        if (user.Login == "admin")
+        {
+            continue;
+        }
+    <div class="col-md-4 col-sm-6 col-xs-12 list-group-item-nonclickable thumbnail">
+        <div class="col-md-12  col-sm-12 col-xs-12 clickable-area" @("onclick=GoToDetail('" + user.Id + "')")>
+            <div class="caption text-center">
+                <h4 style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" id="thumbnail-label">@user.FirstName @user.LastName</h4>
+            </div>
+
+
+        </div>
+    </div>
+}}
+
+
+<script>
+    function GoToDetail(id) {
+        window.location = "/Admin/UserDetails/" + id;
+    }
+</script>

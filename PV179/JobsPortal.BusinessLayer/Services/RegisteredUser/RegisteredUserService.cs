@@ -58,7 +58,15 @@ namespace JobsPortal.BusinessLayer.Services
             var user = userResult.Items.SingleOrDefault();
 
             var succ = user != null && VerifyHashedPassword(user.PasswordHash, user.PasswordSalt, password);
-            var roles = "User";
+            string roles;
+            if (user != null && user.Login == "admin")
+            {
+                roles = "Admin";
+            }
+            else
+            {
+                roles = "User";
+            }
             return (succ, roles);
         }
 
@@ -68,8 +76,12 @@ namespace JobsPortal.BusinessLayer.Services
             var res = Mapper.Map<RegisteredUserDto>(user);
             return res;
         }
-        
-       
+
+        public async Task<QueryResultDto<RegisteredUserDto, RegisteredUserFilterDto>> GetAllUsers(RegisteredUserFilterDto filter)
+        {
+            return await Query.ExecuteQuery(filter);
+        }
+
 
         private async Task<bool> GetIfUserExistsAsync(string login)
         {

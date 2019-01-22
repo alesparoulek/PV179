@@ -12,6 +12,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using JobsPortal.BusinessLayer.DataTransferObjects.Common;
 
 namespace JobsPortal.BusinessLayer.Services
 {
@@ -35,6 +36,14 @@ namespace JobsPortal.BusinessLayer.Services
         protected override async Task<Company> GetWithIncludesAsync(Guid entityId)
         {
             return await Repository.GetAsync(entityId);
+        }
+
+        public async Task<CompanyDto> GetAccordingToId(Guid id)
+        {
+            var comp = await GetWithIncludesAsync(id);
+            var res = Mapper.Map<CompanyDto>(comp);
+            
+            return res;
         }
         
         public async Task<CompanyDto> GetCompanyAccordingToNameAsync(string name)
@@ -69,6 +78,11 @@ namespace JobsPortal.BusinessLayer.Services
             var succ = comp != null && VerifyHashedPassword(comp.PasswordHash, comp.PasswordSalt, password);
             var roles = "Company";
             return (succ, roles);
+        }
+
+        public async Task<QueryResultDto<CompanyDto, CompanyFilterDto>> GetAllCompanies(CompanyFilterDto filter)
+        {
+            return await Query.ExecuteQuery(filter);
         }
 
         private async Task<bool> GetIfCompanyExistsAsync(string login)

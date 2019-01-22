@@ -1,4 +1,5 @@
-﻿@model JobsPortal.PresentationLayer.Models.ApplicationsViewModel
+﻿@using X.PagedList.Mvc
+@model JobsPortal.PresentationLayer.Models.ApplicationsViewModel
 @{
     ViewBag.Title = "Applications";
 }
@@ -35,7 +36,7 @@
 </div>
 
 <div class="panel panel-default col-md-9 col-sm-8 col-md-12">
-    <ul class="panel-heading panel-head list-group">Applications:</ul>
+    <ul class="panel-heading panel-head list-group">Applications: @Html.PagedListPager(Model.Applications, page => Url.Action("ApplicationResolve", new { page }))</ul>
     @{for (int i = 0; i < Model.Applications.Count; i++)
         {
             <div class="col-md-4 col-sm-6 col-xs-12 list-group-item-nonclickable thumbnail">

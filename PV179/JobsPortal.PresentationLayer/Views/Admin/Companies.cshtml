@@ -1,0 +1,29 @@
+﻿@model JobsPortal.PresentationLayer.Models.CompaniesViewModel
+
+@{
+    ViewBag.Title = "title";
+
+}
+
+<h2>Companies</h2>
+
+
+@{foreach (var company in Model.Companies)
+    {
+        <div class="col-md-4 col-sm-6 col-xs-12 list-group-item-nonclickable thumbnail">
+            <div class="col-md-12  col-sm-12 col-xs-12 clickable-area" @("onclick=GoToDetail('" + company.Id + "')")>
+                <div class="caption text-center">
+                    <h4 style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" id="thumbnail-label">@company.Name</h4>
+                </div>
+
+
+            </div>
+        </div>
+    }}
+
+
+<script>
+    function GoToDetail(id) {
+        window.location = "/Admin/CompanyDetails/" + id;
+    }
+</script>

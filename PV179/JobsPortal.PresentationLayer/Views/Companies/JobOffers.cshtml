@@ -1,4 +1,5 @@
-﻿@model JobsPortal.PresentationLayer.Models.JobOfferListViewModel
+﻿@using X.PagedList.Mvc
+@model JobsPortal.PresentationLayer.Models.JobOfferListViewModel
 @{
     ViewBag.Title = "Job Offers";
 }
@@ -6,7 +7,7 @@
 <h2>Job Offers</h2>
 
 <div class="panel panel-default col-md-9 col-sm-8 col-md-12">
-    <ul class="panel-heading panel-head list-group">Your job offers:</ul>
+    <ul class="panel-heading panel-head list-group">Your job offers:  @Html.PagedListPager(Model.JobOffers, page => Url.Action("JobOffers", new { page }))</ul>
     @{foreach (var jobOffer in Model.JobOffers)
         {
             <div class="col-md-4 col-sm-6 col-xs-12 list-group-item-nonclickable thumbnail">
@@ -17,6 +18,7 @@
                 </div>
             </div>
         }}
+   
 </div>
 
 <script>

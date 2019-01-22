@@ -170,10 +170,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Windsor\PresentationLayerInstaller.cs" />
     <Compile Include="App_Start\Windsor\WindsorControllerFactory.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ApplicationsController.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobOfferController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -181,9 +183,11 @@
     <Compile Include="Models\ApplicationDetailsViewModel.cs" />
     <Compile Include="Models\ApplicationsViewModel.cs" />
     <Compile Include="Models\ApplyForJobModel.cs" />
+    <Compile Include="Models\CompaniesViewModel.cs" />
     <Compile Include="Models\JobOfferListViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\UserCreate.cs" />
+    <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -286,6 +290,12 @@
     <Content Include="Views\Companies\ChangesSaved.cshtml" />
     <Content Include="Views\Companies\ApplicationResolve.cshtml" />
     <Content Include="Views\Applications\ChangesSaved.cshtml" />
+    <Content Include="Views\User\Manage.cshtml" />
+    <Content Include="Views\User\ChangesSaved.cshtml" />
+    <Content Include="Views\Admin\Users.cshtml" />
+    <Content Include="Views\Admin\Companies.cshtml" />
+    <Content Include="Views\Admin\CompanyDetails.cshtml" />
+    <Content Include="Views\Admin\UserDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

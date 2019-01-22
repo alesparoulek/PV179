@@ -45,12 +45,6 @@ namespace JobsPortal.BusinessLayer.Services
         /// </summary>
         /// <param name="entityId">Id of the entity to delete</param>
         void Delete(Guid entityId);
-
-        /*
-        /// <summary>
-        /// Gets all DTOs (for given type)
-        /// </summary>
-        /// <returns>all available dtos (for given type)</returns>
-        Task<QueryResultDto<UserDto, UserFilterDto>> ListOnlyAllUsersAsync();*/
+        
     }
 }

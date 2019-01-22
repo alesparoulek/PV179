@@ -41,6 +41,8 @@ namespace JobsPortal.PresentationLayer.Controllers
             return View("Applications", model);
         }
 
+        
+
         public async Task<ActionResult> Details(Guid id)
         {
             var model = new ApplicationDetailsViewModel();

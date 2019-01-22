@@ -36,11 +36,6 @@ namespace JobsPortal.BusinessLayer.Services
             return queryResult.Items.SingleOrDefault();
         }
 
-        /*
-        public async Task<QueryResultDto<UserDto, UserFilterDto>> ListOnlyAllUsersAsync()
-        {
-            var x = await Query.ExecuteQuery(new UserFilterDto { Email = null });
-            return x;
-        }*/
+        
     }
 }
