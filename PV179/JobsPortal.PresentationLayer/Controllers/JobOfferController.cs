@@ -60,10 +60,14 @@ namespace JobsPortal.PresentationLayer.Controllers
             var model = new ApplyForJobModel();
             model.JobOfferDto = await JobOfferFacade.GetJobOfferByIdAsync(id);
             model.Answers = new List<string>();
-            for (var i = 0; i < model.JobOfferDto.Questionnaire.Split('/').Length; i++)
+            if (model.JobOfferDto.Questionnaire != null)
             {
-                model.Answers.Add("");
+                for (var i = 0; i < model.JobOfferDto.Questionnaire.Split('/').Length; i++)
+                {
+                    model.Answers.Add("");
+                }
             }
+            
             return View("JobOfferDetail", model);
         }
         
