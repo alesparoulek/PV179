@@ -90,10 +90,14 @@ namespace JobsPortal.PresentationLayer.Controllers
             var url = Request.UrlReferrer.AbsoluteUri;
 
             applicationDto.JobOfferId = Guid.Parse(url.Split('/').Last());
-            foreach (var answer in applyForJobModel.Answers)
+            if (applyForJobModel.Answers != null)
             {
-                applicationDto.Answers += answer + '/';
+                foreach (var answer in applyForJobModel.Answers)
+                {
+                    applicationDto.Answers += answer + '/';
+                }
             }
+            
             applicationDto.JobOfferState = JobOfferState.Undecided;
             applicationDto.UserState = UserState.Undecided;
             await JobOfferFacade.ConfirmApplicationAsync(applicationDto);
